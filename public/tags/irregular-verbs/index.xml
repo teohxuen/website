@@ -10,23 +10,23 @@
     <atom:link href="http://localhost:1313/website/tags/irregular-verbs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>List of Irregular Verbs Across Romance Languages</title>
-      <link>http://localhost:1313/website/data/data1/</link>
+      <link>http://localhost:1313/website/01-references/data/data1/</link>
       <pubDate>Thu, 07 Mar 2013 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/website/data/data1/</guid>
+      <guid>http://localhost:1313/website/01-references/data/data1/</guid>
       <description>This dataset contains all irregular verbs in known Romance languages.</description>
     </item>
     <item>
       <title>Lectures at the Villa of Reduced Circumstances</title>
-      <link>http://localhost:1313/website/courses/course1/</link>
+      <link>http://localhost:1313/website/01-references/courses/course1/</link>
       <pubDate>Mon, 10 Mar 2003 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/website/courses/course1/</guid>
+      <guid>http://localhost:1313/website/01-references/courses/course1/</guid>
       <description>This graduate course presents classical results in Romance philology.</description>
     </item>
     <item>
       <title>Portugese Irregular Verbs</title>
-      <link>http://localhost:1313/website/books/book1/</link>
+      <link>http://localhost:1313/website/01-references/books/book1/</link>
       <pubDate>Wed, 01 Jan 1997 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/website/books/book1/</guid>
+      <guid>http://localhost:1313/website/01-references/books/book1/</guid>
       <description>This book discusses Portugese irregular verbs in great details.</description>
     </item>
   </channel>
