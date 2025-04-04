@@ -10,7 +10,6 @@ editPost:
     Text: "Team Website"
 showToc: true
 disableAnchoredHeadings: false
-
 ---
 
 ## Acknowledgement

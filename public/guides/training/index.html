@@ -5,33 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>AUV Battery Management System</title>
+<title>Battery Learning Cycle for BQ40Z50 | AUV Battery Management System</title>
 <meta name="keywords" content="">
-<meta name="description" content="Insert Reference to the Training Document
-Switch off SMBus Comms to MCU JIC!
-0) check that batteries are fully charged
-
-Calibrate Current
-1b) See how much current when PMB is active vs inactive (MCU side ON vs MCU side OFF)
-Check all settings mentioned in learning PDF (MAKE SURE ALL SETTING RELATING TO CURRENT AND CAPACITY IS HALF) (Check Parker Docs Again)
-Bare Minimnum (Design Capacity, Design Voltage, Taper, DSG Current, CHG Current, Quit Current, Term Voltage)
-2b) Make sure that the correct Battery Chemistry is Flashed.
-Turn off Protection on setting page (make sure scan is turned on)
-3b) Turn on autoexport .gg.csv for every 30mins
-Click on GAUGE_EN and check that GAUGE_EN bit is set.
-Then click on RESET (Turn on Log)
-5b) Verify Update Status is 04
-Discharge until empty (C/4?)
-Wait until REST Bit is Set
-Charge Cell to Full using nominal charge rate, charge termination is reached when VCT = 1
-Let cell rest until REST bit is set
-In Data Memory&gt;Gas Gauging&gt;Update Status Register should equal 05
-Check RDIS = 0
-Discharge cell at C/5 rate until terminate voltage is reached
-Let cell rest until REST bit is set
-In Data Memory&gt;Gas Gauging&gt;Update Status Register should equal 06
-Resistance Table and QMax should be updated
-">
+<meta name="description" content="This documents the steps required to successfully complete a learning cycle for new batteries attached to BQ40Z50.">
 <meta name="author" content="Teoh Xu En">
 <link rel="canonical" href="http://localhost:1313/website/guides/training/">
 <link crossorigin="anonymous" href="/website/assets/css/stylesheet.d6cf4a8fa527330d9574f36d8d000fdaf90ca838ff09ab72fc27d3cb7ca1ddc5.css" integrity="sha256-1s9Kj6UnMw2VdPNtjQAP2vkMqDj/Caty/CfTy3yh3cU=" rel="preload stylesheet" as="style">
@@ -50,64 +26,16 @@ Resistance Table and QMax should be updated
         }
 
     </style>
-</noscript><meta property="og:title" content="" />
-<meta property="og:description" content="Insert Reference to the Training Document
-Switch off SMBus Comms to MCU JIC!
-0) check that batteries are fully charged
-
-Calibrate Current
-1b) See how much current when PMB is active vs inactive (MCU side ON vs MCU side OFF)
-Check all settings mentioned in learning PDF (MAKE SURE ALL SETTING RELATING TO CURRENT AND CAPACITY IS HALF) (Check Parker Docs Again)
-Bare Minimnum (Design Capacity, Design Voltage, Taper, DSG Current, CHG Current, Quit Current, Term Voltage)
-2b) Make sure that the correct Battery Chemistry is Flashed.
-Turn off Protection on setting page (make sure scan is turned on)
-3b) Turn on autoexport .gg.csv for every 30mins
-Click on GAUGE_EN and check that GAUGE_EN bit is set.
-Then click on RESET (Turn on Log)
-5b) Verify Update Status is 04
-Discharge until empty (C/4?)
-Wait until REST Bit is Set
-Charge Cell to Full using nominal charge rate, charge termination is reached when VCT = 1
-Let cell rest until REST bit is set
-In Data Memory&gt;Gas Gauging&gt;Update Status Register should equal 05
-Check RDIS = 0
-Discharge cell at C/5 rate until terminate voltage is reached
-Let cell rest until REST bit is set
-In Data Memory&gt;Gas Gauging&gt;Update Status Register should equal 06
-Resistance Table and QMax should be updated
-" />
+</noscript><meta property="og:title" content="Battery Learning Cycle for BQ40Z50" />
+<meta property="og:description" content="This documents the steps required to successfully complete a learning cycle for new batteries attached to BQ40Z50." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/website/guides/training/" /><meta property="article:section" content="guides" />
-
-
+<meta property="article:published_time" content="2025-04-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-04-04T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Insert Reference to the Training Document
-Switch off SMBus Comms to MCU JIC!
-0) check that batteries are fully charged
-
-Calibrate Current
-1b) See how much current when PMB is active vs inactive (MCU side ON vs MCU side OFF)
-Check all settings mentioned in learning PDF (MAKE SURE ALL SETTING RELATING TO CURRENT AND CAPACITY IS HALF) (Check Parker Docs Again)
-Bare Minimnum (Design Capacity, Design Voltage, Taper, DSG Current, CHG Current, Quit Current, Term Voltage)
-2b) Make sure that the correct Battery Chemistry is Flashed.
-Turn off Protection on setting page (make sure scan is turned on)
-3b) Turn on autoexport .gg.csv for every 30mins
-Click on GAUGE_EN and check that GAUGE_EN bit is set.
-Then click on RESET (Turn on Log)
-5b) Verify Update Status is 04
-Discharge until empty (C/4?)
-Wait until REST Bit is Set
-Charge Cell to Full using nominal charge rate, charge termination is reached when VCT = 1
-Let cell rest until REST bit is set
-In Data Memory&gt;Gas Gauging&gt;Update Status Register should equal 05
-Check RDIS = 0
-Discharge cell at C/5 rate until terminate voltage is reached
-Let cell rest until REST bit is set
-In Data Memory&gt;Gas Gauging&gt;Update Status Register should equal 06
-Resistance Table and QMax should be updated
-"/>
+<meta name="twitter:title" content="Battery Learning Cycle for BQ40Z50"/>
+<meta name="twitter:description" content="This documents the steps required to successfully complete a learning cycle for new batteries attached to BQ40Z50."/>
 
 
 <script type="application/ld+json">
@@ -124,7 +52,7 @@ Resistance Table and QMax should be updated
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "",
+      "name": "Battery Learning Cycle for BQ40Z50",
       "item": "http://localhost:1313/website/guides/training/"
     }
   ]
@@ -134,21 +62,21 @@ Resistance Table and QMax should be updated
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "",
-  "name": "",
-  "description": "Insert Reference to the Training Document\nSwitch off SMBus Comms to MCU JIC! 0) check that batteries are fully charged\nCalibrate Current 1b) See how much current when PMB is active vs inactive (MCU side ON vs MCU side OFF) Check all settings mentioned in learning PDF (MAKE SURE ALL SETTING RELATING TO CURRENT AND CAPACITY IS HALF) (Check Parker Docs Again) Bare Minimnum (Design Capacity, Design Voltage, Taper, DSG Current, CHG Current, Quit Current, Term Voltage) 2b) Make sure that the correct Battery Chemistry is Flashed. Turn off Protection on setting page (make sure scan is turned on) 3b) Turn on autoexport .gg.csv for every 30mins Click on GAUGE_EN and check that GAUGE_EN bit is set. Then click on RESET (Turn on Log) 5b) Verify Update Status is 04 Discharge until empty (C/4?) Wait until REST Bit is Set Charge Cell to Full using nominal charge rate, charge termination is reached when VCT = 1 Let cell rest until REST bit is set In Data Memory\u0026gt;Gas Gauging\u0026gt;Update Status Register should equal 05 Check RDIS = 0 Discharge cell at C/5 rate until terminate voltage is reached Let cell rest until REST bit is set In Data Memory\u0026gt;Gas Gauging\u0026gt;Update Status Register should equal 06 Resistance Table and QMax should be updated ",
+  "headline": "Battery Learning Cycle for BQ40Z50",
+  "name": "Battery Learning Cycle for BQ40Z50",
+  "description": "This documents the steps required to successfully complete a learning cycle for new batteries attached to BQ40Z50.",
   "keywords": [
     
   ],
   "articleBody": "Insert Reference to the Training Document\nSwitch off SMBus Comms to MCU JIC! 0) check that batteries are fully charged\nCalibrate Current 1b) See how much current when PMB is active vs inactive (MCU side ON vs MCU side OFF) Check all settings mentioned in learning PDF (MAKE SURE ALL SETTING RELATING TO CURRENT AND CAPACITY IS HALF) (Check Parker Docs Again) Bare Minimnum (Design Capacity, Design Voltage, Taper, DSG Current, CHG Current, Quit Current, Term Voltage) 2b) Make sure that the correct Battery Chemistry is Flashed. Turn off Protection on setting page (make sure scan is turned on) 3b) Turn on autoexport .gg.csv for every 30mins Click on GAUGE_EN and check that GAUGE_EN bit is set. Then click on RESET (Turn on Log) 5b) Verify Update Status is 04 Discharge until empty (C/4?) Wait until REST Bit is Set Charge Cell to Full using nominal charge rate, charge termination is reached when VCT = 1 Let cell rest until REST bit is set In Data Memory\u003eGas Gauging\u003eUpdate Status Register should equal 05 Check RDIS = 0 Discharge cell at C/5 rate until terminate voltage is reached Let cell rest until REST bit is set In Data Memory\u003eGas Gauging\u003eUpdate Status Register should equal 06 Resistance Table and QMax should be updated ",
   "wordCount" : "211",
   "inLanguage": "en",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
-  "author":{
+  "datePublished": "2025-04-03T00:00:00Z",
+  "dateModified": "2025-04-04T00:00:00Z",
+  "author":[{
     "@type": "Person",
     "name": "Teoh Xu En"
-  },
+  }],
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "http://localhost:1313/website/guides/training/"
@@ -232,12 +160,13 @@ Resistance Table and QMax should be updated
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      
+      Battery Learning Cycle for BQ40Z50
     </h1>
-    <div class="post-meta">Teoh Xu En
+    <div class="post-meta"><span title='2025-04-03 00:00:00 +0000 UTC'>April 2025</span>&nbsp;&middot;&nbsp;Teoh Xu En&nbsp;&middot;&nbsp;<a href="https://www.youtube.com/watch?v=WAcxrGDb68g" rel="noopener noreferrer" target="_blank">Video Guide</a>
 
 </div>
   </header> 
+
   <div class="post-content"><p>Insert Reference to the Training Document</p>
 <p>Switch off SMBus Comms to MCU JIC!
 0) check that batteries are fully charged</p>
@@ -263,6 +192,7 @@ Bare Minimnum (Design Capacity, Design Voltage, Taper, DSG Current, CHG Current,
 <li>In Data Memory&gt;Gas Gauging&gt;Update Status Register should equal 06</li>
 <li>Resistance Table and QMax should be updated</li>
 </ol>
+
 
   </div>
 

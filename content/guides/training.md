@@ -1,3 +1,18 @@
+---
+title: "Battery Learning Cycle for BQ40Z50" 
+date: 2025-04-03
+lastmod: 2025-04-04
+author: ["Teoh Xu En"]
+description: "This documents the steps required to successfully complete a learning cycle for new batteries attached to BQ40Z50."
+summary: "This documents the steps required to successfully complete a learning cycle for new batteries attached to BQ40Z50."
+editPost:
+    URL: "https://www.youtube.com/watch?v=WAcxrGDb68g"
+    Text: "Video Guide"
+showToc: true
+disableAnchoredHeadings: false
+---
+
+
 Insert Reference to the Training Document
 
 Switch off SMBus Comms to MCU JIC!

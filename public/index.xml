@@ -9,11 +9,32 @@
     <lastBuildDate>Fri, 04 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/website/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Battery Learning Cycle for BQ40Z50</title>
+      <link>http://localhost:1313/website/guides/training/</link>
+      <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/website/guides/training/</guid>
+      <description>This documents the steps required to successfully complete a learning cycle for new batteries attached to BQ40Z50.</description>
+    </item>
+    <item>
+      <title>BQ40Z50 Registers and Data Flash</title>
+      <link>http://localhost:1313/website/configurations/registers/</link>
+      <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/website/configurations/registers/</guid>
+      <description>An explanation of Key Register and Data Flash and reasons for their corresponding values.</description>
+    </item>
+    <item>
       <title>Development of A Battery Management System for AUV4.5</title>
       <link>http://localhost:1313/website/report/final_report/</link>
       <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/website/report/final_report/</guid>
       <description>This report documents the work done on developing the Battery Management System for an Autonomous Underwater Vehicle (AUV4.5) in preparation for RoboSub 2025.</description>
+    </item>
+    <item>
+      <title>Setting Up PMB for AUV4.5</title>
+      <link>http://localhost:1313/website/guides/setup/</link>
+      <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/website/guides/setup/</guid>
+      <description>This documents the steps required to set up the PMB for use.</description>
     </item>
     <item>
       <title>Location</title>
@@ -77,57 +98,6 @@
       <pubDate>Sat, 16 Jun 1990 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/website/01-references/courses/course2/</guid>
       <description>This undergraduate course discusses profanity in Early Irish.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/website/configurations/registers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/website/configurations/registers/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/website/guides/setup/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/website/guides/setup/</guid>
-      <description>&lt;p&gt;After connecting PMB to battery need to press the wake button to wake the BQ40Z50&lt;/p&gt;
-&lt;p&gt;FET_EN needs to be turned on for BQ to control the FET&lt;/p&gt;
-&lt;p&gt;Hardware Setting
-RSENS Set to 1 to allow for higher hardware current limit&lt;/p&gt;
-&lt;p&gt;Current Calibration&lt;/p&gt;
-&lt;p&gt;Insert Golden Image File&lt;/p&gt;
-&lt;p&gt;Insert Battery Chemistry Configuration&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/website/guides/training/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/website/guides/training/</guid>
-      <description>&lt;p&gt;Insert Reference to the Training Document&lt;/p&gt;
-&lt;p&gt;Switch off SMBus Comms to MCU JIC!
-0) check that batteries are fully charged&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Calibrate Current
-1b) See how much current when PMB is active vs inactive (MCU side ON vs MCU side OFF)&lt;/li&gt;
-&lt;li&gt;Check all settings mentioned in learning PDF (MAKE SURE ALL SETTING RELATING TO CURRENT AND CAPACITY IS HALF) (Check Parker Docs Again)
-Bare Minimnum (Design Capacity, Design Voltage, Taper, DSG Current, CHG Current, Quit Current, Term Voltage)
-2b) Make sure that the correct Battery Chemistry is Flashed.&lt;/li&gt;
-&lt;li&gt;Turn off Protection on setting page (make sure scan is turned on)
-3b) Turn on autoexport .gg.csv for every 30mins&lt;/li&gt;
-&lt;li&gt;Click on GAUGE_EN and check that GAUGE_EN bit is set.&lt;/li&gt;
-&lt;li&gt;Then click on RESET (Turn on Log)
-5b) Verify Update Status is 04&lt;/li&gt;
-&lt;li&gt;Discharge until empty (C/4?)&lt;/li&gt;
-&lt;li&gt;Wait until REST Bit is Set&lt;/li&gt;
-&lt;li&gt;Charge Cell to Full using nominal charge rate, charge termination is reached when VCT = 1&lt;/li&gt;
-&lt;li&gt;Let cell rest until REST bit is set&lt;/li&gt;
-&lt;li&gt;In Data Memory&amp;gt;Gas Gauging&amp;gt;Update Status Register should equal 05&lt;/li&gt;
-&lt;li&gt;Check RDIS = 0&lt;/li&gt;
-&lt;li&gt;Discharge cell at C/5 rate until terminate voltage is reached&lt;/li&gt;
-&lt;li&gt;Let cell rest until REST bit is set&lt;/li&gt;
-&lt;li&gt;In Data Memory&amp;gt;Gas Gauging&amp;gt;Update Status Register should equal 06&lt;/li&gt;
-&lt;li&gt;Resistance Table and QMax should be updated&lt;/li&gt;
-&lt;/ol&gt;</description>
     </item>
   </channel>
 </rss>

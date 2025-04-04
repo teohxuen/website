@@ -1,3 +1,17 @@
+---
+title: "Setting Up PMB for AUV4.5" 
+date: 2025-04-03
+lastmod: 2025-04-04
+author: ["Teoh Xu En"]
+description: "This documents the steps required to set up the PMB for use."
+summary: "This documents the steps required to set up the PMB for use."
+editPost:
+    URL: "https://bumblebee.sg/"
+    Text: "Team Website"
+showToc: true
+disableAnchoredHeadings: false
+---
+
 After connecting PMB to battery need to press the wake button to wake the BQ40Z50
 
 FET_EN needs to be turned on for BQ to control the FET
