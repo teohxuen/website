@@ -26,7 +26,21 @@ disableAnchoredHeadings: false
 ----
 ## List of Common Acronyms
 
-TODO:
+<div align="center">
+
+| **Acronym** |        **Definition**         |
+| :---------: | :---------------------------: |
+|   **ASV**   |   Autonomous Surface Vessel   |
+|   **AUV**   | Autonomous Underwater Vehicle |
+|  **BBAS**   | Bumblebee Autonomous Systems  |
+|   **BCB**   |     Battery Charging Box      |
+|   **CAN**   |    Controller Area Network    |
+|   **OCS**   |   Operator Control Station    |
+|   **PCB**   |     Printed Circuit Board     |
+|   **PMB**   |    Power Monitoring Board     |
+
+</div>
+
 
 ---
 
@@ -37,66 +51,136 @@ TODO:
 ---
 
 ## 2. Problem Background
+### 2.1 Introduction
+Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs and builds Autonomous Underwater Vehicles (AUVs) for the annual RoboSub competition. Following lessons learned from AUV4.1’s participation in RoboSub 2023, the team is concurrently developing AUV4.5 for RoboSub 2025 and AUV5.0 for RoboSub 2026.
 
-- Introduction
-  - Student Project TEam that develops AUV for RoboSub.
-  - Previously sent AUV4.1 for RoboSub 2024 and is developing AUV4.5 for RoboSub 2025 and AUV 5.0 for RoboSub 2025
-    - Insert Table and timeline of the different AUV
+![AUV4.1 at RoboSub 2023](RoboSub2023.jpeg)
+##### Figure 1: AUV4.1 at RoboSub 2023
 
-- Problem Context
-  - Background
-    - Battery Management System comprises of
-      - Battery Hull -> PMB, Battery and Battery Hull
-      - Battery Charging Box -> Charger
-    - Designed such that the batteries are in its own waterproof hull so that it is easy to change battery at pool test
-    - BCB is designed to support the current system by adapting the connectors to the charger
-    - PMB is used to turn on and off the batter and report its voltage and current on the CAN Bus. 
-  
-  - Current Challenges
-    - Difficult to seal
-      - Increase down time
-      - Bad user operation
-    - Limited Capabilities of Battery Fuel Gauge
-      - Poor Fuel Guaging (lack there off)
-        - Reduce Run time
-      - No Protection (It just monitors the voltage and current)
-        - Reduce Reliability
-    - No systematic monitoring of leak
-      - Poor User Operation
-      - Unreliable
-  
-  - Analysis of Problems
-    - Bad user operation -> prone to mistakes at competition can cause reliability issue at competition
-    - Increase down time and Reduce run time -> less testing can be done
-      - Give example of current situation
-      - only 1 set of functional battery -> means test for 1h45 mins
-      - 1255 to 1415 Charging -> 1h20mins of charging
-      - Increase run time huge priority
-    - Table of Testing Time -> compared to RobotX Result (get from interim presentation)
+### 2.2 Current System
+The current power system for the AUVs comprises two main components, the Battery Hull and the Battery Charging Box (BCB). Each Battery Hull houses a Power Monitoring Board (PMB) and a LiPo battery.
+
+The PMB is reports key telemetry data, such as the battery's voltage, current, battery hull's temperature and pressure, both on the screen and via the CAN Bus. Two such hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during pool test by eliminating the need to unseal the main vehicle hull.
+
+![Battery Hull](BatteryHull.png)
+##### Figure 2: Metal 3D-Printed Battery Hull
+
+
+![AUV4.1 PMB](AUV4.1PMB.png)
+##### Figure 3: AUV4.1's Power Monitoring Board
+
+![Assembled Battery Hull](assembled.png)
+##### Figure 4: Assembled Battery Hull
+
+The BCB comprises of a AC-DC power supply and a LiPo charger. It includes connectors that interface directly with the battery hull, allowing the battery to be charged without removing it from the hull.
+
+![Battery Charging Box](bcb.png)
+##### Figure 5: Battery Charging Box
+
+### 2.3 Limitations of Current System  
+Deploying the current system at RoboSub 2023 identified several challenges.
+
+#### 2.3.1 Challenges with Battery Hull Sealing
+The limited space within the battery hull and the need for a watertight seal, makes sealing and unsealing the hull a challenging and time-consuming process. Without error, unsealing takes 2 members approximately 10 minutes, while resealing requires another 15 minutes. However, the confined space often results in disconnected cables during assembly, further complicating the process. This overhead increase downtime and the risk of assembly errors. 
+
+![Sealing a Battery Hull at RoboSub 2023](sealing.png)
+##### Figure 6: Two Man Team Attempting to Seal a Battery Hull at RoboSub 2023
+
+#### 2.3.2 Limited Capabilities of Battery Fuel Gauge
+The PMB currently uses BQ34110 chip as a gas gauge, which is designed for rarely discharged applications and lacks essential protection features [1] <Insert References>, reducing the AUV's reliability. Furthermore, the battery gauging capability was also not used, leading the team to rely on voltage readings to estimate the capacity of the battery. This method is inaccurate as the battery voltage remains relatively constant over a significant portion of the discharge cycle, while the actual capacity decreases rapidly (Figure 7). To err on the side of caution, the pool test is ended when the voltage drops to the nominal level, further limiting the AUV's runtime.
+
+![Discharge Voltage Curve](voltagecapacity.webp)
+##### Figure 7: Typical Li-Ion Discharge Voltage Curve [2]
+<Insert Reference>
+
+#### 2.3.3 Challenges with Tracking Battery Hull's Pressure and Temperature
+During assembly, the battery hull is pressurised. Monitoring changes in pressure and temperature can alert the team to potential leaks. Currently, this tracking is done manually and only when a leak is
+suspected. his reactive approach limits the availability of historical data. Manual tracking can lead to missing data or recording error, reducing the effectiveness of leak detection.
+
+![Manually Logging Battery's Hull and Temperature on the Battery Hull's Lid](manualtrack.png)
+##### Figure 8: Manually Logging Battery's Hull and Temperature on the Battery Hull's Lid
+
+![Manually Logging Battery's Hull and Temperature on Excel](excel.png)
+##### Figure 9: Manually Logging Battery's Hull and Temperature on tExcel
+
+### 2.4 Problem Analysis  
+The limitations in the current system can be split into three overarching themes: poor user operability, limited runtime and reduced reliability. These themes and their associated limitations are summarised in Table 1.
+
+
+<table>
+  <thead>
+    <tr>
+      <th><b>Category</b></th>
+      <th><b>Challenge</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2"><strong>Poor User Operability</strong></td>
+      <td>Challenges with Battery Hull Sealing</td>
+    </tr>
+    <tr>
+      <td>Challenges with Tracking Battery Hull’s Pressure and Temperature</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><strong>Limited Run Time</strong></td>
+      <td>Limitation of Battery Fuel Gauge</td>
+    </tr>
+    <tr>
+      <td>Challenges with Battery Hull Sealing</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><strong>Poor Reliability</strong></td>
+      <td>Limitation of Battery Fuel Gauge</td>
+    </tr>
+    <tr>
+      <td>Challenges with Tracking Battery Hull’s Pressure and Temperature</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Table 1: Categorisation of System Limitations
+
+Poor user operability increases the likelihood of mistakes at competition, especailly under time constraints or operator fatigure. Furthermore, limited run time can lead to less testing opportunities and ultimately impacting competition performance (Table 2, Table 3). Finally, poor reliability increases the risk of mid-run failures or unplanned maintenace, leading to increased downtime.
+
+|                           | **RobotX 2022** | **RobotX 2024** |
+| :-----------------------: | :-------------: | :-------------: |
+| Testing Time in Singapore |    200 Hours    |    330 Hours    |
+|  Final Score (adjusted)   |      1450       |      4450       |
+
+##### Table 2: Table of Competition Results and Testing Time in Singapore
+
+
+|    **Team**     | **Final Score** | **Testing Time** |
+| :-------------: | :-------------: | :--------------: |
+|     **NUS**     |      4450       |     49 Hours     |
+|    **KMOU**     |      2900       |     28 Hours     |
+|    **ERAU**     |      2250       |     33 Hours     |
+| **Inspiration** |      1600       |     25 Hours     |
+|     **NTU**     |      1050       |     17 Hours     |
+
+##### Table 3: Comparison of Final Score and Testing Time at RobotX 2024
 
 
 ---
 
-## Project Goal
+## 3. Project Goal
 
-As a competition team, the primary objective of our vehicle is to perform well at its competition (RoboSub). This can be attained by reducing the vehicle’s down time and ensuring a safe, systematic operations
+As a competition team, the primary objective of our vehicle is to perform well at its competition (RoboSub). This can be attained by increasing the vehicle run time, improving user operability while ensuring a safe and reliable operations.
 
-Refer to the Analysis of Problem
+The project goal can be summarised as:
 
-Project Goal:
-To develop a battery management systems that improves runtime, user operability and safety to enhance the AUV's reliability and performance.
+<div align="center">
+    <b>
+        To develop a battery management system that improves runtime, user operability and safety to enhance the AUV's reliability and performance.
+    </b>
+</div>
 
 ---
 
-## Design Considerations
-
-- Design Specification
-  - Need to fit in the same hull (Backward Compatibility)
-    - PMB size constraints
-    - Have to use the same connector and pins
-    - Becasue we deploying AUV4.5
-    - Minimal modification allow for easy swap (get to work with new and old PMB)
-    - Streamline spare prep and lower cost by leveraging Economies of Scale
+## 4. Design Considerations
+  
+### 4.1 Functional Requirements  
   - Basic Criteria (can be presented in a table)
     - Able to power 40A continuous
     - Can spike X A
@@ -104,6 +188,17 @@ To develop a battery management systems that improves runtime, user operability 
     - Same Interface
       - Reed Switch to turn on and off
       - Able to display key stats on screen
+
+### 4.2 Backward Compatibility
+- Design Specification
+  - Need to fit in the same hull (Backward Compatibility)
+    - PMB size constraints
+    - Have to use the same connector and pins
+    - Becasue we deploying AUV4.5
+    - Minimal modification allow for easy swap (get to work with new and old PMB)
+    - Streamline spare prep and lower cost by leveraging Economies of Scale
+
+### 4.3 Component Standardisation
   - Ease of Production and Spares (competition experience)
     - Less stuff to pack
     - MCU, CAN Chip etc are standardised.
@@ -111,7 +206,7 @@ To develop a battery management systems that improves runtime, user operability 
 
 ---  
 
-## System Design
+## 5. System Design
 
 Provide a bigger picture first.
 Summary of the system design, will go into details below how everything work etc. (how the design of the PMB and BCB PCB can help to fulfil the project goal while meeting design considerations)
@@ -147,9 +242,10 @@ Summary of the system design, will go into details below how everything work etc
 
 ---
 
-### Increase Run Time
+## 6. Improve Runtime
 - Insert description on why we want to increase run time and how to do it
-- Battery Upgrade
+
+### 6.1 Battery Upgrade
   - Current Battery is 2 years old where with regular discharge
   - Insert data on battery degradation over time
   - We need 6 batteries for each AUV especially with the 2x AUV
@@ -167,7 +263,7 @@ Summary of the system design, will go into details below how everything work etc
   - Shown that the Raitan battery is a worthy replacement
   - The Molicell Chemistry is available by TI -> help make the learning process easier (check if the other chemistry have or not)
   
-- Accurate SoC Estimation
+### 6.2 Accurate SoC Estimation
   - Previously was using the gauging chip without using the learning algorithm
   - Means rely on voltage only
     - Inaccurate -> insert voltage to capacity graph to explain why is it difficult to stop based on voltage
@@ -202,9 +298,10 @@ Summary of the system design, will go into details below how everything work etc
   
 ---
 
-## Improve User Operability and Workflow
+## 7. Enhance User Operability and Workflow
 - Aim to make it easier for memerbs to oeprate and maintain vehicle to keep vehcile reliable despite long operation hours. Main goal is to reduce down time but icnreasing reliability. Help to prevent damage to battery hulls or vehicle. Prevent taking people away from development by fixing damges.
-- In-Hull Firmware Flashing
+
+### 7.1 In-Hull Firmware Flashing
   - Allows for flashing and update without opening hull
     - Reduces error during reseasling, reduces downtime
     - Tested during RobotX 2024 where a USB port was exposed on the ASV to allow for firmware flashing
@@ -220,7 +317,7 @@ Summary of the system design, will go into details below how everything work etc
       - Allows to expose the BQ chip comms also
   - Insert image of old balance connector vs new balance connector
   
-- Remote Status Monitoring
+### 7.2 Remote Status Monitoring
   - AS mentioned in xxx manual logging was used to track if battery hull is sealed
   - Difficult to determine slow leak
   - Upload relevant data online
@@ -260,9 +357,9 @@ Summary of the system design, will go into details below how everything work etc
 
 ---
 
-## Improving Reliability and Safety
+## 8. Improving Reliability and Safety
 
-- Automatic Fault Detection Alert
+### 8.1 Automatic Fault Detection Alert
   - Build on what was mentioned in the pervious section
   - Based on experience with ASV Tele Channel
     - Know that it is good
@@ -276,7 +373,7 @@ Summary of the system design, will go into details below how everything work etc
   - Also able to alert user that the battery is charged
   - Also good reminder to members that the battery is being charged since they would be receving messages (will remind them to turn off charger)
 
-- Battery Protection
+### 8.2 Protection Features
   - Used BQ40Z50 protection
   - Protects against possible electrical fault -> increase system robustness
   - Include literature review of hardware vs software safety
@@ -290,7 +387,7 @@ Summary of the system design, will go into details below how everything work etc
   - protect battery and auv from further harm
 
 
-- Go through PMB Design (good practses to increase reliability)
+### 8.3 PMB PCB Design
   - Look at OneNote on PCB explanation
   - Power Rating
     - Show the load test
@@ -318,9 +415,7 @@ Summary of the system design, will go into details below how everything work etc
   
 ---
 
-## System Evaluation and Impact
-
-- Evaluation
+## 9. System Evaluation
   - Basic Feature
     - Refer to earlier table to see if able to meet all the requirements
     - Able to be backward compatible -> can fit into old battery hull, can be turned on with reed switch, can charge, can discharge
@@ -339,8 +434,16 @@ Summary of the system design, will go into details below how everything work etc
   - Mistakes
     - No Pull Down for Isolator Signal
     - No pull up for I2C
+  
+  - Give example of current situation
+      - only 1 set of functional battery -> means test for 1h45 mins
+      - 1255 to 1415 Charging -> 1h20mins of charging
+      - Increase run time huge priority
+    - Table of Testing Time -> compared to RobotX Result (get from interim presentation)
 
-- Impact
+---
+
+## 10. Impact
   - To be deployed at RoboSub 2025
   - PCB Designed will be released to help other teams design their own PMB
   - Internet connected BCB was not seen at RoboSub, with teams moving towards battery pods, this is something that can be useful for them
@@ -348,7 +451,7 @@ Summary of the system design, will go into details below how everything work etc
 
 ---
 
-## Future Work
+## 11. Future Work
 
 - Test with the AUV
   - Unable to do so due to limited hull and pool test
@@ -370,7 +473,7 @@ Summary of the system design, will go into details below how everything work etc
 
 ---
 
-## Conclusion
+## 12. Conclusion
 
 - Move from Power Monitoring to Power Management
 - Well Integrated system to deliver xxxx AUV for RoboSub

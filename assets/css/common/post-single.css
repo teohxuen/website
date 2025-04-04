@@ -33,11 +33,11 @@
 }
 
 .post-content h3,
-.post-content h4,
-.post-content h5,
 .post-content h6 {
     margin: 24px 0 16px;
 }
+
+
 
 .post-content h1 {
     margin: 40px auto 32px;
@@ -50,21 +50,26 @@
 }
 
 .post-content h3 {
-    font-size: 19px;    
+    font-size: 22px;
 }
 
 .post-content h4 {
-    font-size: 15px;    
+    font-size: 18px;
     font-weight: var(--semibold);
-    text-transform: uppercase;
-    color: var(--gray);
+    /* text-transform: uppercase; */
+    color: black;
+    text-decoration: underline;
+    margin: 24px 0 8px;
 }
 
 .post-content h5 {
     font-size: 14px;
     font-weight: var(--semibold);
-    text-transform: uppercase;
-    color: var(--gray);
+    /* text-transform: uppercase; */
+    color: black;
+    text-align: center;
+    margin: 0px 0 25px;
+    font-style: italic;
 }
 
 .post-content h6 {
@@ -76,7 +81,7 @@
 .post-meta a,
 .toc a:hover {
     box-shadow: 0 2px 0 var(--darkcolor);
-    color: currentColor; 
+    color: currentColor;
 }
 
 .post-content a code {
@@ -100,7 +105,7 @@
 .post-content ol,
 .post-content ul {
     padding-inline-start: 20px;
-    margin-left: var(--marginleft); 
+    margin-left: var(--marginleft);
 }
 
 .post-content li {
@@ -132,13 +137,16 @@
     padding-inline-start: 10px;
 }
 
-.post-content dd ~ dd,
-.post-content dt ~ dt {
+.post-content dd~dd,
+.post-content dt~dt {
     margin-top: 10px;
 }
 
 .post-content table {
     margin-bottom: var(--content-gap);
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
 }
 
 .post-content table th,
@@ -146,15 +154,16 @@
     min-width: 80px;
     padding: 8px 5px;
     line-height: var(--lineheight);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--tertiary);
+    font-size: 15px;
 }
 
 .post-content table th {
     text-align: start;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: var(--semibold);
     text-transform: uppercase;
-    color: var(--gray);
+    color: black;
     border-bottom: 2px solid var(--tertiary);
 }
 
@@ -173,7 +182,7 @@
     direction: ltr;
 }
 
-.post-content li > .highlight {
+.post-content li>.highlight {
     margin-inline-end: 0;
 }
 
@@ -240,7 +249,10 @@
 
 .post-content img {
     border-radius: 4px;
-    margin: 1rem 0;
+    margin: 1rem auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60%;
 }
 
 .post-content img[src*="#center"] {
@@ -251,14 +263,14 @@
     text-align: center;
 }
 
-.post-content figure > figcaption {
+.post-content figure>figcaption {
     color: var(--primary);
     font-size: 16px;
     font-weight: bold;
     margin: 8px 0 16px;
 }
 
-.post-content figure > figcaption > p {
+.post-content figure>figcaption>p {
     color: var(--secondary);
     font-size: 14px;
     font-weight: normal;
@@ -431,10 +443,12 @@ img.in-text {
     margin: auto;
 }
 
-a[href^="#fn:"], a[href^="#fnref:"] {
-     box-shadow: 0 0px 0 var(--darkcolor);
+a[href^="#fn:"],
+a[href^="#fnref:"] {
+    box-shadow: 0 0px 0 var(--darkcolor);
 }
 
-a[href^="#fn:"]:hover, a[href^="#fnref:"]:hover {
+a[href^="#fn:"]:hover,
+a[href^="#fnref:"]:hover {
     color: var(--darkcolor);
 }

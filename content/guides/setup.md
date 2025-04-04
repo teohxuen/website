@@ -12,6 +12,12 @@ showToc: true
 disableAnchoredHeadings: false
 ---
 
+## Preface
+
+Note that this is **not** part of CDE4301 Final Report but documentation for future team members working on the Power Management Board.
+
+---
+
 After connecting PMB to battery need to press the wake button to wake the BQ40Z50
 
 FET_EN needs to be turned on for BQ to control the FET

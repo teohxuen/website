@@ -11,3 +11,9 @@ editPost:
 showToc: true
 disableAnchoredHeadings: false
 ---
+
+## Preface
+
+Note that this is **not** part of CDE4301 Final Report but documentation for future team members working on the Power Management Board.
+
+---
