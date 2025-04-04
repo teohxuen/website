@@ -30,13 +30,13 @@ TODO:
 
 ---
 
-## Summary
+## 1. Summary
 
 TODO:
 
 ---
 
-## Problem Background
+## 2. Problem Background
 
 - Introduction
   - Student Project TEam that develops AUV for RoboSub.

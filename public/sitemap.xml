@@ -5,10 +5,25 @@
     <loc>http://localhost:1313/website/</loc>
     <lastmod>2025-04-04T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/website/guides/training/</loc>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/website/configurations/registers/</loc>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/website/configurations/</loc>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/website/report/final_report/</loc>
     <lastmod>2025-04-04T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/website/guides/</loc>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/website/report/</loc>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/website/guides/setup/</loc>
     <lastmod>2025-04-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/website/01-references/</loc>
@@ -140,17 +155,7 @@
     <loc>http://localhost:1313/website/01-references/courses/course2/</loc>
     <lastmod>2024-07-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/website/configurations/registers/</loc>
-  </url><url>
-    <loc>http://localhost:1313/website/guides/setup/</loc>
-  </url><url>
-    <loc>http://localhost:1313/website/guides/training/</loc>
-  </url><url>
     <loc>http://localhost:1313/website/01-references/archive/</loc>
-  </url><url>
-    <loc>http://localhost:1313/website/configurations/</loc>
-  </url><url>
-    <loc>http://localhost:1313/website/guides/</loc>
   </url><url>
     <loc>http://localhost:1313/website/01-references/tags/</loc>
   </url>
