@@ -16,8 +16,8 @@ menu:
         - name: Guides
           url: guides/
           weight: 3
-        - name: Specifications
-          url: specifications/
+        - name: Configurations
+          url: configurations/
           weight: 4
 
 
@@ -37,7 +37,7 @@ params:
     ShowBreadCrumbs: false
     ShowCodeCopyButtons: true
     ShowAllPagesInArchive: false
-    MainSections: ["report", "guides", "specifications"]
+    MainSections: ["report", "guides", "configurations"]
     ShowToc: false
     disableScrollToTop: true
     TocOpen: true
@@ -56,8 +56,8 @@ params:
               url: report/
             - name: Guides
               url: guides/
-            - name: Specifications
-              url: specifications/
+            - name: Configurations
+              url: configurations/
 
 
     socialIcons:
