@@ -1,53 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head>
-    <script src="/website/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=website/livereload" data-no-instant
-        defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Development of A Battery Management System for AUV4.5 | AUV Battery Management System</title>
-    <meta name="keywords" content="">
-    <meta name="description"
-        content="This report documents the work done on developing the Battery Management System for an Autonomous Underwater Vehicle (AUV4.5) in preparation for RoboSub 2025.">
-    <meta name="author" content="Teoh Xu En">
-    <link rel="canonical" href="http://localhost:1313/website/report/final_report/">
-    <link crossorigin="anonymous"
-        href="/website/assets/css/stylesheet.d5ba1c16b890751c83f24bb71aadc04c73c6265c31551a3e02c791536ef3aecc.css"
-        integrity="sha256-1bocFriQdRyD8ku3Gq3ATHPGJlwxVRo&#43;AseRU27zrsw=" rel="preload stylesheet" as="style">
-    <link rel="icon" href="http://localhost:1313/website/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/website/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/website/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="http://localhost:1313/website/apple-touch-icon.png">
-    <meta name="theme-color" content="#2e2e33">
-    <meta name="msapplication-TileColor" content="#2e2e33">
-    <link rel="alternate" hreflang="en" href="http://localhost:1313/website/report/final_report/">
-    <noscript>
-        <style>
-            #theme-toggle,
-            .top-link {
-                display: none;
-            }
-        </style>
-    </noscript>
-    <meta property="og:title" content="Development of A Battery Management System for AUV4.5" />
-    <meta property="og:description"
-        content="This report documents the work done on developing the Battery Management System for an Autonomous Underwater Vehicle (AUV4.5) in preparation for RoboSub 2025." />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://localhost:1313/website/report/final_report/" />
-    <meta property="article:section" content="report" />
-    <meta property="article:published_time" content="2025-04-03T00:00:00+00:00" />
-    <meta property="article:modified_time" content="2025-04-04T00:00:00+00:00" />
+<head><script src="/website/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=website/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Development of A Battery Management System for AUV4.5 | AUV Battery Management System</title>
+<meta name="keywords" content="">
+<meta name="description" content="This report documents the work done on developing the Battery Management System for an Autonomous Underwater Vehicle (AUV4.5) in preparation for RoboSub 2025.">
+<meta name="author" content="Teoh Xu En">
+<link rel="canonical" href="http://localhost:1313/website/report/final_report/">
+<link crossorigin="anonymous" href="/website/assets/css/stylesheet.d5ba1c16b890751c83f24bb71aadc04c73c6265c31551a3e02c791536ef3aecc.css" integrity="sha256-1bocFriQdRyD8ku3Gq3ATHPGJlwxVRo&#43;AseRU27zrsw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/website/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/website/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/website/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/website/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/website/report/final_report/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Development of A Battery Management System for AUV4.5" />
-    <meta name="twitter:description"
-        content="This report documents the work done on developing the Battery Management System for an Autonomous Underwater Vehicle (AUV4.5) in preparation for RoboSub 2025." />
+    </style>
+</noscript><meta property="og:title" content="Development of A Battery Management System for AUV4.5" />
+<meta property="og:description" content="This report documents the work done on developing the Battery Management System for an Autonomous Underwater Vehicle (AUV4.5) in preparation for RoboSub 2025." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/website/report/final_report/" /><meta property="article:section" content="report" />
+<meta property="article:published_time" content="2025-04-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-04-04T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Development of A Battery Management System for AUV4.5"/>
+<meta name="twitter:description" content="This report documents the work done on developing the Battery Management System for an Autonomous Underwater Vehicle (AUV4.5) in preparation for RoboSub 2025."/>
 
 
-    <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -67,7 +58,7 @@
   ]
 }
 </script>
-    <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -77,8 +68,8 @@
   "keywords": [
     
   ],
-  "articleBody": "Acknowledgement Bumblebee Team, especially Elec Team to bounce idea with Zi Yang and Tan Chern Lin for providing feedback, Chen Jia Wei for troubleshooting. Marvin for giving the idea. Guk Yi Siong for helping in obtaining power consumption data Ananyan for validating my mechanical ideas Ms Annie, Patrick, KK, Graham Parker Schless from Cornell AUV for his advice when I faced problems Eugene for taking time to review the project and providing advice School for providing the lab, lab equipment and resources sponsors for helping the team also List of Common Acronyms Acronym Definition ASV Autonomous Surface Vessel AUV Autonomous Underwater Vehicle BBAS Bumblebee Autonomous Systems BCB Battery Charging Box CAN Controller Area Network OCS Operator Control Station PCB Printed Circuit Board PMB Power Monitoring Board SoC State of Charge 1. Summary TODO:\n2. Problem Background 2.1 Introduction Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs and builds Autonomous Underwater Vehicles (AUVs) for the annual RoboSub competition. Following lessons learned from AUV4.1’s participation in RoboSub 2023, the team is concurrently developing AUV4.5 for RoboSub 2025 and AUV5.0 for RoboSub 2026 (Table 1).\nFigure 1: AUV4.1 at RoboSub 2023 Competition Vehicles Deployed RoboSub 2023 AUV4.1 RoboSub 2025 AUV4.5 RoboSub 2026 AUV4.5 and AUV5.0 Table 1: AUV Deployments in RoboSub Competitions AUV4.5 retains the same hull design as AUV4.1 but features a newly developed electrical and software subsystem. This new electrical subsystem is designed to be mechanically compatible with the existing AUV4.1 hull while also serving as the baseline for AUV5.0.\n2.2 Current System The current power system for the AUVs comprises two main components, the Battery Hull and the Battery Charging Box (BCB). Each Battery Hull houses a Power Monitoring Board (PMB) and a LiPo battery.\nThe PMB monitors and reports key telemetry data, such as the battery’s voltage, current, battery hull’s temperature and pressure, both on the screen and via the CAN Bus. Two such hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during pool test by eliminating the need to unseal the main vehicle hull.\nFigure 2: Metal 3D-Printed Battery Hull Figure 3: AUV4.1’s Power Monitoring Board Figure 4: Assembled Battery Hull The BCB comprises an AC-DC power supply and a LiPo charger. It includes connectors that interface directly with the battery hull, allowing the battery to be charged without removing it from the hull.\nFigure 5: Battery Charging Box 2.3 Limitations of Current System Deploying the current system at RoboSub 2023 identified several challenges.\n2.3.1 Challenges with Battery Hull Sealing The limited space within the battery hull and the need for a watertight seal, makes sealing and unsealing the hull a challenging and time-consuming process. Without error, unsealing takes 2 members approximately 10 minutes, while resealing requires another 15 minutes. However, the confined space often results in disconnected cables during assembly, further complicating the process. This overhead increase downtime and the risk of assembly errors.\nFigure 6: Two Man Team Attempting to Seal a Battery Hull at RoboSub 2023 2.3.2 Limited Capabilities of Battery Fuel Gauge The PMB currently uses BQ34110 chip as a gas gauge, which is designed for rarely discharged applications and lacks essential protection features [1] , reducing the AUV’s reliability. Furthermore, the battery gauging capability was also not used, leading the team to rely on voltage readings to estimate the capacity of the battery. This method is inaccurate as the battery voltage remains relatively constant over a significant portion of the discharge cycle, while the actual capacity decreases rapidly (Figure 7). To err on the side of caution, the pool test is ended when the voltage drops to the nominal level, further limiting the AUV’s runtime.\nFigure 7: Typical Li-Ion Discharge Voltage Curve [2] ",
-  "wordCount" : "4696",
+  "articleBody": "Acknowledgement Bumblebee Team, especially Elec Team to bounce idea with Zi Yang and Tan Chern Lin for providing feedback, Chen Jia Wei for troubleshooting. Marvin for giving the idea. Guk Yi Siong for helping in obtaining power consumption data Ananyan for validating my mechanical ideas Ms Annie, Patrick, KK, Graham Parker Schless from Cornell AUV for his advice when I faced problems Eugene for taking time to review the project and providing advice School for providing the lab, lab equipment and resources sponsors for helping the team also List of Common Acronyms Acronym Definition ASV Autonomous Surface Vessel AUV Autonomous Underwater Vehicle BBAS Bumblebee Autonomous Systems BCB Battery Charging Box CAN Controller Area Network OCS Operator Control Station PCB Printed Circuit Board PMB Power Monitoring Board SoC State of Charge 1. Summary TODO:\n2. Problem Background 2.1 Introduction Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs and builds Autonomous Underwater Vehicles (AUVs) for the annual RoboSub competition. Following lessons learned from AUV4.1’s participation in RoboSub 2023 (Figure 1), the team is concurrently developing AUV4.5 for RoboSub 2025 and AUV5.0 for RoboSub 2026 (Table 1).\nFigure 1: AUV4.1 at RoboSub 2023 Competition Vehicles Deployed RoboSub 2023 AUV4.1 RoboSub 2025 AUV4.5 RoboSub 2026 AUV4.5 and AUV5.0 Table 1: AUV Deployments in RoboSub Competitions AUV4.5 retains the same hull design as AUV4.1 but features a newly developed electrical and software subsystem. This new electrical subsystem is designed to be mechanically compatible with the existing AUV4.1 hull while also serving as the baseline for AUV5.0.\n2.2 Current System The current power system for the AUVs comprises two main components, the Battery Hull (Figure 2) and the Battery Charging Box (BCB). Each Battery Hull houses a Power Monitoring Board (PMB) and a LiPo battery.\nThe PMB (Figure 3) monitors and reports key telemetry data, such as the battery’s voltage, current, battery hull’s temperature and pressure, both on the screen and via the CAN Bus. Two such hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during pool test by eliminating the need to unseal the main vehicle hull.\nFigure 2: Metal 3D-Printed Battery Hull Figure 3: AUV4.1’s Power Monitoring Board Figure 4: Assembled Battery Hull The BCB (Figure 5) comprises an AC-DC power supply and a LiPo charger. It includes connectors that interface directly with the battery hull, allowing the battery to be charged without removing it from the hull.\nFigure 5: Battery Charging Box 2.3 Limitations of Current System Deploying the current system at RoboSub 2023 identified several challenges.\n2.3.1 Challenges with Battery Hull Sealing The limited space within the battery hull and the need for a watertight seal, makes sealing and unsealing the hull a challenging and time-consuming process. Without error, unsealing takes 2 members approximately 10 minutes, while resealing requires another 15 minutes. However, the confined space often results in disconnected cables during assembly, further complicating the process. This overhead increase downtime and the risk of assembly errors.\nFigure 6: Two Man Team Attempting to Seal a Battery Hull at RoboSub 2023 2.3.2 Limited Capabilities of Battery Fuel Gauge The PMB currently uses BQ34110 chip as a gas gauge, which is designed for rarely discharged applications and lacks essential protection features [1] , reducing the AUV’s reliability. Furthermore, the battery gauging capability was also not used, leading the team to rely on voltage readings to estimate the capacity of the battery. This method is inaccurate as the battery voltage remains relatively constant over a significant portion of the discharge cycle, while the actual capacity decreases rapidly (Figure 7). To err on the side of caution, the pool test is ended when the voltage drops to the nominal level, further limiting the AUV’s runtime.\nFigure 7: Typical Li-Ion Discharge Voltage Curve [2] ",
+  "wordCount" : "4694",
   "inLanguage": "en",
   "datePublished": "2025-04-03T00:00:00Z",
   "dateModified": "2025-04-04T00:00:00Z",
@@ -103,1656 +94,1361 @@
 
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css"
-        integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"
-        integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd"
-        crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
-        integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    { left: '$$', right: '$$', display: true },
-                    { left: '$', right: '$', display: false },
-                    { left: "\\begin{equation}", right: "\\end{equation}", display: true },
-                    { left: "\\begin{equation*}", right: "\\end{equation*}", display: true },
-                    { left: "\\begin{align}", right: "\\end{align}", display: true },
-                    { left: "\\begin{align*}", right: "\\end{align*}", display: true },
-                    { left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
-                    { left: "\\begin{gather}", right: "\\end{gather}", display: true },
-                    { left: "\\begin{CD}", right: "\\end{CD}", display: true },
-                ],
-                throwOnError: false
-            });
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
         });
-    </script>
-
+    });
+</script>
+ 
 
 
 </head>
 
 <body class="" id="top">
 
-    <header class="header">
-        <nav class="nav">
-            <div class="logo">
-                <a href="http://localhost:1313/website/" accesskey="h" title="Battery Management System">
-                    <img src="http://localhost:1313/website/favicon.ico" alt="" aria-label="logo" height="18"
-                        width="18">Battery Management System</a>
-                <div class="logo-switches">
-                </div>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/website/" accesskey="h" title="Battery Management System">
+                <img src="http://localhost:1313/website/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">Battery Management System</a>
+            <div class="logo-switches">
             </div>
-            <ul id="menu">
-                <li>
-                    <a href="http://localhost:1313/website/report/" title="Report">
-                        <span>Report</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://localhost:1313/website/guides/" title="Guides">
-                        <span>Guides</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://localhost:1313/website/configurations/" title="Configurations">
-                        <span>Configurations</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/website/report/" title="Report">
+                    <span>Report</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/website/guides/" title="Guides">
+                    <span>Guides</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/website/configurations/" title="Configurations">
+                    <span>Configurations</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
 
     <main class="main">
 
-        <article class="post-single">
-            <header class="post-header">
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Development of A Battery Management System for AUV4.5
+    </h1>
+    <div class="post-meta"><span title='2025-04-03 00:00:00 +0000 UTC'>April 2025</span>&nbsp;&middot;&nbsp;Teoh Xu En&nbsp;&middot;&nbsp;<a href="https://bumblebee.sg/" rel="noopener noreferrer" target="_blank">Team Website</a>
 
-                <h1 class="post-title entry-hint-parent">
-                    Development of A Battery Management System for AUV4.5
-                </h1>
-                <div class="post-meta"><span title='2025-04-03 00:00:00 +0000 UTC'>April
-                        2025</span>&nbsp;&middot;&nbsp;Teoh Xu En&nbsp;&middot;&nbsp;<a href="https://bumblebee.sg/"
-                        rel="noopener noreferrer" target="_blank">Team Website</a>
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
 
-                </div>
-            </header>
-            <div class="toc">
-                <details open>
-                    <summary accesskey="c">
-                        <span class="details">Table of Contents</span>
-                    </summary>
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#acknowledgement">Acknowledgement</a></li>
+    <li><a href="#list-of-common-acronyms">List of Common Acronyms</a></li>
+    <li><a href="#1-summary">1. Summary</a></li>
+    <li><a href="#2-problem-background">2. Problem Background</a>
+      <ul>
+        <li><a href="#21-introduction">2.1 Introduction</a></li>
+        <li><a href="#22-current-system">2.2 Current System</a></li>
+        <li><a href="#23-limitations-of-current-system">2.3 Limitations of Current System</a></li>
+        <li><a href="#24-problem-analysis">2.4 Problem Analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-project-goal">3. Project Goal</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#4-design-considerations">4. Design Considerations</a>
+      <ul>
+        <li><a href="#41-backward-compatibility">4.1 Backward Compatibility</a></li>
+        <li><a href="#42-functional-requirements">4.2 Functional Requirements</a></li>
+        <li><a href="#43-component-standardisation">4.3 Component Standardisation</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-system-design">5. System Design</a></li>
+    <li><a href="#6-improving-auv-performance">6. Improving AUV Performance</a>
+      <ul>
+        <li><a href="#61-battery-renewal">6.1 Battery Renewal</a></li>
+        <li><a href="#62-accurate-soc-estimation">6.2 Accurate SoC Estimation</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-enhance-user-operability-and-workflow">7. Enhance User Operability and Workflow</a>
+      <ul>
+        <li><a href="#71-in-hull-firmware-flashing">7.1 In-Hull Firmware Flashing</a></li>
+        <li><a href="#72-remote-status-monitoring">7.2 Remote Status Monitoring</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-improving-safety-and-reliability">8. Improving Safety and Reliability</a>
+      <ul>
+        <li><a href="#81-real-time-safety-and-status-notifications">8.1 Real-Time Safety and Status Notifications</a></li>
+        <li><a href="#82-protection-features">8.2 Protection Features</a></li>
+        <li><a href="#83-pmb-pcb-design">8.3 PMB PCB Design</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-system-evaluation">9. System Evaluation</a></li>
+    <li><a href="#10-impact">10. Impact</a></li>
+    <li><a href="#11-future-work">11. Future Work</a></li>
+    <li><a href="#12-conclusion">12. Conclusion</a></li>
+    <li><a href="#references">References</a></li>
+    <li><a href="#appendix">Appendix</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
 
-                    <div class="inner">
-                        <nav id="TableOfContents">
-                            <ul>
-                                <li><a href="#acknowledgement">Acknowledgement</a></li>
-                                <li><a href="#list-of-common-acronyms">List of Common Acronyms</a></li>
-                                <li><a href="#1-summary">1. Summary</a></li>
-                                <li><a href="#2-problem-background">2. Problem Background</a>
-                                    <ul>
-                                        <li><a href="#21-introduction">2.1 Introduction</a></li>
-                                        <li><a href="#22-current-system">2.2 Current System</a></li>
-                                        <li><a href="#23-limitations-of-current-system">2.3 Limitations of Current
-                                                System</a></li>
-                                        <li><a href="#24-problem-analysis">2.4 Problem Analysis</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#3-project-goal">3. Project Goal</a>
-                                    <ul>
-                                        <li></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#4-design-considerations">4. Design Considerations</a>
-                                    <ul>
-                                        <li><a href="#41-backward-compatibility">4.1 Backward Compatibility</a></li>
-                                        <li><a href="#42-functional-requirements">4.2 Functional Requirements</a></li>
-                                        <li><a href="#43-component-standardisation">4.3 Component Standardisation</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="#5-system-design">5. System Design</a></li>
-                                <li><a href="#6-improving-auv-performance">6. Improving AUV Performance</a>
-                                    <ul>
-                                        <li><a href="#61-battery-renewal">6.1 Battery Renewal</a></li>
-                                        <li><a href="#62-accurate-soc-estimation">6.2 Accurate SoC Estimation</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#7-enhance-user-operability-and-workflow">7. Enhance User Operability and
-                                        Workflow</a>
-                                    <ul>
-                                        <li><a href="#71-in-hull-firmware-flashing">7.1 In-Hull Firmware Flashing</a>
-                                        </li>
-                                        <li><a href="#72-remote-status-monitoring">7.2 Remote Status Monitoring</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#8-improving-safety-and-reliability">8. Improving Safety and
-                                        Reliability</a>
-                                    <ul>
-                                        <li><a href="#81-real-time-safety-and-status-notifications">8.1 Real-Time Safety
-                                                and Status Notifications</a></li>
-                                        <li><a href="#82-protection-features">8.2 Protection Features</a></li>
-                                        <li><a href="#83-pmb-pcb-design">8.3 PMB PCB Design</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#9-system-evaluation">9. System Evaluation</a></li>
-                                <li><a href="#10-impact">10. Impact</a></li>
-                                <li><a href="#11-future-work">11. Future Work</a></li>
-                                <li><a href="#12-conclusion">12. Conclusion</a></li>
-                                <li><a href="#references">References</a></li>
-                                <li><a href="#appendix">Appendix</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </details>
-            </div>
-
-            <div class="post-content">
-                <h2 id="acknowledgement">Acknowledgement<a hidden class="anchor" aria-hidden="true"
-                        href="#acknowledgement">#</a></h2>
-                <ul>
-                    <li>Bumblebee Team, especially Elec Team to bounce idea with</li>
-                    <li>Zi Yang and Tan Chern Lin for providing feedback, Chen Jia Wei for troubleshooting. Marvin for
-                        giving the idea.</li>
-                    <li>Guk Yi Siong for helping in obtaining power consumption data</li>
-                    <li>Ananyan for validating my mechanical ideas</li>
-                    <li>Ms Annie, Patrick, KK, Graham</li>
-                    <li>Parker Schless from Cornell AUV for his advice when I faced problems</li>
-                    <li>Eugene for taking time to review the project and providing advice</li>
-                    <li>School for providing the lab, lab equipment and resources</li>
-                    <li>sponsors for helping the team also</li>
-                </ul>
-                <hr>
-                <h2 id="list-of-common-acronyms">List of Common Acronyms<a hidden class="anchor" aria-hidden="true"
-                        href="#list-of-common-acronyms">#</a></h2>
-                <div align="center">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th style="text-align: center"><strong>Acronym</strong></th>
-                                <th style="text-align: center"><strong>Definition</strong></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="text-align: center"><strong>ASV</strong></td>
-                                <td style="text-align: center">Autonomous Surface Vessel</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center"><strong>AUV</strong></td>
-                                <td style="text-align: center">Autonomous Underwater Vehicle</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center"><strong>BBAS</strong></td>
-                                <td style="text-align: center">Bumblebee Autonomous Systems</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center"><strong>BCB</strong></td>
-                                <td style="text-align: center">Battery Charging Box</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center"><strong>CAN</strong></td>
-                                <td style="text-align: center">Controller Area Network</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center"><strong>OCS</strong></td>
-                                <td style="text-align: center">Operator Control Station</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center"><strong>PCB</strong></td>
-                                <td style="text-align: center">Printed Circuit Board</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center"><strong>PMB</strong></td>
-                                <td style="text-align: center">Power Monitoring Board</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center"><strong>SoC</strong></td>
-                                <td style="text-align: center">State of Charge</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <hr>
-                <h2 id="1-summary">1. Summary<a hidden class="anchor" aria-hidden="true" href="#1-summary">#</a></h2>
-                <p>TODO:</p>
-                <hr>
-                <h2 id="2-problem-background">2. Problem Background<a hidden class="anchor" aria-hidden="true"
-                        href="#2-problem-background">#</a></h2>
-                <h3 id="21-introduction">2.1 Introduction<a hidden class="anchor" aria-hidden="true"
-                        href="#21-introduction">#</a></h3>
-                <p>Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs and builds Autonomous
-                    Underwater Vehicles (AUVs) for the annual RoboSub competition. Following lessons learned from
-                    AUV4.1’s participation in RoboSub 2023, the team is concurrently developing AUV4.5 for RoboSub 2025
-                    and AUV5.0 for RoboSub 2026 (Table 1).</p>
-                <p><img loading="lazy" src="RoboSub2023.jpeg" alt="AUV4.1 at RoboSub 2023" />
-                </p>
-                <h5 id="figure-1-auv41-at-robosub-2023">Figure 1: AUV4.1 at RoboSub 2023<a hidden class="anchor"
-                        aria-hidden="true" href="#figure-1-auv41-at-robosub-2023">#</a></h5>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: left"><strong>Competition</strong></th>
-                            <th style="text-align: left"><strong>Vehicles Deployed</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: left">RoboSub 2023</td>
-                            <td style="text-align: left">AUV4.1</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">RoboSub 2025</td>
-                            <td style="text-align: left">AUV4.5</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">RoboSub 2026</td>
-                            <td style="text-align: left">AUV4.5 and AUV5.0</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-1-auv-deployments-in-robosub-competitions">Table 1: AUV Deployments in RoboSub
-                    Competitions<a hidden class="anchor" aria-hidden="true"
-                        href="#table-1-auv-deployments-in-robosub-competitions">#</a></h5>
-                <p>AUV4.5 retains the same hull design as AUV4.1 but features a newly developed electrical and software
-                    subsystem. This new electrical subsystem is designed to be mechanically compatible with the existing
-                    AUV4.1 hull while also serving as the baseline for AUV5.0.</p>
-                <h3 id="22-current-system">2.2 Current System<a hidden class="anchor" aria-hidden="true"
-                        href="#22-current-system">#</a></h3>
-                <p>The current power system for the AUVs comprises two main components, the Battery Hull and the Battery
-                    Charging Box (BCB). Each Battery Hull houses a Power Monitoring Board (PMB) and a LiPo battery.</p>
-                <p>The PMB monitors and reports key telemetry data, such as the battery&rsquo;s voltage, current,
-                    battery hull&rsquo;s temperature and pressure, both on the screen and via the CAN Bus. Two such
-                    hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during
-                    pool test by eliminating the need to unseal the main vehicle hull.</p>
-                <p><img loading="lazy" src="BatteryHull.png" alt="Battery Hull" />
-                </p>
-                <h5 id="figure-2-metal-3d-printed-battery-hull">Figure 2: Metal 3D-Printed Battery Hull<a hidden
-                        class="anchor" aria-hidden="true" href="#figure-2-metal-3d-printed-battery-hull">#</a></h5>
-                <p><img loading="lazy" src="AUV4.1PMB.png" alt="AUV4.1 PMB" />
-                </p>
-                <h5 id="figure-3-auv41s-power-monitoring-board">Figure 3: AUV4.1&rsquo;s Power Monitoring Board<a hidden
-                        class="anchor" aria-hidden="true" href="#figure-3-auv41s-power-monitoring-board">#</a></h5>
-                <p><img loading="lazy" src="assembled.png" alt="Assembled Battery Hull" />
-                </p>
-                <h5 id="figure-4-assembled-battery-hull">Figure 4: Assembled Battery Hull<a hidden class="anchor"
-                        aria-hidden="true" href="#figure-4-assembled-battery-hull">#</a></h5>
-                <p>The BCB comprises an AC-DC power supply and a LiPo charger. It includes connectors that interface
-                    directly with the battery hull, allowing the battery to be charged without removing it from the
-                    hull.</p>
-                <p><img loading="lazy" src="bcb.png" alt="Battery Charging Box" />
-                </p>
-                <h5 id="figure-5-battery-charging-box">Figure 5: Battery Charging Box<a hidden class="anchor"
-                        aria-hidden="true" href="#figure-5-battery-charging-box">#</a></h5>
-                <h3 id="23-limitations-of-current-system">2.3 Limitations of Current System<a hidden class="anchor"
-                        aria-hidden="true" href="#23-limitations-of-current-system">#</a></h3>
-                <p>Deploying the current system at RoboSub 2023 identified several challenges.</p>
-                <h4 id="231-challenges-with-battery-hull-sealing">2.3.1 Challenges with Battery Hull Sealing<a hidden
-                        class="anchor" aria-hidden="true" href="#231-challenges-with-battery-hull-sealing">#</a></h4>
-                <p>The limited space within the battery hull and the need for a watertight seal, makes sealing and
-                    unsealing the hull a challenging and time-consuming process. Without error, unsealing takes 2
-                    members approximately 10 minutes, while resealing requires another 15 minutes. However, the confined
-                    space often results in disconnected cables during assembly, further complicating the process. This
-                    overhead increase downtime and the risk of assembly errors.</p>
-                <p><img loading="lazy" src="sealing.png" alt="Sealing a Battery Hull at RoboSub 2023" />
-                </p>
-                <h5 id="figure-6-two-man-team-attempting-to-seal-a-battery-hull-at-robosub-2023">Figure 6: Two Man Team
-                    Attempting to Seal a Battery Hull at RoboSub 2023<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-6-two-man-team-attempting-to-seal-a-battery-hull-at-robosub-2023">#</a></h5>
-                <h4 id="232-limited-capabilities-of-battery-fuel-gauge">2.3.2 Limited Capabilities of Battery Fuel
-                    Gauge<a hidden class="anchor" aria-hidden="true"
-                        href="#232-limited-capabilities-of-battery-fuel-gauge">#</a></h4>
-                <p>The PMB currently uses BQ34110 chip as a gas gauge, which is designed for rarely discharged
-                    applications and lacks essential protection features [1] <Insert References>, reducing the
-                        AUV&rsquo;s reliability. Furthermore, the battery gauging capability was also not used, leading
-                        the team to rely on voltage readings to estimate the capacity of the battery. This method is
-                        inaccurate as the battery voltage remains relatively constant over a significant portion of the
-                        discharge cycle, while the actual capacity decreases rapidly (Figure 7). To err on the side of
-                        caution, the pool test is ended when the voltage drops to the nominal level, further limiting
-                        the AUV&rsquo;s runtime.</p>
-                <p><img loading="lazy" src="voltagecapacity.webp" alt="Discharge Voltage Curve" />
-                </p>
-                <h5 id="figure-7-typical-li-ion-discharge-voltage-curve-2">Figure 7: Typical Li-Ion Discharge Voltage
-                    Curve [2]<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-7-typical-li-ion-discharge-voltage-curve-2">#</a></h5>
-                <p>&lt;Insert Reference: <a
-                        href="https://www.ufinebattery.com/blog/useful-overview-of-lipo-battery-voltage/%3e"
-                        target="_blank">https://www.ufinebattery.com/blog/useful-overview-of-lipo-battery-voltage/></a>
-                </p>
-                <h4 id="233-challenges-with-tracking-battery-hulls-pressure-and-temperature">2.3.3 Challenges with
-                    Tracking Battery Hull&rsquo;s Pressure and Temperature<a hidden class="anchor" aria-hidden="true"
-                        href="#233-challenges-with-tracking-battery-hulls-pressure-and-temperature">#</a></h4>
-                <p>During assembly, the battery hull is pressurised. Monitoring changes in pressure and temperature can
-                    alert the team to potential leaks. Currently, this tracking is done manually and only when a leak is
-                    suspected. his reactive approach limits the availability of historical data. Manual tracking can
-                    lead to missing data or recording error, reducing the effectiveness of leak detection.</p>
-                <p><img loading="lazy" src="manualtrack.png"
-                        alt="Manually Logging Battery&rsquo;s Hull and Temperature on the Battery Hull&rsquo;s Lid" />
-                </p>
-                <h5 id="figure-8-manually-logging-batterys-hull-and-temperature-on-the-battery-hulls-lid">Figure 8:
-                    Manually Logging Battery&rsquo;s Hull and Temperature on the Battery Hull&rsquo;s Lid<a hidden
-                        class="anchor" aria-hidden="true"
-                        href="#figure-8-manually-logging-batterys-hull-and-temperature-on-the-battery-hulls-lid">#</a>
-                </h5>
-                <p><img loading="lazy" src="excel.png"
-                        alt="Manually Logging Battery&rsquo;s Hull and Temperature on Excel" />
-                </p>
-                <h5 id="figure-9-manually-logging-batterys-hull-and-temperature-on-excel">Figure 9: Manually Logging
-                    Battery&rsquo;s Hull and Temperature on Excel<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-9-manually-logging-batterys-hull-and-temperature-on-excel">#</a></h5>
-                <h3 id="24-problem-analysis">2.4 Problem Analysis<a hidden class="anchor" aria-hidden="true"
-                        href="#24-problem-analysis">#</a></h3>
-                <p>The limitations in the current system can be split into three overarching themes: poor user
-                    operability, limited runtime and reduced reliability. These themes and their associated limitations
-                    are summarised in Table 1.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th><b>Category</b></th>
-                            <th><b>Limitations</b></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowspan="2"><strong>Poor User Operability</strong></td>
-                            <td>Challenges with Battery Hull Sealing</td>
-                        </tr>
-                        <tr>
-                            <td>Challenges with Tracking Battery Hull’s Pressure and Temperature</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2"><strong>Limited Run Time</strong></td>
-                            <td>Limitation of Battery Fuel Gauge</td>
-                        </tr>
-                        <tr>
-                            <td>Challenges with Battery Hull Sealing</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2"><strong>Poor Reliability</strong></td>
-                            <td>Limitation of Battery Fuel Gauge</td>
-                        </tr>
-                        <tr>
-                            <td>Challenges with Tracking Battery Hull’s Pressure and Temperature</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-2-categorisation-of-system-limitations">Table 2: Categorisation of System Limitations<a
-                        hidden class="anchor" aria-hidden="true"
-                        href="#table-2-categorisation-of-system-limitations">#</a></h5>
-                <p>Poor user operability increases the likelihood of mistakes at competition, especially under time
-                    constraints or operator fatigue. Furthermore, limited run time can lead to less testing
-                    opportunities and ultimately impacting competition performance (Table 2, Table 3). Finally, poor
-                    reliability increases the risk of mid-run failures or unplanned maintenance, leading to increased
-                    downtime.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: center"></th>
-                            <th style="text-align: center"><strong>RobotX 2022</strong></th>
-                            <th style="text-align: center"><strong>RobotX 2024</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: center">Testing Time in Singapore</td>
-                            <td style="text-align: center">200 Hours</td>
-                            <td style="text-align: center">330 Hours</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">Final Score (adjusted)</td>
-                            <td style="text-align: center">1450</td>
-                            <td style="text-align: center">4450</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-3-table-of-competition-results-and-testing-time-in-singapore">Table 3: Table of
-                    Competition Results and Testing Time in Singapore<a hidden class="anchor" aria-hidden="true"
-                        href="#table-3-table-of-competition-results-and-testing-time-in-singapore">#</a></h5>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: center"><strong>Team</strong></th>
-                            <th style="text-align: center"><strong>Final Score</strong></th>
-                            <th style="text-align: center"><strong>Testing Time</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: center"><strong>NUS</strong></td>
-                            <td style="text-align: center">4450</td>
-                            <td style="text-align: center">49 Hours</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center"><strong>KMOU</strong></td>
-                            <td style="text-align: center">2900</td>
-                            <td style="text-align: center">28 Hours</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center"><strong>ERAU</strong></td>
-                            <td style="text-align: center">2250</td>
-                            <td style="text-align: center">33 Hours</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center"><strong>Inspiration</strong></td>
-                            <td style="text-align: center">1600</td>
-                            <td style="text-align: center">25 Hours</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center"><strong>NTU</strong></td>
-                            <td style="text-align: center">1050</td>
-                            <td style="text-align: center">17 Hours</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-4-comparison-of-final-score-and-testing-time-at-robotx-2024">Table 4: Comparison of Final
-                    Score and Testing Time at RobotX 2024<a hidden class="anchor" aria-hidden="true"
-                        href="#table-4-comparison-of-final-score-and-testing-time-at-robotx-2024">#</a></h5>
-                <hr>
-                <h2 id="3-project-goal">3. Project Goal<a hidden class="anchor" aria-hidden="true"
-                        href="#3-project-goal">#</a></h2>
-                <p>As a competition team, the primary objective is to maximise vehicle performance at RoboSub. By
-                    enhancing user operability and ensuring safe operation, the PMB directly contributes to system
-                    reliability, allowing for more in-water testing, and ultimately better competition performance.</p>
-                <p>The project goal can be summarised as:</p>
-                <div align="center">
-                    <b>
-                        To develop a battery management system that enhances user operability and workflow, ensures safe
-                        operation, and improves the AUV’s overall reliability and performance.
-                    </b>
-                </div>
-                <p>Hence, a three-Pronged approach wass used to guide the development of the PMB, with each sub-goal
-                    detailed in its respective section.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: left"><strong>Sub Goals</strong></th>
-                            <th style="text-align: center"><strong>Section Number</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: left">Enhance User Operability and Work Flow</td>
-                            <td style="text-align: center">Section 8</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">Improve Safety and Reliability</td>
-                            <td style="text-align: center">Section 7</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">Improve AUV Performance</td>
-                            <td style="text-align: center">Section 6</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-5-sub-goals-and-corresponding-report-section">Table 5: Sub Goals and Corresponding Report
-                    Section<a hidden class="anchor" aria-hidden="true"
-                        href="#table-5-sub-goals-and-corresponding-report-section">#</a></h5>
-                <hr>
-                <h2 id="4-design-considerations">4. Design Considerations<a hidden class="anchor" aria-hidden="true"
-                        href="#4-design-considerations">#</a></h2>
-                <h3 id="41-backward-compatibility">4.1 Backward Compatibility<a hidden class="anchor" aria-hidden="true"
-                        href="#41-backward-compatibility">#</a></h3>
-                <p>As outlined in <a href="#21-introduction">Section 2.1</a>, AUV4.5 has the same mechanical structure
-                    as AUV4.1. As such, the new PMB must remain mechanically and electrically compatible with the AUV4.1
-                    battery hull. This backward compatibility ensures minimal modification to the existing support
-                    infrastructure when using the new PMB. Furthermore, designing to meet AUV4.1&rsquo;s specifications
-                    would also ensures forward compatibility with AUV5.0. This approach enables cross-platform use of
-                    the same PMB, reducing the need for custom variants and lowering the manufacturing cost by
-                    leveraging economies of scale.</p>
-                <p>To maintain backwards compatibility, the following constraints were identified.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: left"><strong>Characteristics</strong></th>
-                            <th style="text-align: left"><strong>Constraints</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: left">Dimensions</td>
-                            <td style="text-align: left">The PMB and battery must fit within the internal volume of the
-                                AUV4.1 battery hull enclosure.</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">Electrical Interface</td>
-                            <td style="text-align: left">Existing connectors for power delivery and charging must be
-                                retained.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-6-design-constraints-for-backward-compatibility">Table 6: Design Constraints for Backward
-                    Compatibility<a hidden class="anchor" aria-hidden="true"
-                        href="#table-6-design-constraints-for-backward-compatibility">#</a></h5>
-                <h3 id="42-functional-requirements">4.2 Functional Requirements<a hidden class="anchor"
-                        aria-hidden="true" href="#42-functional-requirements">#</a></h3>
-                <p>In addition to physical compatibility, the PMB must meet or exceed the technical performance of its
-                    predecessor. The following functional requirements were defined to ensure the board can support
-                    AUV4.1, AUV4.5 and AUV5.0.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: left"><strong>Technical Capabilities</strong></th>
-                            <th style="text-align: left"><strong>Specifications</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: left">Voltage Output</td>
-                            <td style="text-align: left">14.8V to 16.8V (4S)</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">Continuous Current</td>
-                            <td style="text-align: left">40A</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">Communication Protocol</td>
-                            <td style="text-align: left">CAN2.0</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">Telemetry</td>
-                            <td style="text-align: left">Voltage, Current, Internal Pressure, Internal Temperature
-                                displayed on the screen</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-7-core-functional-requirements-for-pmb">Table 7: Core Functional Requirements for PMB<a
-                        hidden class="anchor" aria-hidden="true"
-                        href="#table-7-core-functional-requirements-for-pmb">#</a></h5>
-                <p>The 40A current specification is based on the rated continuous current limit of the SubConn Low
-                    Profile Connector on the battery hull &lt;Insert Reference <a
-                        href="https://www.macartney.com/connectivity/subconn/subconn-low-profile-series/subconn-low-profile-9-contacts/%3e"
-                        target="_blank">https://www.macartney.com/connectivity/subconn/subconn-low-profile-series/subconn-low-profile-9-contacts/></a>.
-                    This provides sufficient headroom, as testing indicates a typical current draw of 11A per battery
-                    when moving at full-speed. CAN Bus is used for inter-board communication within the AUV, hence CAN
-                    bus integration is critical.</p>
-                <h3 id="43-component-standardisation">4.3 Component Standardisation<a hidden class="anchor"
-                        aria-hidden="true" href="#43-component-standardisation">#</a></h3>
-                <p>To reduce cost and simplify procurement, certain components of the PMB are shared with the other PCBs
-                    onboard the AUV. Specifically, the STM32F103C8T6 and the ISOW1044B isolated CAN Transceiver (Table
-                    7). This standardisation reduces design effort and chance of error as the same schematic capture and
-                    layout can be reused across the PCBs. This also allows for easier spare preparation as the same
-                    component can act as spares for the different PCBs.</p>
-                <img src="mcuschematic.png" alt="Common Schematic for STM32F103C8T6" style="max-width: 100%;">
-                <h5 id="figure-10-common-schematic-for-stm32f103c8t6">Figure 10: Common Schematic for STM32F103C8T6<a
-                        hidden class="anchor" aria-hidden="true"
-                        href="#figure-10-common-schematic-for-stm32f103c8t6">#</a></h5>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: left"><strong>Component</strong></th>
-                            <th style="text-align: left"><strong>Reason for Selection</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: left">STM32F103C8T6</td>
-                            <td style="text-align: left">A widely used microcontroller that is onboard the
-                                &ldquo;Blue-Pill&rdquo; development board, ensuring high availability and supply
-                                stability.</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">ISOW1044B</td>
-                            <td style="text-align: left">Combines the isolated regulator and CAN transceiver into one
-                                single component, saving space onboard the PCB.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-8-reasons-for-the-components-selected-for-standardisation">Table 8: Reasons for the
-                    Components Selected for Standardisation<a hidden class="anchor" aria-hidden="true"
-                        href="#table-8-reasons-for-the-components-selected-for-standardisation">#</a></h5>
-                <hr>
-                <h2 id="5-system-design">5. System Design<a hidden class="anchor" aria-hidden="true"
-                        href="#5-system-design">#</a></h2>
-                <p>Provide a bigger picture first.
-                    Summary of the system design, will go into details below how everything work etc. (how the design of
-                    the PMB and BCB PCB can help to fulfil the project goal while meeting design considerations)</p>
-                <ul>
-                    <li>
-                        <p>2x PMB Architecture -&gt; surrounded by dotted lines</p>
-                        <ul>
-                            <li>Architecture should reference the PMB along with the different subsystem and external
-                                components</li>
-                            <li>Talk about the differnt Power and Grounds</li>
-                            <li>One is when connected in BCB
-                                <ul>
-                                    <li>Show how the power goes to charger</li>
-                                    <li>CAN goes to PMB board</li>
-                                    <li>PMB board powerd by USB-C</li>
-                                    <li>Using Balance connector for programming pin</li>
-                                    <li>Data Flow
-                                        <ul>
-                                            <li>PMB -&gt; CAN Bus -&gt; ESP32 -&gt; Telegram Bot -&gt; Google App Script
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>One is when connected to AUV
-                                <ul>
-                                    <li>Show that it communicate with CAN to AUV</li>
-                                    <li>Power with connector</li>
-                                </ul>
-                            </li>
-                            <li>Data Flow
-                                <ul>
-                                    <li>PMB -&gt; CAN Bus -&gt; SBC-CAN -&gt; Serial -&gt; SBC -&gt; Ethernet to Router
-                                        -&gt; Data Uploaded Online</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p>Using SystemPres, Relay and Reed Switch to turn on the vehicle</p>
-                        <ul>
-                            <li>Turn on is via reed switch activiating a relay</li>
-                            <li>Turn off is MCU detect reed switch and activate a signal
-                                <ul>
-                                    <li>Allows MCU to do whatever it needds to do before pwoering off.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <hr>
-                <h2 id="6-improving-auv-performance">6. Improving AUV Performance<a hidden class="anchor"
-                        aria-hidden="true" href="#6-improving-auv-performance">#</a></h2>
-                <p>One way to improve the AUV&rsquo;s performance is by extending its run time. This allows for longer
-                    in-water test by reducing the interruption of changing batteries. This allows for continuos testing
-                    to simulate longer actual competition runs. Two methods were implemented to achieve this: renewing
-                    the current batteries and introducing accurate state-of-charge (SoC) estimation.</p>
-                <h3 id="61-battery-renewal">6.1 Battery Renewal<a hidden class="anchor" aria-hidden="true"
-                        href="#61-battery-renewal">#</a></h3>
-                <p>The batteries have been in use for over 2 years, with an estimated 200 cycles completed.</p>
-                <p><img loading="lazy" src="cyclestats.png" alt="Battery Cycle Life" />
-                </p>
-                <h5 id="figure-xxx-information-on-the-cycle-life-of-the-current-battery">Figure XXX: Information on The
-                    Cycle Life of The Current Battery<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-xxx-information-on-the-cycle-life-of-the-current-battery">#</a></h5>
-                <p>Considering, that it is likely we will use the same battery hull for a few more years of competition,
-                    the batteries should be renewed to avoid more degradation.</p>
-                <p>Another factor in changing batteries is that we usually require 6 batteries for each AUV, organised
-                    into three sets of two: one set in use, one set charging, and one set kept as spares. Therefore,
-                    selecting cost-effective batteries can result in significant savings
-                    for the team.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th><strong>Specification</strong></th>
-                            <th><strong>GrePow LiPo (current)</strong></th>
-                            <th><strong>Raitan Li-ion</strong></th>
-                            <th><strong>MaxAmp Li-ion</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Configuration</td>
-                            <td>4S1P</td>
-                            <td>4S4P</td>
-                            <td>4S3P</td>
-                        </tr>
-                        <tr>
-                            <td>Fit within the current battery dimensions?</td>
-                            <td>Yes</td>
-                            <td>Yes</td>
-                            <td>Yes</td>
-                        </tr>
-                        <tr>
-                            <td>Capacity</td>
-                            <td>15000mAh</td>
-                            <td>16000mAh</td>
-                            <td>15000mAh</td>
-                        </tr>
-                        <tr>
-                            <td>Weight</td>
-                            <td>1355g</td>
-                            <td>1200g</td>
-                            <td>898g</td>
-                        </tr>
-                        <tr>
-                            <td>Maximum Current Draw</td>
-                            <td>60A</td>
-                            <td>80A</td>
-                            <td>75A</td>
-                        </tr>
-                        <tr>
-                            <td>Cost</td>
-                            <td>SGD 320</td>
-                            <td>SGD 250</td>
-                            <td>SGD 451</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-xxxx--table-of-comparison-for-batteries">Table XXXX : Table of Comparison for Batteries<a
-                        hidden class="anchor" aria-hidden="true"
-                        href="#table-xxxx--table-of-comparison-for-batteries">#</a></h5>
-                <p>Lithium-ion batteries were chosen for comparison due to its longer lifespan and higher energy density
-                    &lt;Insert Reference <a
-                        href="https://www.unmannedsystemstechnology.com/feature/lipo-vs-lithium-ion-batteries-for-unmanned-robotics-applications/%3e"
-                        target="_blank">https://www.unmannedsystemstechnology.com/feature/lipo-vs-lithium-ion-batteries-for-unmanned-robotics-applications/></a>.
-                    With its higher capacity and lower cost, the Raitan Li-ion battery was selected. Additionally, the
-                    team’s prior experience with Raitan provided confidence in the reliability and performance of their
-                    product.</p>
-                <p>Two Raitan Li-Ion batteries were procured for testing and compared with the current batteries.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: left"><strong>Specification</strong></th>
-                            <th style="text-align: left"><strong>GrePow LiPo (current)</strong></th>
-                            <th style="text-align: left"><strong>Raitan Li-Ion (New)</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: left">Dimensions</td>
-                            <td style="text-align: left">190mm x 75mm x 42mm</td>
-                            <td style="text-align: left">171mm x 77mm x 44mm</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">Mass</td>
-                            <td style="text-align: left">1241g</td>
-                            <td style="text-align: left">1179g</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">Time taken to draw 7A from fully charged to nominal voltage
-                            </td>
-                            <td style="text-align: left">40 Minutes</td>
-                            <td style="text-align: left">60 Minutes</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-xxxx-comparing-grepow-lipo-batteries-with-raitan-li-ion-batteries">Table XXXX: Comparing
-                    GrePow LiPo Batteries with Raitan Li-Ion Batteries<a hidden class="anchor" aria-hidden="true"
-                        href="#table-xxxx-comparing-grepow-lipo-batteries-with-raitan-li-ion-batteries">#</a></h5>
-                <p><img loading="lazy" src="voltagegraph.png" alt="Plotting Voltage of Battery over Time" />
-                </p>
-                <h5 id="figure-xxx-voltage-drop-over-time-at-7a-constant-current-draw">Figure XXX: Voltage Drop over
-                    Time at 7A Constant Current Draw<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-xxx-voltage-drop-over-time-at-7a-constant-current-draw">#</a></h5>
-                <p><img loading="lazy" src="batteries.jpg"
-                        alt="Photo of Grepow Battery (left) and Raitan Li-Ion Battery (Right)" />
-                </p>
-                <h5 id="figure-xxx-photo-of-grepow-battery-left-and-raitan-li-ion-battery-right">Figure XXX: Photo of
-                    Grepow Battery (left) and Raitan Li-Ion Battery (Right)<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-xxx-photo-of-grepow-battery-left-and-raitan-li-ion-battery-right">#</a></h5>
-                <p><img loading="lazy" src="newbatthull.png" alt="Photo of New Batteries in AUV4.1 Battery Hull" />
-                </p>
-                <h5 id="figure-xxx-photo-of-new-batteries-in-auv41-battery-hull">Figure XXX: Photo of New Batteries in
-                    AUV4.1 Battery Hull<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-xxx-photo-of-new-batteries-in-auv41-battery-hull">#</a></h5>
-                <p>Raitan Li-Ion battery has been verified to be at least comparable to the GrePow LiPo battery making
-                    it a suitable replacement for the old batteries.</p>
-                <h3 id="62-accurate-soc-estimation">6.2 Accurate SoC Estimation<a hidden class="anchor"
-                        aria-hidden="true" href="#62-accurate-soc-estimation">#</a></h3>
-                <p>As mentioned in <a href="#232-limited-capabilities-of-battery-fuel-gauge">Section 2.3.2</a>, the team
-                    previously relied on voltage to estimate the battery capacity. This approach tends to end tests
-                    prematurely, as conservative voltage thresholds fail to account for load and battery age. By
-                    utilising the gauging feature on battery management chip, we can determine a more accurate SoC,
-                    allowing in-water tests to run longer without risking battery damage.</p>
-                <h4 id="621-literature-review">6.2.1 Literature Review<a hidden class="anchor" aria-hidden="true"
-                        href="#621-literature-review">#</a></h4>
-                <p>Looking at RoboSub 2023 and RoboSub 2024 Teams&rsquo; Technical Design Report, only 2 other teams
-                    (Cornell University <a
-                        href="https://robonation.org/app/uploads/sites/4/2024/07/RS24_TDR_Cornell-compressed.pdf"
-                        target="_blank">https://robonation.org/app/uploads/sites/4/2024/07/RS24_TDR_Cornell-compressed.pdf</a>
-                    and The Ohio State University <a
-                        href="https://robonation.org/app/uploads/sites/4/2023/06/TDR_THEOhioStateUniversity_RS2023-compressed.pdf"
-                        target="_blank">https://robonation.org/app/uploads/sites/4/2023/06/TDR_THEOhioStateUniversity_RS2023-compressed.pdf</a>)
-                    developed a PMB with a battery gauge. The teams used the BQ40Z50 and BQ40Z80 chips from Texas
-                    Instruments (TI) respectively.</p>
-                <h4 id="621-justification-for-chip-selection">6.2.1 Justification for Chip Selection<a hidden
-                        class="anchor" aria-hidden="true" href="#621-justification-for-chip-selection">#</a></h4>
-                <p>Additionally TI, offers extensive community support on its forum and provides numerous resources
-                    guiding customers in using its chips (Figure XXXX, Figure XXXX, Figure XXX).</p>
-                <p><img loading="lazy" src="forum.png" alt="TI&rsquo;s Forum Search Result" />
-                </p>
-                <h5 id="figure-xxx-search-results-of-ti-forums">Figure XXX: Search Results of TI Forums<a hidden
-                        class="anchor" aria-hidden="true" href="#figure-xxx-search-results-of-ti-forums">#</a></h5>
-                <p><img loading="lazy" src="youtube.png" alt="TI&rsquo;s YouTube Playlist on Battery Management" />
-                </p>
-                <h5 id="figure-xxx-tis-youtube-playlist-on-battery-management">Figure XXX: TI&rsquo;s YouTube Playlist
-                    on Battery Management<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-xxx-tis-youtube-playlist-on-battery-management">#</a></h5>
-                <p><img loading="lazy" src="bqdocument.png" alt="List of Documents for BQ40Z50" />
-                </p>
-                <h5 id="figure-xxx-documents-for-bq40z50">Figure XXX: Documents for BQ40Z50<a hidden class="anchor"
-                        aria-hidden="true" href="#figure-xxx-documents-for-bq40z50">#</a></h5>
-                <p>Additionally, its software application &ldquo;bqStudio&rdquo; provides an easy interface with the
-                    chip (Figure XXX).</p>
-                <p><img loading="lazy" src="bq.png" alt="Screenshot of bQStudio" />
-                </p>
-                <h5 id="figure-xxx-screenshot-of-bqstudio">Figure XXX: Screenshot of bQStudio<a hidden class="anchor"
-                        aria-hidden="true" href="#figure-xxx-screenshot-of-bqstudio">#</a></h5>
-                <p>To leverage on the huge amount of resources available and increase likelihood of success, a
-                    compatible chip from the TI family was shortlisted. Furthermore, being successfully implemented by
-                    multiple teams indicate that the chip has benefits.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th><strong>Feature</strong></th>
-                            <th><strong>BQ34110 (Current)</strong></th>
-                            <th><strong>BQ40Z50 (Proposed)</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Battery Gauging Algorithm</td>
-                            <td>Compensated End-of-Discharge Voltage</td>
-                            <td>TI’s Impedance Track</td>
-                        </tr>
-                        <tr>
-                            <td>Algorithm Comparison</td>
-                            <td>- Inaccurate SoC after idle period<br>- Affected by aged battery<br> -</td>
-                            <td>- Remains accurate after idle<br>- Resistant to ageing and temperature changes<br>-
-                                Remains accurate at high level of discharge.<br> - Lower error rate.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>BQ40Z50 was chosen as it supports up to 4-Series Li-Ion or LiPo Battery Packs. It also offers
-                    programmable protection features (Section XXXX) as well as Impedance Tracking and Cell Balancing
-                    (Section XXX). The chip is also able to track the number of cycles the batteries have been through.
-                    This reduces the need to guess when the batter capacity falls below a certain amount and hence
-                    prepare the operator to procure a new set of batteries.</p>
-                <h5 id="evaluation-of-soc-accuracy">Evaluation of SoC Accuracy<a hidden class="anchor"
-                        aria-hidden="true" href="#evaluation-of-soc-accuracy">#</a></h5>
-                <p>Hence, to evaluate the SoC accuracy, the new Li-Ion battery along with the PMB went through a
-                    learning cycle <a
-                        href="https://www.ti.com/lit/an/slua903/slua903.pdf?ts=1743852291712&amp;ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FBQ40Z50"
-                        target="_blank">https://www.ti.com/lit/an/slua903/slua903.pdf?ts=1743852291712&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FBQ40Z50</a>.
-                </p>
-                <p>When discharged at a constant current of 7A, the Voltage and SoC reported by BQ40Z50 was recorded
-                    (Table XXX). When using the LiPo battery, the team had a threshold of 15.2V (nominal voltage +
-                    0.4V). Based on the chart, this would be roughly at 40% Depth of Discharge (DoD) (Figure XXX).</p>
-                <p><img loading="lazy" src="blog-lipo-battery-voltage-quick-chart.webp" alt="Voltage to Capacity" />
-                </p>
-                <h5 id="figure-xxx-chart-of-voltage-and-its-corresponding-capacity">Figure XXX: Chart of Voltage and its
-                    Corresponding Capacity<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-xxx-chart-of-voltage-and-its-corresponding-capacity">#</a></h5>
-                <p>If we were to do the same for the Li-Ion battery the threshold would be 14.8V. This would mean that
-                    the run would end before 65 minutes. However, by using SoC the vehicle would be able to run to at
-                    least 75 minutes, extending the run time by 15.4 %.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: center"><strong>Time (minutes)</strong></th>
-                            <th style="text-align: center"><strong>Voltage (V)</strong></th>
-                            <th style="text-align: center"><strong>Relative State of Charge Reported by BQ40Z50</strong>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: center">0</td>
-                            <td style="text-align: center">16.5</td>
-                            <td style="text-align: center">100%</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">10</td>
-                            <td style="text-align: center">16.03</td>
-                            <td style="text-align: center">93%</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">20</td>
-                            <td style="text-align: center">15.91</td>
-                            <td style="text-align: center">86%</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">30</td>
-                            <td style="text-align: center">15.45</td>
-                            <td style="text-align: center">74%</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">45</td>
-                            <td style="text-align: center">15.18</td>
-                            <td style="text-align: center">67%</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">55</td>
-                            <td style="text-align: center">15.94</td>
-                            <td style="text-align: center">59%</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">65</td>
-                            <td style="text-align: center">14.68</td>
-                            <td style="text-align: center">51%</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">75</td>
-                            <td style="text-align: center">14.4</td>
-                            <td style="text-align: center">45%</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-xxx-bq40z50-soc-reporting-during-constant-current-discharge">Table XXX: BQ40Z50 SoC
-                    Reporting During Constant Current Discharge<a hidden class="anchor" aria-hidden="true"
-                        href="#table-xxx-bq40z50-soc-reporting-during-constant-current-discharge">#</a></h5>
-                <p>The BQ40Z50 is also able to report the time taken to fully charge the batteries, and time taken to
-                    fully discharge the batteries. This time is calculated by the average power draw of the batteries.
-                </p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: center"><strong>Case</strong></th>
-                            <th style="text-align: center"><strong>Start Time</strong></th>
-                            <th style="text-align: center"><strong>Starting Battery Voltage and SoC</strong></th>
-                            <th style="text-align: center"><strong>Predicted End Time</strong></th>
-                            <th style="text-align: center"><strong>Actual End Time</strong></th>
-                            <th style="text-align: center"><strong>Time Difference</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: center">A</td>
-                            <td style="text-align: center">8:20 PM</td>
-                            <td style="text-align: center">16.42V, 84%</td>
-                            <td style="text-align: center">9:30 PM</td>
-                            <td style="text-align: center">9:10 PM</td>
-                            <td style="text-align: center">20 mins early</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">B</td>
-                            <td style="text-align: center">1:07 AM</td>
-                            <td style="text-align: center">15.76V, 65%</td>
-                            <td style="text-align: center">3:15 AM</td>
-                            <td style="text-align: center">2:41 AM</td>
-                            <td style="text-align: center">34 mins early</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>This can be useful as it allows members to better plan and anticipate battery changes at pool tests.
-                    While the predicted end time tends to be conservative, this behaviour is preferable as it provides a
-                    useful buffer when planning battery swaps.</p>
-                <hr>
-                <h2 id="7-enhance-user-operability-and-workflow">7. Enhance User Operability and Workflow<a hidden
-                        class="anchor" aria-hidden="true" href="#7-enhance-user-operability-and-workflow">#</a></h2>
-                <p>One part of the project is to enhance user operability and workflow. User operability can be improved
-                    by allowing for easier operation and maintenace of the battery hull, reducing AUV&rsquo;s downtime.
-                    Improved workflow can help to identify potential issues and allow for early maintenance. Both user
-                    operability and workflow can come together to increase reliabilty of the vehicle.</p>
-                <p>Aim to make it easier for memerbs to oeprate and maintain vehicle to keep vehcile reliable despite
-                    long operation hours. Main goal is to reduce down time but icnreasing reliability. Help to prevent
-                    damage to battery hulls or vehicle. Prevent taking people away from development by fixing damges.
-                </p>
-                <h3 id="71-in-hull-firmware-flashing">7.1 In-Hull Firmware Flashing<a hidden class="anchor"
-                        aria-hidden="true" href="#71-in-hull-firmware-flashing">#</a></h3>
-                <ul>
-                    <li>Allows for flashing and update without opening hull
-                        <ul>
-                            <li>Reduces error during reseasling, reduces downtime</li>
-                            <li>Tested during RobotX 2024 where a USB port was exposed on the ASV to allow for firmware
-                                flashing</li>
-                        </ul>
-                    </li>
-                    <li>Few Option
-                        <ul>
-                            <li>CAN Bus Flashing to allow for flashing via CAN
-                                <ul>
-                                    <li>Require higher overhead as you need a more expensive microcontroller</li>
-                                    <li>Need build own bootloader</li>
-                                    <li>Show old connector where CAN is alreaday exposed</li>
-                                </ul>
-                            </li>
-                            <li>Use the original Balance Connector
-                                <ul>
-                                    <li>Explain that with the BQ40Z50 chip, balancing can be done with the chip, so
-                                        balancing dont have to use charger to balance.
-                                        <ul>
-                                            <li>Frees up the connector</li>
-                                        </ul>
-                                    </li>
-                                    <li>Reduce changes needed to be done</li>
-                                    <li>Allows to expose the BQ chip comms also</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Insert image of old balance connector vs new balance connector</li>
-                </ul>
-                <h3 id="72-remote-status-monitoring">7.2 Remote Status Monitoring<a hidden class="anchor"
-                        aria-hidden="true" href="#72-remote-status-monitoring">#</a></h3>
-                <ul>
-                    <li>AS mentioned in xxx manual logging was used to track if battery hull is sealed</li>
-                    <li>Difficult to determine slow leak</li>
-                    <li>Upload relevant data online</li>
-                    <li>This provide historical data for operator to reference easily without unsealing the hull
-                        <ul>
-                            <li>Can be useful for leak</li>
-                            <li>Or to track degradation of battery</li>
-                            <li>Or to track if cells are becoming unbalanced
-                                <ul>
-                                    <li>All of which should be rectified to ensure that AUV battery can function
-                                        properly</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Few Option
-                        <ul>
-                            <li>MCU with Wireless Capability
-                                <ul>
-                                    <li>Not suitable for Metal hull</li>
-                                </ul>
-                            </li>
-                            <li>Accompanying PCB for BCB
-                                <ul>
-                                    <li>Same connector used to charge also hold the CAN Lines</li>
-                                    <li>Able to connect CAN Line to the PCB to retrieve data from the BCB</li>
-                                    <li>BCB would then be able to upload the data online</li>
-                                </ul>
-                            </li>
-                            <li>Chose the BCB option as we dont need the PMB to have access to the internet all the
-                                time. This is as when it is turned on, it is sually connected to the AUV or the BCB.
-                                When it is connected to AUV it would have access to the Internet
-                                <ul>
-                                    <li>Insert diagram from interim report</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>While BCB means we need extra component, it is worth while as we can implement additional
-                        features (mentioned in section xxx) we can use it</li>
-                    <li>Especially since the PMB will be on only when conencted to AUV or BCB</li>
-                    <li>Go through BCB PCB design
-                        <ul>
-                            <li>Powered with USB-C allow to power with the Charger itself (no need extra plug)</li>
-                            <li>Have ESP32 to get the CAN stuff and publish online with ESP capability
-                                <ul>
-                                    <li>Insert CAN Table</li>
-                                    <li><img loading="lazy" src="image.png" alt="CAN Table" />
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>Talk about how it receive the CAN messages and use the Google App Script to Publish into
-                                its relevant scripts</li>
-                            <li>Test
-                                <ul>
-                                    <li>Simulated with Serial Communication with the computer</li>
-                                </ul>
-                            </li>
-                            <li>Chose google sheet instead of database as it is easy for all members to use and track.
-                                Can even use on phone.</li>
-                        </ul>
-                    </li>
-                    <li>current time obtained from NTP</li>
-                    <li>Can say that previously there was plan for local logging -&gt; included in te design of the PMB
-                        <ul>
-                            <li>As the data would be uploaded online by either the AUV or the BCB, there isnt really a
-                                need</li>
-                            <li>Accessing the local data is more troublesome as you have to unseal the hull.</li>
-                        </ul>
-                    </li>
-                    <li>To ensure data accuracy there is a timeut for the stats
-                        <ul>
-                            <li>If any stats dont come within 2x its reporting frequency the data is cleared and not
-                                reported to prevent posting outdated data</li>
-                        </ul>
-                    </li>
-                    <li>Use a table to compare what is shown on the screen, what is reported to telegram and what is
-                        sent to google sheet</li>
-                    <li>Explain the differences (difference in purpose)</li>
-                </ul>
-                <hr>
-                <h2 id="8-improving-safety-and-reliability">8. Improving Safety and Reliability<a hidden class="anchor"
-                        aria-hidden="true" href="#8-improving-safety-and-reliability">#</a></h2>
-                <p>To improve safety and reliability of the system faults must be identified and rectified before it
-                    gets a chance to cause damage to a system. This can be done by identifying possible leaks of the
-                    battery hull and by implementing electrical protection feature to protect the vehicle from any
-                    possible electrical fault. Finally the design of the PCB must be able to support the power demand of
-                    the vehicle while keeping in mind good electrical practises to develop a reliable PCB.</p>
-                <h3 id="81-real-time-safety-and-status-notifications">8.1 Real-Time Safety and Status Notifications<a
-                        hidden class="anchor" aria-hidden="true"
-                        href="#81-real-time-safety-and-status-notifications">#</a></h3>
-                <p>As mentioned in <a
-                        href="#233-challenges-with-tracking-battery-hulls-pressure-and-temperature">Section 2.3.3</a>,
-                    it might be difficult to identify Battery Hull leaks. To combat this, there should be automatic
-                    detection and notification of potential leaks to alert members to identify and rectify the issues.
-                </p>
-                <h4 id="811-past-experiences">8.1.1 Past Experiences<a hidden class="anchor" aria-hidden="true"
-                        href="#811-past-experiences">#</a></h4>
-                <p>During the testing and development of the Autonomous Surface Vessel, a Telegram Channel was running
-                    on the ASV to periodically report the battery voltage and current draw. This proved invaluable as it
-                    help the team to anticipate and prepare for battery swaps. Furthermore, it helped the team to
-                    identify a load-balancing issue in the vehicle that would have otherwise gone unnoticed.</p>
-                <p><img loading="lazy" src="tele.png" alt="Telegram Channel Reporting ASV&rsquo;s Battery Status" />
-                </p>
-                <h5 id="figure-xxx-telegram-channel-reporting-asvs-battery-status">Figure XXX: Telegram Channel
-                    Reporting ASV&rsquo;s Battery Status<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-xxx-telegram-channel-reporting-asvs-battery-status">#</a></h5>
-                <h4 id="812-chosen-method">8.1.2 Chosen Method<a hidden class="anchor" aria-hidden="true"
-                        href="#812-chosen-method">#</a></h4>
-                <p>Hence, using Telegram Channel as a form of notification was chosen as it was tried and proven to be
-                    effective. Furthermore, as Telegram is used to communicate in the team, members would already have
-                    it installed on their devices, lowering the barrier of entry for using this system. By utilising a
-                    Telegram Channel also allows for multiple members to be notified of any issues. This reduces the
-                    chance of an alert being missed.</p>
-                <h4 id="813-implementation">8.1.3 Implementation<a hidden class="anchor" aria-hidden="true"
-                        href="#813-implementation">#</a></h4>
-                <p>When the data is sent from the BCB to the Google Sheet, the same Google App Script is used to check
-                    for the following conditions:</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: left"><strong>Condition</strong></th>
-                            <th style="text-align: left"><strong>Notification</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: left">Internal Pressure Below 107</td>
-                            <td style="text-align: left">ALERT: PMB IS LEAKING!</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left">Drop in the Ratio of Internal Pressure to Temperature &gt; 0.5
-                            </td>
-                            <td style="text-align: left">ALERT: PMB MIGHT BE leaking, please observe.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-xxx-leak-detection-condition-and-notification">Table XXX: Leak Detection Condition and
-                    Notification<a hidden class="anchor" aria-hidden="true"
-                        href="#table-xxx-leak-detection-condition-and-notification">#</a></h5>
-                <p>The leak detection is based on the Gay Lussac&rsquo;s Law &lt;Insert Reference <a
-                        href="https://www.chem.fsu.edu/chemlab/chm1045/gas_laws.html"
-                        target="_blank">https://www.chem.fsu.edu/chemlab/chm1045/gas_laws.html</a> &gt;. This is as if
-                    the Battery Hull is not leaking the amount of gas in the hull should remain the same and hence the
-                    ratio of internal pressure to temperature should remain the same even if the temperature changes.
-                    Hence, if the ratio of internal pressure to temperature varies significantly, it is likely that
-                    there is a leak occurring.</p>
-                <p>To obtain the previous Internal Pressure to Temperature ratio, the Google App Script obtains the last
-                    recorded data for the PMB on the Google Sheet.</p>
-                <p>The threshold of 0.5 is determined by observing the change in temperature and internal pressure of
-                    three battery hulls.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: center"><strong>Pressure</strong></th>
-                            <th style="text-align: center"><strong>Temp</strong></th>
-                            <th style="text-align: center"><strong>P/T</strong></th>
-                            <th style="text-align: center"><strong>P/T Difference</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: center">110.30</td>
-                            <td style="text-align: center">24</td>
-                            <td style="text-align: center">4.596</td>
-                            <td style="text-align: center">-</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">110.38</td>
-                            <td style="text-align: center">25</td>
-                            <td style="text-align: center">4.415</td>
-                            <td style="text-align: center">-0.181</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">110.45</td>
-                            <td style="text-align: center">27</td>
-                            <td style="text-align: center">4.091</td>
-                            <td style="text-align: center">-0.324</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">110.52</td>
-                            <td style="text-align: center">27</td>
-                            <td style="text-align: center">4.093</td>
-                            <td style="text-align: center">0.003</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">110.58</td>
-                            <td style="text-align: center">27</td>
-                            <td style="text-align: center">4.096</td>
-                            <td style="text-align: center">0.002</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">110.71</td>
-                            <td style="text-align: center">28</td>
-                            <td style="text-align: center">3.954</td>
-                            <td style="text-align: center">-0.142</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">110.80</td>
-                            <td style="text-align: center">28</td>
-                            <td style="text-align: center">3.957</td>
-                            <td style="text-align: center">0.003</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">110.85</td>
-                            <td style="text-align: center">28</td>
-                            <td style="text-align: center">3.959</td>
-                            <td style="text-align: center">0.002</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-xxx-changes-in-pressure-and-temperature-of-battery-hull-a">Table XXX: Changes in Pressure
-                    and Temperature of Battery Hull A<a hidden class="anchor" aria-hidden="true"
-                        href="#table-xxx-changes-in-pressure-and-temperature-of-battery-hull-a">#</a></h5>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: center"><strong>Pressure</strong></th>
-                            <th style="text-align: center"><strong>Temp</strong></th>
-                            <th style="text-align: center"><strong>P/T</strong></th>
-                            <th style="text-align: center"><strong>P/T Difference</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: center">112.49</td>
-                            <td style="text-align: center">24</td>
-                            <td style="text-align: center">4.687</td>
-                            <td style="text-align: center">-</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.54</td>
-                            <td style="text-align: center">24</td>
-                            <td style="text-align: center">4.689</td>
-                            <td style="text-align: center">0.002</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.59</td>
-                            <td style="text-align: center">25</td>
-                            <td style="text-align: center">4.504</td>
-                            <td style="text-align: center">-0.186</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.63</td>
-                            <td style="text-align: center">25</td>
-                            <td style="text-align: center">4.506</td>
-                            <td style="text-align: center">0.002</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.67</td>
-                            <td style="text-align: center">25</td>
-                            <td style="text-align: center">4.507</td>
-                            <td style="text-align: center">0.002</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.75</td>
-                            <td style="text-align: center">25</td>
-                            <td style="text-align: center">4.510</td>
-                            <td style="text-align: center">0.003</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.80</td>
-                            <td style="text-align: center">25</td>
-                            <td style="text-align: center">4.512</td>
-                            <td style="text-align: center">0.002</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.85</td>
-                            <td style="text-align: center">26</td>
-                            <td style="text-align: center">4.340</td>
-                            <td style="text-align: center">-0.172</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-xxx-changes-in-pressure-and-temperature-of-battery-hull-b">Table XXX: Changes in Pressure
-                    and Temperature of Battery Hull B<a hidden class="anchor" aria-hidden="true"
-                        href="#table-xxx-changes-in-pressure-and-temperature-of-battery-hull-b">#</a></h5>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: center"><strong>Pressure</strong></th>
-                            <th style="text-align: center"><strong>Temp</strong></th>
-                            <th style="text-align: center"><strong>P/T</strong></th>
-                            <th style="text-align: center"><strong>P/T Difference</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: center">111.88</td>
-                            <td style="text-align: center">24</td>
-                            <td style="text-align: center">4.662</td>
-                            <td style="text-align: center">-</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.04</td>
-                            <td style="text-align: center">26</td>
-                            <td style="text-align: center">4.309</td>
-                            <td style="text-align: center">-0.352</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.10</td>
-                            <td style="text-align: center">28</td>
-                            <td style="text-align: center">4.004</td>
-                            <td style="text-align: center">-0.306</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.16</td>
-                            <td style="text-align: center">28</td>
-                            <td style="text-align: center">4.006</td>
-                            <td style="text-align: center">0.002</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.23</td>
-                            <td style="text-align: center">29</td>
-                            <td style="text-align: center">3.870</td>
-                            <td style="text-align: center">-0.136</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.34</td>
-                            <td style="text-align: center">29</td>
-                            <td style="text-align: center">3.874</td>
-                            <td style="text-align: center">0.004</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.43</td>
-                            <td style="text-align: center">29</td>
-                            <td style="text-align: center">3.877</td>
-                            <td style="text-align: center">0.003</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center">112.47</td>
-                            <td style="text-align: center">30</td>
-                            <td style="text-align: center">3.749</td>
-                            <td style="text-align: center">-0.128</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5 id="table-xxx-changes-in-pressure-and-temperature-of-battery-hull-b-1">Table XXX: Changes in
-                    Pressure and Temperature of Battery Hull B<a hidden class="anchor" aria-hidden="true"
-                        href="#table-xxx-changes-in-pressure-and-temperature-of-battery-hull-b-1">#</a></h5>
-                <p>By feeding various data into the BCB, we are able to simulate a leaking hull, leading to an alert
-                    sent to the Telegram Channel.</p>
-                <p><img loading="lazy" src="ratio.png" alt="Telegram Channel Reporting a Possible Leak" />
-                </p>
-                <h5 id="figure-xxx-telegram-channel-reporting-a-possible-leak-in-pmb2">Figure XXX: Telegram Channel
-                    Reporting a Possible Leak in PMB2<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-xxx-telegram-channel-reporting-a-possible-leak-in-pmb2">#</a></h5>
-                <p><img loading="lazy" src="leak.png" alt="Telegram Channel Reporting a Leak" />
-                </p>
-                <h5 id="figure-xxx-telegram-channel-reporting-a-leak-in-pmb1">Figure XXX: Telegram Channel Reporting a
-                    Leak in PMB1<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-xxx-telegram-channel-reporting-a-leak-in-pmb1">#</a></h5>
-                <p>The same Telegram channel is also used to broadcast the state of the battery charging and notifies
-                    members when it is fully charged. This feature addresses a common operational issue, where team
-                    members may
-                    forget to turn off the charger, especially after fatigue from a long day of pool tests. By receiving
-                    timely reminders, the team can ensure a safer operation by turning off the charger when the battery
-                    is fully charged.</p>
-                <p><img loading="lazy" src="teletelem.png" alt="Telegram Channel Reporting Charged Battery" />
-                </p>
-                <h5 id="figure-xxx-telegram-channel-reporting-a-fully-charged-pmb1">Figure XXX: Telegram Channel
-                    Reporting a Fully Charged PMB1<a hidden class="anchor" aria-hidden="true"
-                        href="#figure-xxx-telegram-channel-reporting-a-fully-charged-pmb1">#</a></h5>
-                <h3 id="82-protection-features">8.2 Protection Features<a hidden class="anchor" aria-hidden="true"
-                        href="#82-protection-features">#</a></h3>
-                <ul>
-                    <li>Used BQ40Z50 protection</li>
-                    <li>Protects against possible electrical fault -&gt; increase system robustness</li>
-                    <li>Include literature review of hardware vs software safety</li>
-                    <li>Tested with COV, OC
-                        <ul>
-                            <li>Tested both hardware and software limit
-                                <ul>
-                                    <li>Insert data and photo and excel</li>
-                                </ul>
-                            </li>
-                            <li>also tested CUVC such that when the battery voltage is low and there is high current
-                                draw it will cut to protect the battery (to decide if I want to include this)</li>
-                            <li>explain that connector limit is 40A (insert reference to SubConn)</li>
-                            <li>While we have fuse, it is also good to have additional layer of protection</li>
-                            <li>also has a short circuit protection</li>
-                        </ul>
-                    </li>
-                    <li>protect battery and auv from further harm</li>
-                </ul>
-                <h3 id="83-pmb-pcb-design">8.3 PMB PCB Design<a hidden class="anchor" aria-hidden="true"
-                        href="#83-pmb-pcb-design">#</a></h3>
-                <ul>
-                    <li>Look at OneNote on PCB explanation</li>
-                    <li>Power Rating
-                        <ul>
-                            <li>Show the load test</li>
-                            <li>show temperature picture</li>
-                            <li>Pool test show that it is around 11A per battery when moving at full spped</li>
-                            <li>To be safe, the test was done at 40A because it was the connector rating (include time
-                                spent running)</li>
-                            <li>Insert calculation for designs in appendix (refer to OneNote)
-                                <ul>
-                                    <li>Talk about the Current Draw and Oz of outer layer as well as trace width</li>
-                                    <li>Show that it is 4 layer with split plane for the different Power</li>
-                                </ul>
-                            </li>
-                            <li>Refer the SLUA on how to route
-                                <ul>
-                                    <li>Talk about the difference and similarity to SLUAA reccomendation</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Isolation
-                        <ul>
-                            <li>Protection and noise especially for battery</li>
-                        </ul>
-                    </li>
-                    <li>Look at Altium to see what each section does and how it ties to the design</li>
-                    <li>Go through mistakes that was in the PCB
-                        <ul>
-                            <li>and list the possible improvement also</li>
-                        </ul>
-                    </li>
-                    <li>Design for easy debugging
-                        <ul>
-                            <li>Test Points</li>
-                            <li>Extra conector to test CAN Transmissions</li>
-                            <li>Switches to switch communication line</li>
-                        </ul>
-                    </li>
-                    <li>Take a photo of PMB and highlight all the connections to show all the output and what it is
-                        connected to</li>
-                    <li>Power Consumption chart to spec the different voltage regulator</li>
-                    <li>Current draw of MCU and screen is 40mA</li>
-                </ul>
-                <hr>
-                <h2 id="9-system-evaluation">9. System Evaluation<a hidden class="anchor" aria-hidden="true"
-                        href="#9-system-evaluation">#</a></h2>
-                <ul>
-                    <li>Basic Feature
-                        <ul>
-                            <li>Refer to earlier table to see if able to meet all the requirements</li>
-                            <li>Able to be backward compatible -&gt; can fit into old battery hull, can be turned on
-                                with reed switch, can charge, can discharge</li>
-                            <li>Able to report telemetry, able to draw, able to charge
-                                <ul>
-                                    <li>Verified reporting is accurate -&gt; Voltage measured with multimeter</li>
-                                    <li>Current is calibrated with a load tester drawing a constant load</li>
-                                    <li>Discharging and Charging State of Battery Verified</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Improvements (use a before: after table)
-                        <ul>
-                            <li>Run Time: Increased</li>
-                            <li>User Operability and Maintenace: 25 mins to 5mins to upload, constant logging</li>
-                            <li>Reliability -&gt; able to detect leak immediately</li>
-                            <li>Have another table that compares old PMB and New PMB
-                                <ul>
-                                    <li>Interfaces</li>
-                                    <li>Data Reporting</li>
-                                    <li>Ease of use etc.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Mistakes
-                        <ul>
-                            <li>No Pull Down for Isolator Signal</li>
-                            <li>No pull up for I2C</li>
-                        </ul>
-                    </li>
-                </ul>
-                <hr>
-                <h2 id="10-impact">10. Impact<a hidden class="anchor" aria-hidden="true" href="#10-impact">#</a></h2>
-                <ul>
-                    <li>To be deployed at RoboSub 2025</li>
-                    <li>PCB Designed will be released to help other teams design their own PMB</li>
-                    <li>Internet connected BCB was not seen at RoboSub, with teams moving towards battery pods, this is
-                        something that can be useful for them</li>
-                </ul>
-                <hr>
-                <h2 id="11-future-work">11. Future Work<a hidden class="anchor" aria-hidden="true"
-                        href="#11-future-work">#</a></h2>
-                <ul>
-                    <li>Test with the AUV
-                        <ul>
-                            <li>Unable to do so due to limited hull and pool test</li>
-                            <li>Did not want to open and swap out the PMB as the hulls are old and notoriously hard to
-                                seal</li>
-                            <li>Was waiting for development of new hull to put the new pmb in</li>
-                        </ul>
-                    </li>
-                    <li>Merge BCB into a Smart Charger
-                        <ul>
-                            <li>Communciate with PMB to negoitate desired current and voltage</li>
-                            <li>Can get data directly from the charger also</li>
-                        </ul>
-                    </li>
-                    <li>Better User Operability
-                        <ul>
-                            <li>Using same connector for Balance Pin and Flashing
-                                <ul>
-                                    <li>works for previous PMB as it is connected to each other</li>
-                                    <li>Does not work as thsi fried everything</li>
-                                    <li>Future Work
-                                        <ul>
-                                            <li>Change connector to something different so you dont accidentally
-                                                misconnect</li>
-                                            <li>More work and not interchangeable but its just crimp 1x so its not too
-                                                bad</li>
-                                        </ul>
-                                    </li>
-                                    <li>should ahve integrated protection into the line
-                                        <ul>
-                                            <li>clamping diode to prevent over 3v3</li>
-                                            <li>diode to prevent reverse polarity</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <hr>
-                <h2 id="12-conclusion">12. Conclusion<a hidden class="anchor" aria-hidden="true"
-                        href="#12-conclusion">#</a></h2>
-                <ul>
-                    <li>Move from Power Monitoring to Power Management</li>
-                    <li>Well Integrated system to deliver xxxx AUV for RoboSub</li>
-                </ul>
-                <hr>
-                <h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
-                <hr>
-                <h2 id="appendix">Appendix<a hidden class="anchor" aria-hidden="true" href="#appendix">#</a></h2>
-                <ul>
-                    <li>PCB Schematic and Routing</li>
-                    <li>Calculations
-                        <ul>
-                            <li>Look at OneNote on PCB explanation</li>
-                        </ul>
-                    </li>
-                    <li>BQStudio Configuration (Insert Link to the Page)</li>
-                </ul>
+  <div class="post-content"><h2 id="acknowledgement">Acknowledgement<a hidden class="anchor" aria-hidden="true" href="#acknowledgement">#</a></h2>
+<ul>
+<li>Bumblebee Team, especially Elec Team to bounce idea with</li>
+<li>Zi Yang and Tan Chern Lin for providing feedback, Chen Jia Wei for troubleshooting. Marvin for giving the idea.</li>
+<li>Guk Yi Siong for helping in obtaining power consumption data</li>
+<li>Ananyan for  validating my mechanical ideas</li>
+<li>Ms Annie, Patrick, KK, Graham</li>
+<li>Parker Schless from Cornell AUV for his advice when I faced problems</li>
+<li>Eugene for taking time to review the project and providing advice</li>
+<li>School for providing the lab, lab equipment and resources</li>
+<li>sponsors for helping the team also</li>
+</ul>
+<hr>
+<h2 id="list-of-common-acronyms">List of Common Acronyms<a hidden class="anchor" aria-hidden="true" href="#list-of-common-acronyms">#</a></h2>
+<div align="center">
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"><strong>Acronym</strong></th>
+          <th style="text-align: center"><strong>Definition</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>ASV</strong></td>
+          <td style="text-align: center">Autonomous Surface Vessel</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>AUV</strong></td>
+          <td style="text-align: center">Autonomous Underwater Vehicle</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>BBAS</strong></td>
+          <td style="text-align: center">Bumblebee Autonomous Systems</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>BCB</strong></td>
+          <td style="text-align: center">Battery Charging Box</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>CAN</strong></td>
+          <td style="text-align: center">Controller Area Network</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>OCS</strong></td>
+          <td style="text-align: center">Operator Control Station</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>PCB</strong></td>
+          <td style="text-align: center">Printed Circuit Board</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>PMB</strong></td>
+          <td style="text-align: center">Power Monitoring Board</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>SoC</strong></td>
+          <td style="text-align: center">State of Charge</td>
+      </tr>
+  </tbody>
+</table>
+</div>
+<hr>
+<h2 id="1-summary">1. Summary<a hidden class="anchor" aria-hidden="true" href="#1-summary">#</a></h2>
+<p>TODO:</p>
+<hr>
+<h2 id="2-problem-background">2. Problem Background<a hidden class="anchor" aria-hidden="true" href="#2-problem-background">#</a></h2>
+<h3 id="21-introduction">2.1 Introduction<a hidden class="anchor" aria-hidden="true" href="#21-introduction">#</a></h3>
+<p>Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs and builds Autonomous Underwater Vehicles (AUVs) for the annual RoboSub competition. Following lessons learned from AUV4.1’s participation in RoboSub 2023 (Figure 1), the team is concurrently developing AUV4.5 for RoboSub 2025 and AUV5.0 for RoboSub 2026 (Table 1).</p>
+<p><img loading="lazy" src="RoboSub2023.jpeg" alt="AUV4.1 at RoboSub 2023"  />
+</p>
+<h5 id="figure-1-auv41-at-robosub-2023">Figure 1: AUV4.1 at RoboSub 2023<a hidden class="anchor" aria-hidden="true" href="#figure-1-auv41-at-robosub-2023">#</a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Competition</strong></th>
+          <th style="text-align: left"><strong>Vehicles Deployed</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">RoboSub 2023</td>
+          <td style="text-align: left">AUV4.1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RoboSub 2025</td>
+          <td style="text-align: left">AUV4.5</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RoboSub 2026</td>
+          <td style="text-align: left">AUV4.5 and AUV5.0</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-1-auv-deployments-in-robosub-competitions">Table 1: AUV Deployments in RoboSub Competitions<a hidden class="anchor" aria-hidden="true" href="#table-1-auv-deployments-in-robosub-competitions">#</a></h5>
+<p>AUV4.5 retains the same hull design as AUV4.1 but features a newly developed electrical and software subsystem. This new electrical subsystem is designed to be mechanically compatible with the existing AUV4.1 hull while also serving as the baseline for AUV5.0.</p>
+<h3 id="22-current-system">2.2 Current System<a hidden class="anchor" aria-hidden="true" href="#22-current-system">#</a></h3>
+<p>The current power system for the AUVs comprises two main components, the Battery Hull (Figure 2) and the Battery Charging Box (BCB). Each Battery Hull houses a Power Monitoring Board (PMB) and a LiPo battery.</p>
+<p>The PMB (Figure 3) monitors and reports key telemetry data, such as the battery&rsquo;s voltage, current, battery hull&rsquo;s temperature and pressure, both on the screen and via the CAN Bus. Two such hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during pool test by eliminating the need to unseal the main vehicle hull.</p>
+<p><img loading="lazy" src="BatteryHull.png" alt="Battery Hull"  />
+</p>
+<h5 id="figure-2-metal-3d-printed-battery-hull">Figure 2: Metal 3D-Printed Battery Hull<a hidden class="anchor" aria-hidden="true" href="#figure-2-metal-3d-printed-battery-hull">#</a></h5>
+<p><img loading="lazy" src="AUV4.1PMB.png" alt="AUV4.1 PMB"  />
+</p>
+<h5 id="figure-3-auv41s-power-monitoring-board">Figure 3: AUV4.1&rsquo;s Power Monitoring Board<a hidden class="anchor" aria-hidden="true" href="#figure-3-auv41s-power-monitoring-board">#</a></h5>
+<p><img loading="lazy" src="assembled.png" alt="Assembled Battery Hull"  />
+</p>
+<h5 id="figure-4-assembled-battery-hull">Figure 4: Assembled Battery Hull<a hidden class="anchor" aria-hidden="true" href="#figure-4-assembled-battery-hull">#</a></h5>
+<p>The BCB (Figure 5) comprises an AC-DC power supply and a LiPo charger. It includes connectors that interface directly with the battery hull, allowing the battery to be charged without removing it from the hull.</p>
+<p><img loading="lazy" src="bcb.png" alt="Battery Charging Box"  />
+</p>
+<h5 id="figure-5-battery-charging-box">Figure 5: Battery Charging Box<a hidden class="anchor" aria-hidden="true" href="#figure-5-battery-charging-box">#</a></h5>
+<h3 id="23-limitations-of-current-system">2.3 Limitations of Current System<a hidden class="anchor" aria-hidden="true" href="#23-limitations-of-current-system">#</a></h3>
+<p>Deploying the current system at RoboSub 2023 identified several challenges.</p>
+<h4 id="231-challenges-with-battery-hull-sealing">2.3.1 Challenges with Battery Hull Sealing<a hidden class="anchor" aria-hidden="true" href="#231-challenges-with-battery-hull-sealing">#</a></h4>
+<p>The limited space within the battery hull and the need for a watertight seal, makes sealing and unsealing the hull a challenging and time-consuming process. Without error, unsealing takes 2 members approximately 10 minutes, while resealing requires another 15 minutes. However, the confined space often results in disconnected cables during assembly, further complicating the process. This overhead increase downtime and the risk of assembly errors.</p>
+<p><img loading="lazy" src="sealing.png" alt="Sealing a Battery Hull at RoboSub 2023"  />
+</p>
+<h5 id="figure-6-two-man-team-attempting-to-seal-a-battery-hull-at-robosub-2023">Figure 6: Two Man Team Attempting to Seal a Battery Hull at RoboSub 2023<a hidden class="anchor" aria-hidden="true" href="#figure-6-two-man-team-attempting-to-seal-a-battery-hull-at-robosub-2023">#</a></h5>
+<h4 id="232-limited-capabilities-of-battery-fuel-gauge">2.3.2 Limited Capabilities of Battery Fuel Gauge<a hidden class="anchor" aria-hidden="true" href="#232-limited-capabilities-of-battery-fuel-gauge">#</a></h4>
+<p>The PMB currently uses BQ34110 chip as a gas gauge, which is designed for rarely discharged applications and lacks essential protection features [1] <Insert References>, reducing the AUV&rsquo;s reliability. Furthermore, the battery gauging capability was also not used, leading the team to rely on voltage readings to estimate the capacity of the battery. This method is inaccurate as the battery voltage remains relatively constant over a significant portion of the discharge cycle, while the actual capacity decreases rapidly (Figure 7). To err on the side of caution, the pool test is ended when the voltage drops to the nominal level, further limiting the AUV&rsquo;s runtime.</p>
+<p><img loading="lazy" src="voltagecapacity.webp" alt="Discharge Voltage Curve"  />
+</p>
+<h5 id="figure-7-typical-li-ion-discharge-voltage-curve-2">Figure 7: Typical Li-Ion Discharge Voltage Curve [2]<a hidden class="anchor" aria-hidden="true" href="#figure-7-typical-li-ion-discharge-voltage-curve-2">#</a></h5>
+<p>&lt;Insert Reference: <a href="https://www.ufinebattery.com/blog/useful-overview-of-lipo-battery-voltage/%3e" target="_blank">https://www.ufinebattery.com/blog/useful-overview-of-lipo-battery-voltage/></a></p>
+<h4 id="233-challenges-with-tracking-battery-hulls-pressure-and-temperature">2.3.3 Challenges with Tracking Battery Hull&rsquo;s Pressure and Temperature<a hidden class="anchor" aria-hidden="true" href="#233-challenges-with-tracking-battery-hulls-pressure-and-temperature">#</a></h4>
+<p>During assembly, the battery hull is pressurised. Monitoring changes in pressure and temperature can alert the team to potential leaks. Currently, this tracking is done manually and only when a leak is
+suspected. his reactive approach limits the availability of historical data. Manual tracking can lead to missing data or recording error, reducing the effectiveness of leak detection.</p>
+<p><img loading="lazy" src="manualtrack.png" alt="Manually Logging Battery&rsquo;s Hull and Temperature on the Battery Hull&rsquo;s Lid"  />
+</p>
+<h5 id="figure-8-manually-logging-batterys-hull-and-temperature-on-the-battery-hulls-lid">Figure 8: Manually Logging Battery&rsquo;s Hull and Temperature on the Battery Hull&rsquo;s Lid<a hidden class="anchor" aria-hidden="true" href="#figure-8-manually-logging-batterys-hull-and-temperature-on-the-battery-hulls-lid">#</a></h5>
+<p><img loading="lazy" src="excel.png" alt="Manually Logging Battery&rsquo;s Hull and Temperature on Excel"  />
+</p>
+<h5 id="figure-9-manually-logging-batterys-hull-and-temperature-on-excel">Figure 9: Manually Logging Battery&rsquo;s Hull and Temperature on Excel<a hidden class="anchor" aria-hidden="true" href="#figure-9-manually-logging-batterys-hull-and-temperature-on-excel">#</a></h5>
+<h3 id="24-problem-analysis">2.4 Problem Analysis<a hidden class="anchor" aria-hidden="true" href="#24-problem-analysis">#</a></h3>
+<p>The limitations in the current system can be split into three overarching themes: poor user operability, limited runtime and reduced reliability. These themes and their associated limitations are summarised in Table 1.</p>
+<table>
+  <thead>
+    <tr>
+      <th><b>Category</b></th>
+      <th><b>Limitations</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2"><strong>Poor User Operability</strong></td>
+      <td>Challenges with Battery Hull Sealing</td>
+    </tr>
+    <tr>
+      <td>Challenges with Tracking Battery Hull’s Pressure and Temperature</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><strong>Limited Run Time</strong></td>
+      <td>Limitation of Battery Fuel Gauge</td>
+    </tr>
+    <tr>
+      <td>Challenges with Battery Hull Sealing</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><strong>Poor Reliability</strong></td>
+      <td>Limitation of Battery Fuel Gauge</td>
+    </tr>
+    <tr>
+      <td>Challenges with Tracking Battery Hull’s Pressure and Temperature</td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="table-2-categorisation-of-system-limitations">Table 2: Categorisation of System Limitations<a hidden class="anchor" aria-hidden="true" href="#table-2-categorisation-of-system-limitations">#</a></h5>
+<p>Poor user operability increases the likelihood of mistakes at competition, especially under time constraints or operator fatigue. Furthermore, limited run time can lead to less testing opportunities and ultimately impacting competition performance (Table 2, Table 3). Finally, poor reliability increases the risk of mid-run failures or unplanned maintenance, leading to increased downtime.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"><strong>RobotX 2022</strong></th>
+          <th style="text-align: center"><strong>RobotX 2024</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Testing Time in Singapore</td>
+          <td style="text-align: center">200 Hours</td>
+          <td style="text-align: center">330 Hours</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Final Score (adjusted)</td>
+          <td style="text-align: center">1450</td>
+          <td style="text-align: center">4450</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-3-table-of-competition-results-and-testing-time-in-singapore">Table 3: Table of Competition Results and Testing Time in Singapore<a hidden class="anchor" aria-hidden="true" href="#table-3-table-of-competition-results-and-testing-time-in-singapore">#</a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"><strong>Team</strong></th>
+          <th style="text-align: center"><strong>Final Score</strong></th>
+          <th style="text-align: center"><strong>Testing Time</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>NUS</strong></td>
+          <td style="text-align: center">4450</td>
+          <td style="text-align: center">49 Hours</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>KMOU</strong></td>
+          <td style="text-align: center">2900</td>
+          <td style="text-align: center">28 Hours</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>ERAU</strong></td>
+          <td style="text-align: center">2250</td>
+          <td style="text-align: center">33 Hours</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Inspiration</strong></td>
+          <td style="text-align: center">1600</td>
+          <td style="text-align: center">25 Hours</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>NTU</strong></td>
+          <td style="text-align: center">1050</td>
+          <td style="text-align: center">17 Hours</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-4-comparison-of-final-score-and-testing-time-at-robotx-2024">Table 4: Comparison of Final Score and Testing Time at RobotX 2024<a hidden class="anchor" aria-hidden="true" href="#table-4-comparison-of-final-score-and-testing-time-at-robotx-2024">#</a></h5>
+<hr>
+<h2 id="3-project-goal">3. Project Goal<a hidden class="anchor" aria-hidden="true" href="#3-project-goal">#</a></h2>
+<p>As a competition team, the primary objective is to maximise vehicle performance at RoboSub. By enhancing user operability and ensuring safe operation, the PMB directly contributes to system reliability, allowing for more in-water testing, and ultimately better competition performance.</p>
+<p>The project goal can be summarised as:</p>
+<div align="center">
+    <b>
+        To develop a battery management system that enhances user operability and workflow, ensures safe operation, and improves the AUV’s overall reliability and performance.
+    </b>
+</div>
+<br>
+Hence, a three-Pronged approach wass used to guide the development of the PMB, with each sub-goal detailed in its respective section.
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Sub Goals</strong></th>
+          <th style="text-align: center"><strong>Section Number</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Enhance User Operability and Work Flow</td>
+          <td style="text-align: center">Section 8</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Improve Safety and Reliability</td>
+          <td style="text-align: center">Section 7</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Improve AUV Performance</td>
+          <td style="text-align: center">Section 6</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-5-sub-goals-and-corresponding-report-section">Table 5: Sub Goals and Corresponding Report Section<a hidden class="anchor" aria-hidden="true" href="#table-5-sub-goals-and-corresponding-report-section">#</a></h5>
+<hr>
+<h2 id="4-design-considerations">4. Design Considerations<a hidden class="anchor" aria-hidden="true" href="#4-design-considerations">#</a></h2>
+<h3 id="41-backward-compatibility">4.1 Backward Compatibility<a hidden class="anchor" aria-hidden="true" href="#41-backward-compatibility">#</a></h3>
+<p>As outlined in <a href="#21-introduction">Section 2.1</a>, AUV4.5 has the same mechanical structure as AUV4.1. As such, the new PMB must remain mechanically and electrically compatible with the AUV4.1 battery hull. This backward compatibility ensures minimal modification to the existing support infrastructure when using the new PMB. Furthermore, designing to meet AUV4.1&rsquo;s specifications would also ensures forward compatibility with AUV5.0. This approach enables component reuse across AUV4.1, AUV4.5 and AUV5.0, reducing the need for custom variants and lowering the manufacturing cost by leveraging economies of scale.</p>
+<p>To maintain backwards compatibility, the following constraints were identified.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Characteristics</strong></th>
+          <th style="text-align: left"><strong>Constraints</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Dimensions</td>
+          <td style="text-align: left">The PMB and battery must fit within a 192mm x 77.5mm x 44mm volume of the AUV4.1 battery hull.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Electrical Interface</td>
+          <td style="text-align: left">Existing connectors for power delivery and charging must be retained.</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-6-design-constraints-for-backward-compatibility">Table 6: Design Constraints for Backward Compatibility<a hidden class="anchor" aria-hidden="true" href="#table-6-design-constraints-for-backward-compatibility">#</a></h5>
+<h3 id="42-functional-requirements">4.2 Functional Requirements<a hidden class="anchor" aria-hidden="true" href="#42-functional-requirements">#</a></h3>
+<p>In addition to physical compatibility, the PMB must meet or exceed the technical performance of its predecessor. The following functional requirements were defined to ensure the board can support AUV4.1, AUV4.5 and AUV5.0.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Technical Capabilities</strong></th>
+          <th style="text-align: left"><strong>Specifications</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Voltage Output</td>
+          <td style="text-align: left">14.8V to 16.8V (4S)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Continuous Current</td>
+          <td style="text-align: left">40A</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Communication Protocol</td>
+          <td style="text-align: left">CAN2.0</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Telemetry</td>
+          <td style="text-align: left">Voltage, Current, Internal Pressure, Internal Temperature displayed on the screen</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-7-core-functional-requirements-for-pmb">Table 7: Core Functional Requirements for PMB<a hidden class="anchor" aria-hidden="true" href="#table-7-core-functional-requirements-for-pmb">#</a></h5>
+<p>The 40A current specification is based on the rated continuous current limit of the SubConn Low Profile Connector on the battery hull &lt;Insert Reference <a href="https://www.macartney.com/connectivity/subconn/subconn-low-profile-series/subconn-low-profile-9-contacts/%3e" target="_blank">https://www.macartney.com/connectivity/subconn/subconn-low-profile-series/subconn-low-profile-9-contacts/></a>. This provides sufficient headroom, as testing indicates a typical current draw of 11A per battery when moving at full-speed. CAN Bus is used for inter-board communication within the AUV, hence CAN bus integration is critical.</p>
+<h3 id="43-component-standardisation">4.3 Component Standardisation<a hidden class="anchor" aria-hidden="true" href="#43-component-standardisation">#</a></h3>
+<p>To reduce cost and simplify procurement, certain components of the PMB are shared with the other PCBs onboard the AUV. Specifically, the STM32F103C8T6 and the ISOW1044B isolated CAN Transceiver (Table 7). This standardisation reduces design effort and chance of error as the same validated schematic and layout can be reused across the PCBs. This also allows for easier spare preparation as the same component can act as spares for the different PCBs.</p>
+<img src="mcuschematic.png" alt="Common Schematic for STM32F103C8T6" style="max-width: 100%;">
+<h5 id="figure-10-common-schematic-for-stm32f103c8t6">Figure 10: Common Schematic for STM32F103C8T6<a hidden class="anchor" aria-hidden="true" href="#figure-10-common-schematic-for-stm32f103c8t6">#</a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Component</strong></th>
+          <th style="text-align: left"><strong>Reason for Selection</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">STM32F103C8T6</td>
+          <td style="text-align: left">A widely used microcontroller that is onboard the &ldquo;Blue-Pill&rdquo; development board, ensuring high availability and supply stability.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ISOW1044B</td>
+          <td style="text-align: left">Combines the isolated regulator and CAN transceiver into one single component, saving space onboard the PCB.</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-8-reasons-for-the-components-selected-for-standardisation">Table 8: Reasons for the Components Selected for Standardisation<a hidden class="anchor" aria-hidden="true" href="#table-8-reasons-for-the-components-selected-for-standardisation">#</a></h5>
+<hr>
+<h2 id="5-system-design">5. System Design<a hidden class="anchor" aria-hidden="true" href="#5-system-design">#</a></h2>
+<p>Provide a bigger picture first.
+Summary of the system design, will go into details below how everything work etc. (how the design of the PMB and BCB PCB can help to fulfil the project goal while meeting design considerations)</p>
+<ul>
+<li>
+<p>2x PMB Architecture -&gt; surrounded by dotted lines</p>
+<ul>
+<li>Architecture should reference the PMB along with the different subsystem and external components</li>
+<li>Talk about the differnt Power and Grounds</li>
+<li>One is when connected in BCB
+<ul>
+<li>Show how the power goes to charger</li>
+<li>CAN goes to PMB board</li>
+<li>PMB board powerd by USB-C</li>
+<li>Using Balance connector for programming pin</li>
+<li>Data Flow
+<ul>
+<li>PMB -&gt; CAN Bus -&gt; ESP32 -&gt; Telegram Bot -&gt; Google App Script</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>One is when connected to AUV
+<ul>
+<li>Show that it communicate with CAN to AUV</li>
+<li>Power with connector</li>
+</ul>
+</li>
+<li>Data Flow
+<ul>
+<li>PMB -&gt; CAN Bus -&gt; SBC-CAN -&gt; Serial -&gt; SBC -&gt; Ethernet to Router -&gt; Data Uploaded Online</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Using SystemPres, Relay and Reed Switch to turn on the vehicle</p>
+<ul>
+<li>Turn on is via reed switch activiating a relay</li>
+<li>Turn off is MCU detect reed switch and activate a signal
+<ul>
+<li>Allows MCU to do whatever it needds to do before pwoering off.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="6-improving-auv-performance">6. Improving AUV Performance<a hidden class="anchor" aria-hidden="true" href="#6-improving-auv-performance">#</a></h2>
+<p>One way to improve the AUV&rsquo;s performance is by extending its run time. This enables longer in-water testing by reducing interruptions due to battery swaps. This supports uninterrupted testing to better simulate longer competition runs. Two methods were implemented to achieve this: renewing the current batteries and introducing accurate state-of-charge (SoC) estimation.</p>
+<h3 id="61-battery-renewal">6.1 Battery Renewal<a hidden class="anchor" aria-hidden="true" href="#61-battery-renewal">#</a></h3>
+<p>The batteries have been in use for over 2 years, with an estimated 200 cycles completed.</p>
+<p><img loading="lazy" src="cyclestats.png" alt="Battery Cycle Life"  />
+</p>
+<h5 id="figure-xxx-information-on-the-cycle-life-of-the-current-battery">Figure XXX: Information on The Cycle Life of The Current Battery<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-information-on-the-cycle-life-of-the-current-battery">#</a></h5>
+<p>As the current battery hull design is expected to remain in use for several more competition cycles, the batteries should be renewed to avoid more degradation.</p>
+<p>Operationally, each AUV requires six batteries, organised into three sets of two: one set in use, one set charging, and one set on standby. Therefore, selecting cost-effective batteries can result in significant savings for the team.</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Specification</strong></th>
+          <th><strong>GrePow LiPo (current)</strong></th>
+          <th><strong>Raitan Li-Ion</strong></th>
+          <th><strong>MaxAmp Li-Ion</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Configuration</td>
+          <td>4S1P</td>
+          <td>4S4P</td>
+          <td>4S3P</td>
+      </tr>
+      <tr>
+          <td>Fit within the current battery dimensions?</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>Capacity</td>
+          <td>15000mAh</td>
+          <td>16000mAh</td>
+          <td>15000mAh</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>1355g</td>
+          <td>1200g</td>
+          <td>898g</td>
+      </tr>
+      <tr>
+          <td>Maximum Current Draw</td>
+          <td>60A</td>
+          <td>80A</td>
+          <td>75A</td>
+      </tr>
+      <tr>
+          <td>Cost</td>
+          <td>SGD 320</td>
+          <td>SGD 250</td>
+          <td>SGD 451</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-xxxx--table-of-comparison-for-batteries">Table XXXX : Table of Comparison for Batteries<a hidden class="anchor" aria-hidden="true" href="#table-xxxx--table-of-comparison-for-batteries">#</a></h5>
+<p>Lithium-ion batteries were chosen for comparison due to its longer lifespan and higher energy density &lt;Insert Reference <a href="https://www.unmannedsystemstechnology.com/feature/lipo-vs-lithium-ion-batteries-for-unmanned-robotics-applications/%3e" target="_blank">https://www.unmannedsystemstechnology.com/feature/lipo-vs-lithium-ion-batteries-for-unmanned-robotics-applications/></a>. With its higher capacity and lower cost, the Raitan Li-Ion battery was selected. Additionally, the team’s prior experience with Raitan provided confidence in the reliability and performance of their product.</p>
+<p>Two Raitan Li-Ion batteries were procured for testing and compared with the current batteries.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Specification</strong></th>
+          <th style="text-align: left"><strong>GrePow LiPo (current)</strong></th>
+          <th style="text-align: left"><strong>Raitan Li-Ion (New)</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Dimensions</td>
+          <td style="text-align: left">190mm x 75mm x 42mm</td>
+          <td style="text-align: left">171mm x 77mm x 44mm</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Mass</td>
+          <td style="text-align: left">1241g</td>
+          <td style="text-align: left">1179g</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Time taken to draw 7A from fully charged to nominal voltage</td>
+          <td style="text-align: left">40 Minutes</td>
+          <td style="text-align: left">60 Minutes</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-xxxx-comparing-grepow-lipo-batteries-with-raitan-li-ion-batteries">Table XXXX: Comparing GrePow LiPo Batteries with Raitan Li-Ion Batteries<a hidden class="anchor" aria-hidden="true" href="#table-xxxx-comparing-grepow-lipo-batteries-with-raitan-li-ion-batteries">#</a></h5>
+<p><img loading="lazy" src="voltagegraph.png" alt="Plotting Voltage of Battery over Time"  />
+</p>
+<h5 id="figure-xxx-voltage-drop-over-time-at-7a-constant-current-draw">Figure XXX: Voltage Drop over Time at 7A Constant Current Draw<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-voltage-drop-over-time-at-7a-constant-current-draw">#</a></h5>
+<p><img loading="lazy" src="batteries.jpg" alt="Photo of Grepow Battery (left) and Raitan Li-Ion Battery (Right)"  />
+</p>
+<h5 id="figure-xxx-photo-of-grepow-battery-left-and-raitan-li-ion-battery-right">Figure XXX: Photo of Grepow Battery (left) and Raitan Li-Ion Battery (Right)<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-photo-of-grepow-battery-left-and-raitan-li-ion-battery-right">#</a></h5>
+<p><img loading="lazy" src="newbatthull.png" alt="Photo of New Batteries in AUV4.1 Battery Hull"  />
+</p>
+<h5 id="figure-xxx-photo-of-new-batteries-in-auv41-battery-hull">Figure XXX: Photo of New Batteries in AUV4.1 Battery Hull<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-photo-of-new-batteries-in-auv41-battery-hull">#</a></h5>
+<p>Raitan Li-Ion battery has been verified to be comparable to the GrePow LiPo battery making it a suitable replacement for the old batteries.</p>
+<h3 id="62-accurate-soc-estimation">6.2 Accurate SoC Estimation<a hidden class="anchor" aria-hidden="true" href="#62-accurate-soc-estimation">#</a></h3>
+<p>As mentioned in <a href="#232-limited-capabilities-of-battery-fuel-gauge">Section 2.3.2</a>, the team previously relied on voltage to estimate the battery capacity. This approach tends to end tests prematurely, as conservative voltage thresholds fail to account for load and battery age. By utilising the gauging feature on battery management chip, we can determine a more accurate SoC, allowing in-water tests to run longer without risking battery damage.</p>
+<h4 id="621-literature-review">6.2.1 Literature Review<a hidden class="anchor" aria-hidden="true" href="#621-literature-review">#</a></h4>
+<p>Looking at RoboSub 2023 and RoboSub 2024 Teams&rsquo; Technical Design Report, only 2 other teams (Cornell University <a href="https://robonation.org/app/uploads/sites/4/2024/07/RS24_TDR_Cornell-compressed.pdf" target="_blank">https://robonation.org/app/uploads/sites/4/2024/07/RS24_TDR_Cornell-compressed.pdf</a> and The Ohio State University <a href="https://robonation.org/app/uploads/sites/4/2023/06/TDR_THEOhioStateUniversity_RS2023-compressed.pdf" target="_blank">https://robonation.org/app/uploads/sites/4/2023/06/TDR_THEOhioStateUniversity_RS2023-compressed.pdf</a>) developed a PMB with a battery gauge. The teams used the BQ40Z50 and BQ40Z80 chips from Texas Instruments (TI) respectively.</p>
+<h4 id="622-justification-for-chip-selection">6.2.2 Justification for Chip Selection<a hidden class="anchor" aria-hidden="true" href="#622-justification-for-chip-selection">#</a></h4>
+<p>Additionally TI, offers extensive community support on its forum and provides numerous resources guiding customers in using its chips (Figure XXXX, Figure XXXX, Figure XXX).</p>
+<p><img loading="lazy" src="forum.png" alt="TI&rsquo;s Forum Search Result"  />
+</p>
+<h5 id="figure-xxx-search-results-of-ti-forums">Figure XXX: Search Results of TI Forums<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-search-results-of-ti-forums">#</a></h5>
+<p><img loading="lazy" src="youtube.png" alt="TI&rsquo;s YouTube Playlist on Battery Management"  />
+</p>
+<h5 id="figure-xxx-tis-youtube-playlist-on-battery-management">Figure XXX: TI&rsquo;s YouTube Playlist on Battery Management<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-tis-youtube-playlist-on-battery-management">#</a></h5>
+<p><img loading="lazy" src="bqdocument.png" alt="List of Documents for BQ40Z50"  />
+</p>
+<h5 id="figure-xxx-documents-for-bq40z50">Figure XXX: Documents for BQ40Z50<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-documents-for-bq40z50">#</a></h5>
+<p>Additionally, its software application &ldquo;bqStudio&rdquo; provides an easy interface with the chip (Figure XXX).</p>
+<p><img loading="lazy" src="bq.png" alt="Screenshot of bQStudio"  />
+</p>
+<h5 id="figure-xxx-screenshot-of-bqstudio">Figure XXX: Screenshot of bQStudio<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-screenshot-of-bqstudio">#</a></h5>
+<p>To leverage the extensive resources available and increase likelihood of success, a compatible chip from the TI family was shortlisted. Successful implementations by teams such as Cornell and OSU further validate the chip’s reliability in AUV applications.</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Feature</strong></th>
+          <th><strong>BQ34110 (Current)</strong></th>
+          <th><strong>BQ40Z50 (Proposed)</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Battery Gauging Algorithm</td>
+          <td>Compensated End-of-Discharge Voltage</td>
+          <td>TI’s Impedance Track</td>
+      </tr>
+      <tr>
+          <td>Algorithm Comparison</td>
+          <td>- Inaccurate SoC after idle period<br>- Affected by aged battery<br> -</td>
+          <td>- Remains accurate after idle<br>- Resistant to ageing and temperature changes<br>- Remains accurate at high level of discharge.<br> - Lower error rate.</td>
+      </tr>
+  </tbody>
+</table>
+<p>BQ40Z50 was chosen as it supports up to 4-Series Li-Ion or LiPo Battery Packs. It also offers programmable protection features (Section XXXX) as well as Impedance Tracking and Cell Balancing (Section XXX). The chip is also able to track the number of cycles the batteries have been through. This reduces the need to guess when the batter capacity falls below a certain amount and hence prepare the operator to procure a new set of batteries.</p>
+<h5 id="623-evaluation-of-soc-accuracy">6.2.3 Evaluation of SoC Accuracy<a hidden class="anchor" aria-hidden="true" href="#623-evaluation-of-soc-accuracy">#</a></h5>
+<p>Hence, to evaluate the SoC accuracy, the new Li-Ion battery along with the PMB went through a learning cycle <a href="https://www.ti.com/lit/an/slua903/slua903.pdf?ts=1743852291712&amp;ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FBQ40Z50" target="_blank">https://www.ti.com/lit/an/slua903/slua903.pdf?ts=1743852291712&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FBQ40Z50</a>.</p>
+<p>When discharged at a constant current of 7A, the Voltage and SoC reported by BQ40Z50 was recorded (Table XXX). When using the LiPo battery, the team had a threshold of 15.2V (nominal voltage + 0.4V). Based on the chart, this would be roughly at 40% Depth of Discharge (DoD) (Figure XXX).</p>
+<p><img loading="lazy" src="blog-lipo-battery-voltage-quick-chart.webp" alt="Voltage to Capacity"  />
+</p>
+<h5 id="figure-xxx-chart-of-voltage-and-its-corresponding-capacity">Figure XXX: Chart of Voltage and its Corresponding Capacity<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-chart-of-voltage-and-its-corresponding-capacity">#</a></h5>
+<p>If we were to do the same for the Li-Ion battery the threshold would be 14.8V. This would mean that the run would end before 65 minutes. However, by using SoC the vehicle would be able to run to at least 75 minutes, extending the run time by 15.4 %.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"><strong>Time (minutes)</strong></th>
+          <th style="text-align: center"><strong>Voltage (V)</strong></th>
+          <th style="text-align: center"><strong>Relative State of Charge Reported by BQ40Z50</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">16.5</td>
+          <td style="text-align: center">100%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: center">16.03</td>
+          <td style="text-align: center">93%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">20</td>
+          <td style="text-align: center">15.91</td>
+          <td style="text-align: center">86%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">30</td>
+          <td style="text-align: center">15.45</td>
+          <td style="text-align: center">74%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">45</td>
+          <td style="text-align: center">15.18</td>
+          <td style="text-align: center">67%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">55</td>
+          <td style="text-align: center">15.94</td>
+          <td style="text-align: center">59%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">65</td>
+          <td style="text-align: center">14.68</td>
+          <td style="text-align: center">51%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">75</td>
+          <td style="text-align: center">14.4</td>
+          <td style="text-align: center">45%</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-xxx-bq40z50-soc-reporting-during-constant-current-discharge">Table XXX: BQ40Z50 SoC Reporting During Constant Current Discharge<a hidden class="anchor" aria-hidden="true" href="#table-xxx-bq40z50-soc-reporting-during-constant-current-discharge">#</a></h5>
+<p>The BQ40Z50 is also able to report the time taken to fully charge the batteries, and time taken to fully discharge the batteries. This time is calculated by the average power draw of the batteries.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"><strong>Case</strong></th>
+          <th style="text-align: center"><strong>Start Time</strong></th>
+          <th style="text-align: center"><strong>Starting Battery Voltage and SoC</strong></th>
+          <th style="text-align: center"><strong>Predicted End Time</strong></th>
+          <th style="text-align: center"><strong>Actual End Time</strong></th>
+          <th style="text-align: center"><strong>Time Difference</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">A</td>
+          <td style="text-align: center">8:20 PM</td>
+          <td style="text-align: center">16.42V, 84%</td>
+          <td style="text-align: center">9:30 PM</td>
+          <td style="text-align: center">9:10 PM</td>
+          <td style="text-align: center">20 mins early</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">B</td>
+          <td style="text-align: center">1:07 AM</td>
+          <td style="text-align: center">15.76V, 65%</td>
+          <td style="text-align: center">3:15 AM</td>
+          <td style="text-align: center">2:41 AM</td>
+          <td style="text-align: center">34 mins early</td>
+      </tr>
+  </tbody>
+</table>
+<p>This can be useful as it allows members to better plan and anticipate battery changes at pool tests. While the predicted end time tends to be conservative, this behaviour is preferable as it provides a useful buffer when planning battery swaps.</p>
+<hr>
+<h2 id="7-enhance-user-operability-and-workflow">7. Enhance User Operability and Workflow<a hidden class="anchor" aria-hidden="true" href="#7-enhance-user-operability-and-workflow">#</a></h2>
+<p>One part of the project is to enhance user operability and workflow. User operability can be improved by allowing for easier operation and maintenace of the battery hull, reducing AUV&rsquo;s downtime. Improved workflow can help to identify potential issues and allow for early maintenance. Both user operability and workflow can come together to increase reliabilty of the vehicle.</p>
+<p>Aim to make it easier for memerbs to oeprate and maintain vehicle to keep vehcile reliable despite long operation hours. Main goal is to reduce down time but icnreasing reliability. Help to prevent damage to battery hulls or vehicle. Prevent taking people away from development by fixing damges.</p>
+<h3 id="71-in-hull-firmware-flashing">7.1 In-Hull Firmware Flashing<a hidden class="anchor" aria-hidden="true" href="#71-in-hull-firmware-flashing">#</a></h3>
+<ul>
+<li>Allows for flashing and update without opening hull
+<ul>
+<li>Reduces error during reseasling, reduces downtime</li>
+<li>Tested during RobotX 2024 where a USB port was exposed on the ASV to allow for firmware flashing</li>
+</ul>
+</li>
+<li>Few Option
+<ul>
+<li>CAN Bus Flashing to allow for flashing via CAN
+<ul>
+<li>Require higher overhead as you need a more expensive microcontroller</li>
+<li>Need build own bootloader</li>
+<li>Show old connector where CAN is alreaday exposed</li>
+</ul>
+</li>
+<li>Use the original Balance Connector
+<ul>
+<li>Explain that with the BQ40Z50 chip, balancing can be done with the chip, so balancing dont have to use charger to balance.
+<ul>
+<li>Frees up the connector</li>
+</ul>
+</li>
+<li>Reduce changes needed to be done</li>
+<li>Allows to expose the BQ chip comms also</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Insert image of old balance connector vs new balance connector</li>
+</ul>
+<h3 id="72-remote-status-monitoring">7.2 Remote Status Monitoring<a hidden class="anchor" aria-hidden="true" href="#72-remote-status-monitoring">#</a></h3>
+<ul>
+<li>AS mentioned in xxx manual logging was used to track if battery hull is sealed</li>
+<li>Difficult to determine slow leak</li>
+<li>Upload relevant data online</li>
+<li>This provide historical data for operator to reference easily without unsealing the hull
+<ul>
+<li>Can be useful for leak</li>
+<li>Or to track degradation of battery</li>
+<li>Or to track if cells are becoming unbalanced
+<ul>
+<li>All of which should be rectified to ensure that AUV battery can function properly</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Few Option
+<ul>
+<li>MCU with Wireless Capability
+<ul>
+<li>Not suitable for Metal hull</li>
+</ul>
+</li>
+<li>Accompanying PCB for BCB
+<ul>
+<li>Same connector used to charge also hold the CAN Lines</li>
+<li>Able to connect CAN Line to the PCB to retrieve data from the BCB</li>
+<li>BCB would then be able to upload the data online</li>
+</ul>
+</li>
+<li>Chose the BCB option as we dont need the PMB to have access to the internet all the time. This is as when it is turned on, it is sually connected to the AUV or the BCB. When it is connected to AUV it would have access to the Internet
+<ul>
+<li>Insert diagram from interim report</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>While BCB means we need extra component, it is worth while as we can implement additional features (mentioned in section xxx) we can use it</li>
+<li>Especially since the PMB will be on only when conencted to AUV or BCB</li>
+<li>Go through BCB PCB design
+<ul>
+<li>Powered with USB-C allow to power with the Charger itself (no need extra plug)</li>
+<li>Have ESP32 to get the CAN stuff and publish online with ESP capability
+<ul>
+<li>Insert CAN Table</li>
+<li><img loading="lazy" src="image.png" alt="CAN Table"  />
+</li>
+</ul>
+</li>
+<li>Talk about how it receive the CAN messages and use the Google App Script to Publish into its relevant scripts</li>
+<li>Test
+<ul>
+<li>Simulated with Serial Communication with the computer</li>
+</ul>
+</li>
+<li>Chose google sheet instead of database as it is easy for all members to use and track. Can even use on phone.</li>
+</ul>
+</li>
+<li>current time obtained from NTP</li>
+<li>Can say that previously there was plan for local logging -&gt; included in te design of the PMB
+<ul>
+<li>As the data would be uploaded online by either the AUV or the BCB, there isnt really a need</li>
+<li>Accessing the local data is more troublesome as you have to unseal the hull.</li>
+</ul>
+</li>
+<li>To ensure data accuracy there is a timeut for the stats
+<ul>
+<li>If any stats dont come within 2x its reporting frequency the data is cleared and not reported to prevent posting outdated data</li>
+</ul>
+</li>
+<li>Use a table to compare what is shown on the screen, what is reported to telegram and what is sent to google sheet</li>
+<li>Explain the differences (difference in purpose)</li>
+</ul>
+<hr>
+<h2 id="8-improving-safety-and-reliability">8. Improving Safety and Reliability<a hidden class="anchor" aria-hidden="true" href="#8-improving-safety-and-reliability">#</a></h2>
+<p>To improve safety and reliability of the system faults must be identified and rectified before it gets a chance to cause damage to a system. This can be done by identifying possible leaks of the battery hull and by implementing electrical protection feature to protect the vehicle from any possible electrical fault. Finally the design of the PCB must be able to support the power demand of the vehicle while keeping in mind good electrical practises to develop a reliable PCB.</p>
+<h3 id="81-real-time-safety-and-status-notifications">8.1 Real-Time Safety and Status Notifications<a hidden class="anchor" aria-hidden="true" href="#81-real-time-safety-and-status-notifications">#</a></h3>
+<p>As mentioned in <a href="#233-challenges-with-tracking-battery-hulls-pressure-and-temperature">Section 2.3.3</a>, it might be difficult to identify Battery Hull leaks. To combat this, there should be automatic detection and notification of potential leaks to alert members to identify and rectify the issues.</p>
+<h4 id="811-past-experiences">8.1.1 Past Experiences<a hidden class="anchor" aria-hidden="true" href="#811-past-experiences">#</a></h4>
+<p>During the testing and development of the Autonomous Surface Vessel, a Telegram Channel was running on the ASV to periodically report the battery voltage and current draw. This proved invaluable as it help the team to anticipate and prepare for battery swaps. Furthermore, it helped the team to identify a load-balancing issue in the vehicle that would have otherwise gone unnoticed.</p>
+<p><img loading="lazy" src="tele.png" alt="Telegram Channel Reporting ASV&rsquo;s Battery Status"  />
+</p>
+<h5 id="figure-xxx-telegram-channel-reporting-asvs-battery-status">Figure XXX: Telegram Channel Reporting ASV&rsquo;s Battery Status<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-telegram-channel-reporting-asvs-battery-status">#</a></h5>
+<h4 id="812-chosen-method">8.1.2 Chosen Method<a hidden class="anchor" aria-hidden="true" href="#812-chosen-method">#</a></h4>
+<p>Hence, using Telegram Channel as a form of notification was chosen as it was tried and proven to be effective. Furthermore, as Telegram is used to communicate in the team, members would already have it installed on their devices, lowering the barrier of entry for using this system. By utilising a Telegram Channel also allows for multiple members to be notified of any issues. This reduces the chance of an alert being missed.</p>
+<h4 id="813-implementation">8.1.3 Implementation<a hidden class="anchor" aria-hidden="true" href="#813-implementation">#</a></h4>
+<p>When the data is sent from the BCB to the Google Sheet, the same Google App Script is used to check for the following conditions:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Condition</strong></th>
+          <th style="text-align: left"><strong>Notification</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Internal Pressure Below 107</td>
+          <td style="text-align: left">ALERT: PMB IS LEAKING!</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Drop in the Ratio of Internal Pressure to Temperature &gt; 0.5</td>
+          <td style="text-align: left">ALERT: PMB MIGHT BE leaking, please observe.</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-xxx-leak-detection-condition-and-notification">Table XXX: Leak Detection Condition and Notification<a hidden class="anchor" aria-hidden="true" href="#table-xxx-leak-detection-condition-and-notification">#</a></h5>
+<p>The leak detection is based on the Gay Lussac&rsquo;s Law &lt;Insert Reference <a href="https://www.chem.fsu.edu/chemlab/chm1045/gas_laws.html" target="_blank">https://www.chem.fsu.edu/chemlab/chm1045/gas_laws.html</a> &gt;. This is as if the Battery Hull is not leaking the amount of gas in the hull should remain the same and hence the ratio of internal pressure to temperature should remain the same even if the temperature changes. Hence, if the ratio of internal pressure to temperature varies significantly, it is likely that there is a leak occurring.</p>
+<p>To obtain the previous Internal Pressure to Temperature ratio, the Google App Script obtains the last recorded data for the PMB on the Google Sheet.</p>
+<p>The threshold of 0.5 is determined by observing the change in temperature and internal pressure of three battery hulls.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"><strong>Pressure</strong></th>
+          <th style="text-align: center"><strong>Temp</strong></th>
+          <th style="text-align: center"><strong>P/T</strong></th>
+          <th style="text-align: center"><strong>P/T Difference</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">110.30</td>
+          <td style="text-align: center">24</td>
+          <td style="text-align: center">4.596</td>
+          <td style="text-align: center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">110.38</td>
+          <td style="text-align: center">25</td>
+          <td style="text-align: center">4.415</td>
+          <td style="text-align: center">-0.181</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">110.45</td>
+          <td style="text-align: center">27</td>
+          <td style="text-align: center">4.091</td>
+          <td style="text-align: center">-0.324</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">110.52</td>
+          <td style="text-align: center">27</td>
+          <td style="text-align: center">4.093</td>
+          <td style="text-align: center">0.003</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">110.58</td>
+          <td style="text-align: center">27</td>
+          <td style="text-align: center">4.096</td>
+          <td style="text-align: center">0.002</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">110.71</td>
+          <td style="text-align: center">28</td>
+          <td style="text-align: center">3.954</td>
+          <td style="text-align: center">-0.142</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">110.80</td>
+          <td style="text-align: center">28</td>
+          <td style="text-align: center">3.957</td>
+          <td style="text-align: center">0.003</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">110.85</td>
+          <td style="text-align: center">28</td>
+          <td style="text-align: center">3.959</td>
+          <td style="text-align: center">0.002</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-xxx-changes-in-pressure-and-temperature-of-battery-hull-a">Table XXX: Changes in Pressure and Temperature of Battery Hull A<a hidden class="anchor" aria-hidden="true" href="#table-xxx-changes-in-pressure-and-temperature-of-battery-hull-a">#</a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"><strong>Pressure</strong></th>
+          <th style="text-align: center"><strong>Temp</strong></th>
+          <th style="text-align: center"><strong>P/T</strong></th>
+          <th style="text-align: center"><strong>P/T Difference</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">112.49</td>
+          <td style="text-align: center">24</td>
+          <td style="text-align: center">4.687</td>
+          <td style="text-align: center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.54</td>
+          <td style="text-align: center">24</td>
+          <td style="text-align: center">4.689</td>
+          <td style="text-align: center">0.002</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.59</td>
+          <td style="text-align: center">25</td>
+          <td style="text-align: center">4.504</td>
+          <td style="text-align: center">-0.186</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.63</td>
+          <td style="text-align: center">25</td>
+          <td style="text-align: center">4.506</td>
+          <td style="text-align: center">0.002</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.67</td>
+          <td style="text-align: center">25</td>
+          <td style="text-align: center">4.507</td>
+          <td style="text-align: center">0.002</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.75</td>
+          <td style="text-align: center">25</td>
+          <td style="text-align: center">4.510</td>
+          <td style="text-align: center">0.003</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.80</td>
+          <td style="text-align: center">25</td>
+          <td style="text-align: center">4.512</td>
+          <td style="text-align: center">0.002</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.85</td>
+          <td style="text-align: center">26</td>
+          <td style="text-align: center">4.340</td>
+          <td style="text-align: center">-0.172</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-xxx-changes-in-pressure-and-temperature-of-battery-hull-b">Table XXX: Changes in Pressure and Temperature of Battery Hull B<a hidden class="anchor" aria-hidden="true" href="#table-xxx-changes-in-pressure-and-temperature-of-battery-hull-b">#</a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"><strong>Pressure</strong></th>
+          <th style="text-align: center"><strong>Temp</strong></th>
+          <th style="text-align: center"><strong>P/T</strong></th>
+          <th style="text-align: center"><strong>P/T Difference</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">111.88</td>
+          <td style="text-align: center">24</td>
+          <td style="text-align: center">4.662</td>
+          <td style="text-align: center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.04</td>
+          <td style="text-align: center">26</td>
+          <td style="text-align: center">4.309</td>
+          <td style="text-align: center">-0.352</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.10</td>
+          <td style="text-align: center">28</td>
+          <td style="text-align: center">4.004</td>
+          <td style="text-align: center">-0.306</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.16</td>
+          <td style="text-align: center">28</td>
+          <td style="text-align: center">4.006</td>
+          <td style="text-align: center">0.002</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.23</td>
+          <td style="text-align: center">29</td>
+          <td style="text-align: center">3.870</td>
+          <td style="text-align: center">-0.136</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.34</td>
+          <td style="text-align: center">29</td>
+          <td style="text-align: center">3.874</td>
+          <td style="text-align: center">0.004</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.43</td>
+          <td style="text-align: center">29</td>
+          <td style="text-align: center">3.877</td>
+          <td style="text-align: center">0.003</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">112.47</td>
+          <td style="text-align: center">30</td>
+          <td style="text-align: center">3.749</td>
+          <td style="text-align: center">-0.128</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-xxx-changes-in-pressure-and-temperature-of-battery-hull-b-1">Table XXX: Changes in Pressure and Temperature of Battery Hull B<a hidden class="anchor" aria-hidden="true" href="#table-xxx-changes-in-pressure-and-temperature-of-battery-hull-b-1">#</a></h5>
+<p>By feeding various data into the BCB, we are able to simulate a leaking hull, leading to an alert sent to the Telegram Channel.</p>
+<p><img loading="lazy" src="ratio.png" alt="Telegram Channel Reporting a Possible Leak"  />
+</p>
+<h5 id="figure-xxx-telegram-channel-reporting-a-possible-leak-in-pmb2">Figure XXX: Telegram Channel Reporting a Possible Leak in PMB2<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-telegram-channel-reporting-a-possible-leak-in-pmb2">#</a></h5>
+<p><img loading="lazy" src="leak.png" alt="Telegram Channel Reporting a Leak"  />
+</p>
+<h5 id="figure-xxx-telegram-channel-reporting-a-leak-in-pmb1">Figure XXX: Telegram Channel Reporting a Leak in PMB1<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-telegram-channel-reporting-a-leak-in-pmb1">#</a></h5>
+<p>The same Telegram channel is also used to broadcast the state of the battery charging and notifies members when it is fully charged. This feature addresses a common operational issue, where team members may
+forget to turn off the charger, especially after fatigue from a long day of pool tests. By receiving timely reminders, the team can ensure a safer operation by turning off the charger when the battery is fully charged.</p>
+<p><img loading="lazy" src="teletelem.png" alt="Telegram Channel Reporting Charged Battery"  />
+</p>
+<h5 id="figure-xxx-telegram-channel-reporting-a-fully-charged-pmb1">Figure XXX: Telegram Channel Reporting a Fully Charged PMB1<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-telegram-channel-reporting-a-fully-charged-pmb1">#</a></h5>
+<h3 id="82-protection-features">8.2 Protection Features<a hidden class="anchor" aria-hidden="true" href="#82-protection-features">#</a></h3>
+<ul>
+<li>Used BQ40Z50 protection</li>
+<li>Protects against possible electrical fault -&gt; increase system robustness</li>
+<li>Include literature review of hardware vs software safety</li>
+<li>Tested with COV, OC
+<ul>
+<li>Tested both hardware and software limit
+<ul>
+<li>Insert data and photo and excel</li>
+</ul>
+</li>
+<li>also tested CUVC such that when the battery voltage is low and there is high current draw it will cut to protect the battery (to decide if I want to include this)</li>
+<li>explain that connector limit is 40A (insert reference to SubConn)</li>
+<li>While we have fuse, it is also good to have additional layer of protection</li>
+<li>also has a short circuit protection</li>
+</ul>
+</li>
+<li>protect battery and auv from further harm</li>
+</ul>
+<h3 id="83-pmb-pcb-design">8.3 PMB PCB Design<a hidden class="anchor" aria-hidden="true" href="#83-pmb-pcb-design">#</a></h3>
+<ul>
+<li>Look at OneNote on PCB explanation</li>
+<li>Power Rating
+<ul>
+<li>Show the load test</li>
+<li>show temperature picture</li>
+<li>Pool test show that it is around 11A per battery when moving at full spped</li>
+<li>To be safe, the test was done at 40A because it was the connector rating (include time spent running)</li>
+<li>Insert calculation for designs in appendix (refer to OneNote)
+<ul>
+<li>Talk about the Current Draw and Oz of outer layer as well as trace width</li>
+<li>Show that it is 4 layer with split plane for the different Power</li>
+</ul>
+</li>
+<li>Refer the SLUA on how to route
+<ul>
+<li>Talk about the difference and similarity to SLUAA reccomendation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Isolation
+<ul>
+<li>Protection and noise especially for battery</li>
+</ul>
+</li>
+<li>Look at Altium to see what each section does and how it ties to the design</li>
+<li>Go through mistakes that was in the PCB
+<ul>
+<li>and list the possible improvement also</li>
+</ul>
+</li>
+<li>Design for easy debugging
+<ul>
+<li>Test Points</li>
+<li>Extra conector to test CAN Transmissions</li>
+<li>Switches to switch communication line</li>
+</ul>
+</li>
+<li>Take a photo of PMB and highlight all the connections to show all the output and what it is connected to</li>
+<li>Power Consumption chart to spec the different voltage regulator</li>
+<li>Current draw of MCU and screen is 40mA</li>
+</ul>
+<hr>
+<h2 id="9-system-evaluation">9. System Evaluation<a hidden class="anchor" aria-hidden="true" href="#9-system-evaluation">#</a></h2>
+<ul>
+<li>Basic Feature
+<ul>
+<li>Refer to earlier table to see if able to meet all the requirements</li>
+<li>Able to be backward compatible -&gt; can fit into old battery hull, can be turned on with reed switch, can charge, can discharge</li>
+<li>Able to report telemetry, able to draw, able to charge
+<ul>
+<li>Verified reporting is accurate -&gt; Voltage measured with multimeter</li>
+<li>Current is calibrated with a load tester drawing a constant load</li>
+<li>Discharging and Charging State of Battery Verified</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Improvements (use a before: after table)
+<ul>
+<li>Run Time: Increased</li>
+<li>User Operability and Maintenace: 25 mins to 5mins to upload, constant logging</li>
+<li>Reliability -&gt; able to detect leak immediately</li>
+<li>Have another table that compares old PMB and New PMB
+<ul>
+<li>Interfaces</li>
+<li>Data Reporting</li>
+<li>Ease of use etc.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mistakes
+<ul>
+<li>No Pull Down for Isolator Signal</li>
+<li>No pull up for I2C</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="10-impact">10. Impact<a hidden class="anchor" aria-hidden="true" href="#10-impact">#</a></h2>
+<ul>
+<li>To be deployed at RoboSub 2025</li>
+<li>PCB Designed will be released to help other teams design their own PMB</li>
+<li>Internet connected BCB was not seen at RoboSub, with teams moving towards battery pods, this is something that can be useful for them</li>
+</ul>
+<hr>
+<h2 id="11-future-work">11. Future Work<a hidden class="anchor" aria-hidden="true" href="#11-future-work">#</a></h2>
+<ul>
+<li>Test with the AUV
+<ul>
+<li>Unable to do so due to limited hull and pool test</li>
+<li>Did not want to open and swap out the PMB as the hulls are old and notoriously hard to seal</li>
+<li>Was waiting for development of new hull to put the new pmb in</li>
+</ul>
+</li>
+<li>Merge BCB into a Smart Charger
+<ul>
+<li>Communciate with PMB to negoitate desired current and voltage</li>
+<li>Can get data directly from the charger also</li>
+</ul>
+</li>
+<li>Better User Operability
+<ul>
+<li>Using same connector for Balance Pin and Flashing
+<ul>
+<li>works for previous PMB as it is connected to each other</li>
+<li>Does not work as thsi fried everything</li>
+<li>Future Work
+<ul>
+<li>Change connector to something different so you dont accidentally misconnect</li>
+<li>More work and not interchangeable but its just crimp 1x so its not too bad</li>
+</ul>
+</li>
+<li>should ahve integrated protection into the line
+<ul>
+<li>clamping diode to prevent over 3v3</li>
+<li>diode to prevent reverse polarity</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="12-conclusion">12. Conclusion<a hidden class="anchor" aria-hidden="true" href="#12-conclusion">#</a></h2>
+<ul>
+<li>Move from Power Monitoring to Power Management</li>
+<li>Well Integrated system to deliver xxxx AUV for RoboSub</li>
+</ul>
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<hr>
+<h2 id="appendix">Appendix<a hidden class="anchor" aria-hidden="true" href="#appendix">#</a></h2>
+<ul>
+<li>PCB Schematic and Routing</li>
+<li>Calculations
+<ul>
+<li>Look at OneNote on PCB explanation</li>
+</ul>
+</li>
+<li>BQStudio Configuration (Insert Link to the Page)</li>
+</ul>
 
 
-            </div>
+  </div>
 
-            <footer class="post-footer">
-                <ul class="post-tags">
-                </ul>
-            </footer>
-        </article>
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
     </main>
+    
+<footer class="footer">
+    <span>&copy; 2025 <a href="http://localhost:1313/website/">AUV Battery Management System</a></span> ·     
+    <span>
+    Powered by 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/pmichaillat/hugo-website/" rel="noopener" target="_blank">a modified version</a>
+         of 
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
 
-    <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/website/">AUV Battery Management System</a></span> ·
-        <span>
-            Powered by
-            <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-            <a href="https://github.com/pmichaillat/hugo-website/" rel="noopener" target="_blank">a modified version</a>
-            of
-            <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-        </span>
-    </footer>
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
-    <script>
-        let menu = document.getElementById('menu')
-        if (menu) {
-            menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-            menu.onscroll = function () {
-                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
             }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
         }
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-                var id = this.getAttribute("href").substr(1);
-                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                        behavior: "smooth"
-                    });
-                } else {
-                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-                }
-                if (id === "top") {
-                    history.replaceState(null, null, " ");
-                } else {
-                    history.pushState(null, null, `#${id}`);
-                }
-            });
-        });
-
-    </script>
-    <script>
-        document.querySelectorAll('pre > code').forEach((codeblock) => {
-            const container = codeblock.parentNode.parentNode;
-
-            const copybutton = document.createElement('button');
-            copybutton.classList.add('copy-code');
-            copybutton.innerHTML = 'copy';
-
-            function copyingDone() {
-                copybutton.innerHTML = 'copied!';
-                setTimeout(() => {
-                    copybutton.innerHTML = 'copy';
-                }, 2000);
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
             }
 
-            copybutton.addEventListener('click', (cb) => {
-                if ('clipboard' in navigator) {
-                    navigator.clipboard.writeText(codeblock.textContent);
-                    copyingDone();
-                    return;
-                }
-
-                const range = document.createRange();
-                range.selectNodeContents(codeblock);
-                const selection = window.getSelection();
-                selection.removeAllRanges();
-                selection.addRange(range);
-                try {
-                    document.execCommand('copy');
-                    copyingDone();
-                } catch (e) { };
-                selection.removeRange(range);
-            });
-
-            if (container.classList.contains("highlight")) {
-                container.appendChild(copybutton);
-            } else if (container.parentNode.firstChild == container) {
-
-            } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-
-                codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-            } else {
-
-                codeblock.parentNode.appendChild(copybutton);
-            }
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
         });
-    </script>
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
 </body>
-
 </html>

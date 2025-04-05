@@ -54,7 +54,7 @@ TODO:
 
 ## 2. Problem Background
 ### 2.1 Introduction
-Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs and builds Autonomous Underwater Vehicles (AUVs) for the annual RoboSub competition. Following lessons learned from AUV4.1’s participation in RoboSub 2023, the team is concurrently developing AUV4.5 for RoboSub 2025 and AUV5.0 for RoboSub 2026 (Table 1).
+Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs and builds Autonomous Underwater Vehicles (AUVs) for the annual RoboSub competition. Following lessons learned from AUV4.1’s participation in RoboSub 2023 (Figure 1), the team is concurrently developing AUV4.5 for RoboSub 2025 and AUV5.0 for RoboSub 2026 (Table 1).
 
 ![AUV4.1 at RoboSub 2023](RoboSub2023.jpeg)
 ##### Figure 1: AUV4.1 at RoboSub 2023
@@ -69,9 +69,9 @@ Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs a
 AUV4.5 retains the same hull design as AUV4.1 but features a newly developed electrical and software subsystem. This new electrical subsystem is designed to be mechanically compatible with the existing AUV4.1 hull while also serving as the baseline for AUV5.0. 
 
 ### 2.2 Current System
-The current power system for the AUVs comprises two main components, the Battery Hull and the Battery Charging Box (BCB). Each Battery Hull houses a Power Monitoring Board (PMB) and a LiPo battery.
+The current power system for the AUVs comprises two main components, the Battery Hull (Figure 2) and the Battery Charging Box (BCB). Each Battery Hull houses a Power Monitoring Board (PMB) and a LiPo battery.
 
-The PMB monitors and reports key telemetry data, such as the battery's voltage, current, battery hull's temperature and pressure, both on the screen and via the CAN Bus. Two such hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during pool test by eliminating the need to unseal the main vehicle hull.
+The PMB (Figure 3) monitors and reports key telemetry data, such as the battery's voltage, current, battery hull's temperature and pressure, both on the screen and via the CAN Bus. Two such hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during pool test by eliminating the need to unseal the main vehicle hull.
 
 ![Battery Hull](BatteryHull.png)
 ##### Figure 2: Metal 3D-Printed Battery Hull
@@ -83,7 +83,7 @@ The PMB monitors and reports key telemetry data, such as the battery's voltage, 
 ![Assembled Battery Hull](assembled.png)
 ##### Figure 4: Assembled Battery Hull
 
-The BCB comprises an AC-DC power supply and a LiPo charger. It includes connectors that interface directly with the battery hull, allowing the battery to be charged without removing it from the hull.
+The BCB (Figure 5) comprises an AC-DC power supply and a LiPo charger. It includes connectors that interface directly with the battery hull, allowing the battery to be charged without removing it from the hull.
 
 ![Battery Charging Box](bcb.png)
 ##### Figure 5: Battery Charging Box
@@ -187,6 +187,7 @@ The project goal can be summarised as:
     </b>
 </div>
 
+<br>
 Hence, a three-Pronged approach wass used to guide the development of the PMB, with each sub-goal detailed in its respective section.
 
 | **Sub Goals**                          | **Section Number** |
@@ -202,14 +203,14 @@ Hence, a three-Pronged approach wass used to guide the development of the PMB, w
   
 ### 4.1 Backward Compatibility
 
-As outlined in [Section 2.1](#21-introduction), AUV4.5 has the same mechanical structure as AUV4.1. As such, the new PMB must remain mechanically and electrically compatible with the AUV4.1 battery hull. This backward compatibility ensures minimal modification to the existing support infrastructure when using the new PMB. Furthermore, designing to meet AUV4.1's specifications would also ensures forward compatibility with AUV5.0. This approach enables cross-platform use of the same PMB, reducing the need for custom variants and lowering the manufacturing cost by leveraging economies of scale.
+As outlined in [Section 2.1](#21-introduction), AUV4.5 has the same mechanical structure as AUV4.1. As such, the new PMB must remain mechanically and electrically compatible with the AUV4.1 battery hull. This backward compatibility ensures minimal modification to the existing support infrastructure when using the new PMB. Furthermore, designing to meet AUV4.1's specifications would also ensures forward compatibility with AUV5.0. This approach enables component reuse across AUV4.1, AUV4.5 and AUV5.0, reducing the need for custom variants and lowering the manufacturing cost by leveraging economies of scale.
 
 To maintain backwards compatibility, the following constraints were identified.
 
-| **Characteristics**  | **Constraints**                                                                               |
-| :------------------- | :-------------------------------------------------------------------------------------------- |
-| Dimensions           | The PMB and battery must fit within the internal volume of the AUV4.1 battery hull enclosure. |
-| Electrical Interface | Existing connectors for power delivery and charging must be retained.                         |
+| **Characteristics**  | **Constraints**                                                                                |
+| :------------------- | :--------------------------------------------------------------------------------------------- |
+| Dimensions           | The PMB and battery must fit within a 192mm x 77.5mm x 44mm volume of the AUV4.1 battery hull. |
+| Electrical Interface | Existing connectors for power delivery and charging must be retained.                          |
 
 ##### Table 6: Design Constraints for Backward Compatibility
 
@@ -232,7 +233,7 @@ The 40A current specification is based on the rated continuous current limit of 
 
 ### 4.3 Component Standardisation
 
-To reduce cost and simplify procurement, certain components of the PMB are shared with the other PCBs onboard the AUV. Specifically, the STM32F103C8T6 and the ISOW1044B isolated CAN Transceiver (Table 7). This standardisation reduces design effort and chance of error as the same schematic capture and layout can be reused across the PCBs. This also allows for easier spare preparation as the same component can act as spares for the different PCBs.
+To reduce cost and simplify procurement, certain components of the PMB are shared with the other PCBs onboard the AUV. Specifically, the STM32F103C8T6 and the ISOW1044B isolated CAN Transceiver (Table 7). This standardisation reduces design effort and chance of error as the same validated schematic and layout can be reused across the PCBs. This also allows for easier spare preparation as the same component can act as spares for the different PCBs.
 
 <img src="mcuschematic.png" alt="Common Schematic for STM32F103C8T6" style="max-width: 100%;">
 
@@ -287,10 +288,9 @@ The batteries have been in use for over 2 years, with an estimated 200 cycles co
 ![Battery Cycle Life](cyclestats.png)
 ##### Figure XXX: Information on The Cycle Life of The Current Battery
   
-Given that the same battery hull is likely to remain in use for a few more years of competition, the batteries should be renewed to avoid more degradation.
+As the current battery hull design is expected to remain in use for several more competition cycles, the batteries should be renewed to avoid more degradation.
 
-Another factor in changing batteries is that we usually require 6 batteries for each AUV, organised into three sets of two: one set in use, one set charging, and one set kept as spares. Therefore, selecting cost-effective batteries can result in significant savings
-for the team.
+Operationally, each AUV requires six batteries, organised into three sets of two: one set in use, one set charging, and one set on standby. Therefore, selecting cost-effective batteries can result in significant savings for the team.
 
 | **Specification**                          | **GrePow LiPo (current)** | **Raitan Li-Ion** | **MaxAmp Li-Ion** |
 | ------------------------------------------ | ------------------------- | ----------------- | ----------------- |
@@ -324,7 +324,7 @@ Two Raitan Li-Ion batteries were procured for testing and compared with the curr
 ![Photo of New Batteries in AUV4.1 Battery Hull](newbatthull.png)
 ##### Figure XXX: Photo of New Batteries in AUV4.1 Battery Hull
 
-Raitan Li-Ion battery has been verified to be at least comparable to the GrePow LiPo battery making it a suitable replacement for the old batteries.
+Raitan Li-Ion battery has been verified to be comparable to the GrePow LiPo battery making it a suitable replacement for the old batteries.
 
 ### 6.2 Accurate SoC Estimation
 As mentioned in [Section 2.3.2](#232-limited-capabilities-of-battery-fuel-gauge), the team previously relied on voltage to estimate the battery capacity. This approach tends to end tests prematurely, as conservative voltage thresholds fail to account for load and battery age. By utilising the gauging feature on battery management chip, we can determine a more accurate SoC, allowing in-water tests to run longer without risking battery damage.
@@ -349,7 +349,7 @@ Additionally, its software application "bqStudio" provides an easy interface wit
 ![Screenshot of bQStudio](bq.png)
 ##### Figure XXX: Screenshot of bQStudio
 
-To leverage the extensive resources available and increase likelihood of success, a compatible chip from the TI family was shortlisted. Furthermore, being successfully implemented by multiple teams indicate that the chip has benefits.
+To leverage the extensive resources available and increase likelihood of success, a compatible chip from the TI family was shortlisted. Successful implementations by teams such as Cornell and OSU further validate the chip’s reliability in AUV applications.
 
 | **Feature**               | **BQ34110 (Current)**                                                  | **BQ40Z50 (Proposed)**                                                                                                                                   |
 | ------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
