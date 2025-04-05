@@ -192,11 +192,11 @@ The project goal can be summarised as:
 <br>
 Hence, a three-Pronged approach wass used to guide the development of the PMB, with each sub-goal detailed in its respective section.
 
-| **Sub Goals**                          | **Section Number** |
-| :------------------------------------- | :----------------: |
-| Enhance User Operability and Work Flow |     Section 8      |
-| Improve Safety and Reliability         |     Section 7      |
-| Improve AUV Performance                |     Section 6      |
+| **Sub Goals**                          |                  **Section Number**                   |
+| :------------------------------------- | :---------------------------------------------------: |
+| Enhance User Operability and Work Flow |   [Section 8](#8-improving-safety-and-reliability)    |
+| Improve Safety and Reliability         | [Section 7](#7-enhance-user-operability-and-workflow) |
+| Improve AUV Performance                |   [Section 6](#8-improving-safety-and-reliability)    |
 ##### Table 5: Sub Goals and Corresponding Report Section
 
 ---
@@ -539,11 +539,11 @@ Due to limited space on the screen, only high-priority telemetry is shown to avo
 ---
 
 ## 8. Improving Safety and Reliability
-To improve safety and reliability of the system faults must be identified and rectified before it gets a chance to cause damage to a system. This can be done by identifying possible leaks of the battery hull and by implementing electrical protection feature to protect the vehicle from any possible electrical fault. Finally the design of the PCB must be able to support the power demand of the vehicle while keeping in mind good electrical practises to develop a reliable PCB.
+Ensuring safety and reliability of the system requires timely identification and mitigation of faults must be before it damages the system. his section outlines three key strategies: leak detection in the battery hull, robust electrical protection features, and utilising good electrical practises to design a high power PCB.
 
 
 ### 8.1 Real-Time Safety and Status Notifications
-As mentioned in [Section 2.3.3](#233-challenges-with-tracking-battery-hulls-pressure-and-temperature), it might be difficult to identify Battery Hull leaks. To combat this, there should be automatic detection and notification of potential leaks to alert members to identify and rectify the issues.
+As mentioned in [Section 2.3.3](#233-challenges-with-tracking-battery-hulls-pressure-and-temperature), slow battery hull leaks are difficult to detect without consistent data. A possible solution will be the automatic notification of team members when a leak is detected by the system.
 
 #### 8.1.1 Past Experiences
 During the testing and development of the Autonomous Surface Vessel, a Telegram Channel was running on the ASV to periodically report the battery voltage and current draw. This proved invaluable as it help the team to anticipate and prepare for battery swaps. Furthermore, it helped the team to identify a load-balancing issue in the vehicle that would have otherwise gone unnoticed.
@@ -552,18 +552,18 @@ During the testing and development of the Autonomous Surface Vessel, a Telegram 
 ##### Figure XXX: Telegram Channel Reporting ASV's Battery Status
 
 #### 8.1.2 Chosen Method
-Hence, using Telegram Channel as a form of notification was chosen as it was tried and proven to be effective. Furthermore, as Telegram is used to communicate in the team, members would already have it installed on their devices, lowering the barrier of entry for using this system. By utilising a Telegram Channel also allows for multiple members to be notified of any issues. This reduces the chance of an alert being missed.
+Telegram was selected as the alert platform due to its prior success and team-wide adoption. Furthermore, as it is used for internal communications, it provides a low-barrier of entry and high-visibility for any fault notification. 
 
-#### 8.1.3 Implementation
-When the data is sent from the BTB to the Google Sheet, the same Google App Script is used to check for the following conditions:
+#### 8.1.3 Leak Detection Implementation
+A Google App Script processes data uploaded from the Battery Telemetry Board (BTB) and checks for the following leak indicators:
 
 | **Condition**                                               | **Notification**                             |
 | :---------------------------------------------------------- | :------------------------------------------- |
 | Internal Pressure Below 107                                 | ALERT: PMB IS LEAKING!                       |
 | Drop in the Ratio of Internal Pressure to Temperature > 0.5 | ALERT: PMB MIGHT BE leaking, please observe. |
-##### Table XXX: Leak Detection Condition and Notification
+##### Table XXX: Leak Detection Thresholds and Corresponding Notifications
 
-The leak detection is based on the Gay Lussac's Law <Insert Reference https://www.chem.fsu.edu/chemlab/chm1045/gas_laws.html >. This is as if the Battery Hull is not leaking the amount of gas in the hull should remain the same and hence the ratio of internal pressure to temperature should remain the same even if the temperature changes. Hence, if the ratio of internal pressure to temperature varies significantly, it is likely that there is a leak occurring.
+The leak detection is based on the Gay Lussac's Law <Insert Reference https://www.chem.fsu.edu/chemlab/chm1045/gas_laws.html > which states that the pressure of a gas is directly proportional to its temperature at constant volume. Hence, if the Battery Hull is not leaking, the amount of gas in the hull should remain the same. Thus, the ratio of internal pressure to temperature should remain consistent despite temperature changes. Therefore, a significant deviation in this ratio would suggest a potential leak.
 
 To obtain the previous Internal Pressure to Temperature ratio, the Google App Script obtains the last recorded data for the PMB on the Google Sheet.
 
@@ -613,52 +613,121 @@ By feeding various data to the BTB, we are able to simulate a leaking hull, lead
 ![Telegram Channel Reporting a Leak](leak.png)
 ##### Figure XXX: Telegram Channel Reporting a Leak in PMB1
 
-The same Telegram channel is also used to broadcast the state of the battery charging and notifies members when it is fully charged. This feature addresses a common operational issue, where team members may
+The same Telegram channel is also used to broadcast the progress of the battery charging and notifies members when it is fully charged. This feature addresses a common operational issue, where team members may
 forget to turn off the charger, especially after fatigue from a long day of pool tests. By receiving timely reminders, the team can ensure a safer operation by turning off the charger when the battery is fully charged.
 
 ![Telegram Channel Reporting Charged Battery](teletelem.png)
 ##### Figure XXX: Telegram Channel Reporting a Fully Charged PMB1
 
 ### 8.2 Protection Features
-  - Used BQ40Z50 protection
-  - Protects against possible electrical fault -> increase system robustness
-  - Include literature review of hardware vs software safety
-  - Tested with COV, OC
-    - Tested both hardware and software limit
-      - Insert data and photo and excel
-    - also tested CUVC such that when the battery voltage is low and there is high current draw it will cut to protect the battery (to decide if I want to include this)
-    - explain that connector limit is 40A (insert reference to SubConn)
-    - While we have fuse, it is also good to have additional layer of protection
-    - also has a short circuit protection
-  - protect battery and auv from further harm
+BQ40Z50 comprises of various protection features. This includes two tiers of protection. The first tier disconnect the circuits via MOSFETs, while the second tier permanently disable the battery pack by blowing the fuse.  Within the first tier there are also hardware protections that can be configured for faster a response from the chip.
 
+These features collectively protect the vehicle from electrical fault, improving the reliability of the system.
+
+![Using bQStudio to configure Protection Settings](protection.png)
+##### Figure XXX: Configuring BQ40Z50 Protection Parameters in bqStudio
+
+Several key safety features were configured and tested:
+
+| **Feature**                             | **Test Result**                                                                                                                       |
+| :-------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| Overcurrent in Discharge (OCD)          | Used a load tester to verify that discharging above the set current value for the specified time would turn off the discharge MOSFET. |
+| Overload in Discharge Protection (AOLD) | Almost instantaneous cut off when discharging above the set current limit.                                                            |
+| Over Charging Current Protection (OCC)  | When the charging current is higher than the preset threshold, the Charging MOSFET is turned off.                                     |
+
+##### Figure XXX: Using bQStudio to configure Protection Settings
+
+Additionally, there is a secondary overvoltage protection chip (BQ294701) monitors cell voltages independently and can also activate the fuse if an overvoltage is detected. This act as a fall back if the BQ40Z50 is malfunctioning. 
 
 ### 8.3 PMB PCB Design
-  - Look at OneNote on PCB explanation
-  - Power Rating
-    - Show the load test
-    - show temperature picture
-    - Pool test show that it is around 11A per battery when moving at full spped
-    - To be safe, the test was done at 40A because it was the connector rating (include time spent running)
-    - Insert calculation for designs in appendix (refer to OneNote)
-      - Talk about the Current Draw and Oz of outer layer as well as trace width
-      - Show that it is 4 layer with split plane for the different Power
-    - Refer the SLUA on how to route
-      - Talk about the difference and similarity to SLUAA reccomendation
-  - Isolation
-    - Protection and noise especially for battery
-  - Look at Altium to see what each section does and how it ties to the design
-  - Go through mistakes that was in the PCB
-    - and list the possible improvement also
-  - Design for easy debugging
-    - Test Points
-    - Extra conector to test CAN Transmissions
-    - Switches to switch communication line
-  - Take a photo of PMB and highlight all the connections to show all the output and what it is connected to
-  - Power Consumption chart to spec the different voltage regulator
-  - Current draw of MCU and screen is 40mA
+ To ensure that the PMB is reliable, good PCB design practises must be followed to ensure both signal integrity and that the PMB can support the power required. The PMB design adheres to recommendations from TI's SLUA660A Advanced Gas Gauge Circuit Design document.<insert reference> This ensures that the required components are wired properly in the circuit.
 
-  
+ The PMB is a 4-Layer PCB with the top and bottom layer for signals, and the middle layer acting as the power and ground plane.
+
+ To remain backwards compatible, the PMB has the same dimensions as the previous PMB and have most of its connectors in the same location on the PCB.
+ <Insert Reference to Appendix>
+ <Insert calculation for designs in appendix (refer to OneNote)>
+
+#### 8.3.1 Design for High Power Handling
+The PMB is designed to be able to supply 40A. Hence, 2oz copper was used on the outer layers of the PCB, where the power path are, to reduce temperature rise. The traces are also made as wide as possible to reduce resistance.
+
+![3D Model of Power Path](3dpower.png)
+##### Figure XXX: 3D Model of Power Path
+
+![Power Path on the Top Layer](toppower.png)
+##### Figure XXX: Power Path on the Top Layer
+
+The IPTC014N10NM5 MOSFET was chosen as it has top side cooling package. This allows the use of thermal pad to conduct the heat from the MOSFET to the top of the battery hull <Insert Reference: https://www.infineon.com/dgdl/Infineon-Board_Assembly_Recommendations-Gullwing-Package-v05_00-EN.pdf?fileId=5546d46275b79adb0175b7da356300e6>.
+
+![MOSFET Highlighted on The New PMB](pcbmosfet.png)
+##### Figure XXX: MOSFET Highlighted on The New PMB
+
+A test was conducted to compare the new MOSFET with the old MOSFET and it's thermal conducting capabilities. The PMB is placed Within the enclosed battery hull with starting temperature of 28 Celsius. A continuous current draw of 40A was carried out for 10 minutes. A thermal camera was then use to measure the temperature of the PCB.
+
+![Thermal Image of the New PMB](newpmbthermal.jpg)
+##### Figure XXX: Thermal Image of the New PMB after Load Test
+
+![Thermal Image of the Old PMB](thermaloldpmb.jpg)
+##### Figure XXX: Thermal Image of the Old PMB after Load Test
+
+It can be observed that the old PMB has a higher temperature of the load test, indicating that the MOSFETs on the new PMB are better at conducting thermal heat away.
+
+To ensure reliable power supply, a power consumption chart was drawn up to verify that the selected voltage regulator are able to supply enough power.
+
+![PMB's Power Consumption Chart](pmbpowerconsume.png)
+##### Figure XXX: PMB's Power Consumption Chart
+
+#### 8.3.2 Design for Signal Integrity
+Ensuring that the signal transmitted on the data line are not affected by noise is critical to creating a reliable PMB.
+
+Firstly, the higher power section of the PMB is on the opposite side to the lower power section of the PMB.
+
+![Split between Higher and Lower Power Section of the PMB](highlowsplit.png)
+##### Figure XXX: Split between Higher and Lower Power Sections of the PMB (Red Line Divides the Sections)
+
+Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller's components. An LDO was then use to step down from the isolated 5V to 3.3V for components that required 3.3V.
+
+Additionally, as the SMBus signal used to communicate with the BQ40Z50 chip comes from the high power section, a I2C isolator was also used. To protect the SMBus lines, Zener Diodes and TVS diodes are connected to the lines to provide electrostatic discharge and over voltage protection.
+
+The various Power and Nets are summarised in the table below:
+
+
+| **Power and Ground Nets**    | **Description**                                                                        |
+| :--------------------------- | :------------------------------------------------------------------------------------- |
+| +3V3, +5, GND                | Isolated power and ground to power the components associated with the microcontroller. |
+| Batt_Pos, Batt_Neg           | Positive and negative input from the battery.                                          |
+| AUV_Pos, +3V3_UnIso, AUV_Neg | Positive and negative output to the AUV, and a 3V3 that references the AUV_Neg.        |
+
+##### Table XXXX: Table of Power and Ground Nets with Its Description
+
+This can be further seen in the division of the Power and Ground Plane within the PMB. 
+
+![PMB Power Plane](pcbpowerplane.png)
+##### Figure XXX: PMB Power Plane
+
+![PMB Ground Plane](pmbgndplane.png)
+##### Figure XXX: PMB Ground Plane
+
+#### 8.3.4 User Interface
+By using a reed switch and a latching relay, the battery can be powered on and off without unsealing the hull. To power on the system, the "ON" reed switch closes and activates the relay. However, to turn off the system, the MCU reads the "OFF" reed switch. When the MCU reads "HIGH", indicating that a magnet is placed at the "OFF" reed switch, the MCU is able to stop any tasks before sending a signal to reset the relay. This can potentially be useful down the line if local logging is implemented as the microcontroller can close the file before powering off to avoid any corruption.
+
+![Relay Circuit on The PMB](relaycircuit.png)
+##### Figure XXX: Relay Circuit on The PMB
+
+Key telemetry information being displayed on the screen can also alert users immediately to any potential issues within the battery hull.
+
+![Telemetry Display and Reed Switches for The Battery Hull](telemandreed.jpg)
+##### Figure XXX: Telemetry Display and Reed Switches for The Battery Hull
+
+
+The top and bottom view of the assembled PMB as well as its components can be seen in the image below.
+
+![PMB Top View](pmbtop.png)
+##### Figure XXX: Top View of PMB
+
+![PMB Bottom View](pmbbottom.png)
+##### Figure XXX: Bottom View of PMB
+ 
 ---
 
 ## 9. System Evaluation
@@ -680,6 +749,8 @@ forget to turn off the charger, especially after fatigue from a long day of pool
   - Mistakes
     - No Pull Down for Isolator Signal
     - No pull up for I2C
+    - Go through mistakes that was in the PCB
+    - and list the possible improvement also
   
 
 
@@ -732,7 +803,7 @@ forget to turn off the charger, especially after fatigue from a long day of pool
 - PCB Schematic and Routing
 - Calculations
   - Look at OneNote on PCB explanation
-- BQStudio Configuration (Insert Link to the Page)
+
 
 ## Appendix: 3D Model of AUV4.5 Power Management Board
 

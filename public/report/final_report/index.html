@@ -69,7 +69,7 @@
     
   ],
   "articleBody": "Acknowledgement Bumblebee Team, especially Elec Team to bounce idea with Zi Yang and Tan Chern Lin for providing feedback, Chen Jia Wei for troubleshooting. Marvin for giving the idea. Guk Yi Siong for helping in obtaining power consumption data Ananyan for validating my mechanical ideas Ms Annie, Patrick, KK, Graham Parker Schless from Cornell AUV for his advice when I faced problems Eugene for taking time to review the project and providing advice School for providing the lab, lab equipment and resources sponsors for helping the team also List of Common Acronyms Acronym Definition ASV Autonomous Surface Vessel AUV Autonomous Underwater Vehicle BBAS Bumblebee Autonomous Systems BCB Battery Charging Box BTB Battery Telemetry Board CAN Controller Area Network OCS Operator Control Station PCB Printed Circuit Board PMB Power Monitoring Board SoC State of Charge 1. Summary TODO:\n2. Problem Background 2.1 Introduction Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs and builds Autonomous Underwater Vehicles (AUVs) for the annual RoboSub competition. Following lessons learned from AUV4.1’s participation in RoboSub 2023 (Figure 1), the team is concurrently developing AUV4.5 for RoboSub 2025 and AUV5.0 for RoboSub 2026 (Table 1).\nFigure 1: AUV4.1 at RoboSub 2023 Competition Vehicles Deployed RoboSub 2023 AUV4.1 RoboSub 2025 AUV4.5 RoboSub 2026 AUV4.5 and AUV5.0 Table 1: AUV Deployments in RoboSub Competitions AUV4.5 retains the same hull design as AUV4.1 but features a newly developed electrical and software subsystem. This new electrical subsystem is designed to be mechanically compatible with the existing AUV4.1 hull while also serving as the baseline for AUV5.0.\n2.2 Current System The current power system for the AUVs comprises two main components, the Battery Hull (Figure 2) and the Battery Charging Box (BCB). Each Battery Hull houses a Power Monitoring Board (PMB) and a LiPo battery.\nThe PMB (Figure 3) monitors and reports key telemetry data, such as the battery’s voltage, current, battery hull’s temperature and pressure, both on the screen and via the CAN Bus. Two such hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during pool test by eliminating the need to unseal the main vehicle hull.\nFigure 2: Metal 3D-Printed Battery Hull Figure 3: AUV4.1’s Power Monitoring Board Figure 4: Assembled Battery Hull The BCB (Figure 5) comprises an AC-DC power supply and a LiPo charger. It includes connectors that interface directly with the battery hull, allowing the battery to be charged without removing it from the hull.\nFigure 5: Battery Charging Box 2.3 Limitations of Current System Deploying the current system at RoboSub 2023 identified several challenges.\n2.3.1 Challenges with Battery Hull Sealing The limited space within the battery hull and the need for a watertight seal, makes sealing and unsealing the hull a challenging and time-consuming process. Without error, unsealing takes 2 members approximately 10 minutes, while resealing requires another 15 minutes. However, the confined space often results in disconnected cables during assembly, further complicating the process. This overhead increase downtime and the risk of assembly errors.\nFigure 6: Two Man Team Attempting to Seal a Battery Hull at RoboSub 2023 2.3.2 Limited Capabilities of Battery Fuel Gauge The PMB currently uses BQ34110 chip as a gas gauge, which is designed for rarely discharged applications and lacks essential protection features [1] , reducing the AUV’s reliability. Furthermore, the battery gauging capability was also not used, leading the team to rely on voltage readings to estimate the capacity of the battery. This method is inaccurate as the battery voltage remains relatively constant over a significant portion of the discharge cycle, while the actual capacity decreases rapidly (Figure 7). To err on the side of caution, the pool test is ended when the voltage drops to the nominal level, further limiting the AUV’s runtime.\nFigure 7: Typical Li-Ion Discharge Voltage Curve [2] ",
-  "wordCount" : "5258",
+  "wordCount" : "5909",
   "inLanguage": "en",
   "datePublished": "2025-04-03T00:00:00Z",
   "dateModified": "2025-04-04T00:00:00Z",
@@ -485,15 +485,15 @@ Hence, a three-Pronged approach wass used to guide the development of the PMB, w
   <tbody>
       <tr>
           <td style="text-align: left">Enhance User Operability and Work Flow</td>
-          <td style="text-align: center">Section 8</td>
+          <td style="text-align: center"><a href="#8-improving-safety-and-reliability">Section 8</a></td>
       </tr>
       <tr>
           <td style="text-align: left">Improve Safety and Reliability</td>
-          <td style="text-align: center">Section 7</td>
+          <td style="text-align: center"><a href="#7-enhance-user-operability-and-workflow">Section 7</a></td>
       </tr>
       <tr>
           <td style="text-align: left">Improve AUV Performance</td>
-          <td style="text-align: center">Section 6</td>
+          <td style="text-align: center"><a href="#8-improving-safety-and-reliability">Section 6</a></td>
       </tr>
   </tbody>
 </table>
@@ -999,18 +999,18 @@ Summary of the system design, will go into details below how everything work etc
 <p>Due to limited space on the screen, only high-priority telemetry is shown to avoid clutter. The Telegram channel provides immediate operational updates, while full datasets are continuously uploaded to Google Sheets for future analysis. This tiered reporting strategy balances usability with traceability, ensuring the data remains actionable without overwhelming users.</p>
 <hr>
 <h2 id="8-improving-safety-and-reliability">8. Improving Safety and Reliability<a hidden class="anchor" aria-hidden="true" href="#8-improving-safety-and-reliability">#</a></h2>
-<p>To improve safety and reliability of the system faults must be identified and rectified before it gets a chance to cause damage to a system. This can be done by identifying possible leaks of the battery hull and by implementing electrical protection feature to protect the vehicle from any possible electrical fault. Finally the design of the PCB must be able to support the power demand of the vehicle while keeping in mind good electrical practises to develop a reliable PCB.</p>
+<p>Ensuring safety and reliability of the system requires timely identification and mitigation of faults must be before it damages the system. his section outlines three key strategies: leak detection in the battery hull, robust electrical protection features, and utilising good electrical practises to design a high power PCB.</p>
 <h3 id="81-real-time-safety-and-status-notifications">8.1 Real-Time Safety and Status Notifications<a hidden class="anchor" aria-hidden="true" href="#81-real-time-safety-and-status-notifications">#</a></h3>
-<p>As mentioned in <a href="#233-challenges-with-tracking-battery-hulls-pressure-and-temperature">Section 2.3.3</a>, it might be difficult to identify Battery Hull leaks. To combat this, there should be automatic detection and notification of potential leaks to alert members to identify and rectify the issues.</p>
+<p>As mentioned in <a href="#233-challenges-with-tracking-battery-hulls-pressure-and-temperature">Section 2.3.3</a>, slow battery hull leaks are difficult to detect without consistent data. A possible solution will be the automatic notification of team members when a leak is detected by the system.</p>
 <h4 id="811-past-experiences">8.1.1 Past Experiences<a hidden class="anchor" aria-hidden="true" href="#811-past-experiences">#</a></h4>
 <p>During the testing and development of the Autonomous Surface Vessel, a Telegram Channel was running on the ASV to periodically report the battery voltage and current draw. This proved invaluable as it help the team to anticipate and prepare for battery swaps. Furthermore, it helped the team to identify a load-balancing issue in the vehicle that would have otherwise gone unnoticed.</p>
 <p><img loading="lazy" src="tele.png" alt="Telegram Channel Reporting ASV&rsquo;s Battery Status"  />
 </p>
 <h5 id="figure-xxx-telegram-channel-reporting-asvs-battery-status">Figure XXX: Telegram Channel Reporting ASV&rsquo;s Battery Status<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-telegram-channel-reporting-asvs-battery-status">#</a></h5>
 <h4 id="812-chosen-method">8.1.2 Chosen Method<a hidden class="anchor" aria-hidden="true" href="#812-chosen-method">#</a></h4>
-<p>Hence, using Telegram Channel as a form of notification was chosen as it was tried and proven to be effective. Furthermore, as Telegram is used to communicate in the team, members would already have it installed on their devices, lowering the barrier of entry for using this system. By utilising a Telegram Channel also allows for multiple members to be notified of any issues. This reduces the chance of an alert being missed.</p>
-<h4 id="813-implementation">8.1.3 Implementation<a hidden class="anchor" aria-hidden="true" href="#813-implementation">#</a></h4>
-<p>When the data is sent from the BTB to the Google Sheet, the same Google App Script is used to check for the following conditions:</p>
+<p>Telegram was selected as the alert platform due to its prior success and team-wide adoption. Furthermore, as it is used for internal communications, it provides a low-barrier of entry and high-visibility for any fault notification.</p>
+<h4 id="813-leak-detection-implementation">8.1.3 Leak Detection Implementation<a hidden class="anchor" aria-hidden="true" href="#813-leak-detection-implementation">#</a></h4>
+<p>A Google App Script processes data uploaded from the Battery Telemetry Board (BTB) and checks for the following leak indicators:</p>
 <table>
   <thead>
       <tr>
@@ -1029,8 +1029,8 @@ Summary of the system design, will go into details below how everything work etc
       </tr>
   </tbody>
 </table>
-<h5 id="table-xxx-leak-detection-condition-and-notification">Table XXX: Leak Detection Condition and Notification<a hidden class="anchor" aria-hidden="true" href="#table-xxx-leak-detection-condition-and-notification">#</a></h5>
-<p>The leak detection is based on the Gay Lussac&rsquo;s Law &lt;Insert Reference <a href="https://www.chem.fsu.edu/chemlab/chm1045/gas_laws.html" target="_blank">https://www.chem.fsu.edu/chemlab/chm1045/gas_laws.html</a> &gt;. This is as if the Battery Hull is not leaking the amount of gas in the hull should remain the same and hence the ratio of internal pressure to temperature should remain the same even if the temperature changes. Hence, if the ratio of internal pressure to temperature varies significantly, it is likely that there is a leak occurring.</p>
+<h5 id="table-xxx-leak-detection-thresholds-and-corresponding-notifications">Table XXX: Leak Detection Thresholds and Corresponding Notifications<a hidden class="anchor" aria-hidden="true" href="#table-xxx-leak-detection-thresholds-and-corresponding-notifications">#</a></h5>
+<p>The leak detection is based on the Gay Lussac&rsquo;s Law &lt;Insert Reference <a href="https://www.chem.fsu.edu/chemlab/chm1045/gas_laws.html" target="_blank">https://www.chem.fsu.edu/chemlab/chm1045/gas_laws.html</a> &gt; which states that the pressure of a gas is directly proportional to its temperature at constant volume. Hence, if the Battery Hull is not leaking, the amount of gas in the hull should remain the same. Thus, the ratio of internal pressure to temperature should remain consistent despite temperature changes. Therefore, a significant deviation in this ratio would suggest a potential leak.</p>
 <p>To obtain the previous Internal Pressure to Temperature ratio, the Google App Script obtains the last recorded data for the PMB on the Google Sheet.</p>
 <p>The threshold of 0.5 is determined by observing the change in temperature and internal pressure of three battery hulls.</p>
 <table>
@@ -1223,75 +1223,127 @@ Summary of the system design, will go into details below how everything work etc
 <p><img loading="lazy" src="leak.png" alt="Telegram Channel Reporting a Leak"  />
 </p>
 <h5 id="figure-xxx-telegram-channel-reporting-a-leak-in-pmb1">Figure XXX: Telegram Channel Reporting a Leak in PMB1<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-telegram-channel-reporting-a-leak-in-pmb1">#</a></h5>
-<p>The same Telegram channel is also used to broadcast the state of the battery charging and notifies members when it is fully charged. This feature addresses a common operational issue, where team members may
+<p>The same Telegram channel is also used to broadcast the progress of the battery charging and notifies members when it is fully charged. This feature addresses a common operational issue, where team members may
 forget to turn off the charger, especially after fatigue from a long day of pool tests. By receiving timely reminders, the team can ensure a safer operation by turning off the charger when the battery is fully charged.</p>
 <p><img loading="lazy" src="teletelem.png" alt="Telegram Channel Reporting Charged Battery"  />
 </p>
 <h5 id="figure-xxx-telegram-channel-reporting-a-fully-charged-pmb1">Figure XXX: Telegram Channel Reporting a Fully Charged PMB1<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-telegram-channel-reporting-a-fully-charged-pmb1">#</a></h5>
 <h3 id="82-protection-features">8.2 Protection Features<a hidden class="anchor" aria-hidden="true" href="#82-protection-features">#</a></h3>
-<ul>
-<li>Used BQ40Z50 protection</li>
-<li>Protects against possible electrical fault -&gt; increase system robustness</li>
-<li>Include literature review of hardware vs software safety</li>
-<li>Tested with COV, OC
-<ul>
-<li>Tested both hardware and software limit
-<ul>
-<li>Insert data and photo and excel</li>
-</ul>
-</li>
-<li>also tested CUVC such that when the battery voltage is low and there is high current draw it will cut to protect the battery (to decide if I want to include this)</li>
-<li>explain that connector limit is 40A (insert reference to SubConn)</li>
-<li>While we have fuse, it is also good to have additional layer of protection</li>
-<li>also has a short circuit protection</li>
-</ul>
-</li>
-<li>protect battery and auv from further harm</li>
-</ul>
+<p>BQ40Z50 comprises of various protection features. This includes two tiers of protection. The first tier disconnect the circuits via MOSFETs, while the second tier permanently disable the battery pack by blowing the fuse.  Within the first tier there are also hardware protections that can be configured for faster a response from the chip.</p>
+<p>These features collectively protect the vehicle from electrical fault, improving the reliability of the system.</p>
+<p><img loading="lazy" src="protection.png" alt="Using bQStudio to configure Protection Settings"  />
+</p>
+<h5 id="figure-xxx-configuring-bq40z50-protection-parameters-in-bqstudio">Figure XXX: Configuring BQ40Z50 Protection Parameters in bqStudio<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-configuring-bq40z50-protection-parameters-in-bqstudio">#</a></h5>
+<p>Several key safety features were configured and tested:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Feature</strong></th>
+          <th style="text-align: left"><strong>Test Result</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Overcurrent in Discharge (OCD)</td>
+          <td style="text-align: left">Used a load tester to verify that discharging above the set current value for the specified time would turn off the discharge MOSFET.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Overload in Discharge Protection (AOLD)</td>
+          <td style="text-align: left">Almost instantaneous cut off when discharging above the set current limit.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Over Charging Current Protection (OCC)</td>
+          <td style="text-align: left">When the charging current is higher than the preset threshold, the Charging MOSFET is turned off.</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="figure-xxx-using-bqstudio-to-configure-protection-settings">Figure XXX: Using bQStudio to configure Protection Settings<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-using-bqstudio-to-configure-protection-settings">#</a></h5>
+<p>Additionally, there is a secondary overvoltage protection chip (BQ294701) monitors cell voltages independently and can also activate the fuse if an overvoltage is detected. This act as a fall back if the BQ40Z50 is malfunctioning.</p>
 <h3 id="83-pmb-pcb-design">8.3 PMB PCB Design<a hidden class="anchor" aria-hidden="true" href="#83-pmb-pcb-design">#</a></h3>
-<ul>
-<li>Look at OneNote on PCB explanation</li>
-<li>Power Rating
-<ul>
-<li>Show the load test</li>
-<li>show temperature picture</li>
-<li>Pool test show that it is around 11A per battery when moving at full spped</li>
-<li>To be safe, the test was done at 40A because it was the connector rating (include time spent running)</li>
-<li>Insert calculation for designs in appendix (refer to OneNote)
-<ul>
-<li>Talk about the Current Draw and Oz of outer layer as well as trace width</li>
-<li>Show that it is 4 layer with split plane for the different Power</li>
-</ul>
-</li>
-<li>Refer the SLUA on how to route
-<ul>
-<li>Talk about the difference and similarity to SLUAA reccomendation</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Isolation
-<ul>
-<li>Protection and noise especially for battery</li>
-</ul>
-</li>
-<li>Look at Altium to see what each section does and how it ties to the design</li>
-<li>Go through mistakes that was in the PCB
-<ul>
-<li>and list the possible improvement also</li>
-</ul>
-</li>
-<li>Design for easy debugging
-<ul>
-<li>Test Points</li>
-<li>Extra conector to test CAN Transmissions</li>
-<li>Switches to switch communication line</li>
-</ul>
-</li>
-<li>Take a photo of PMB and highlight all the connections to show all the output and what it is connected to</li>
-<li>Power Consumption chart to spec the different voltage regulator</li>
-<li>Current draw of MCU and screen is 40mA</li>
-</ul>
+<p>To ensure that the PMB is reliable, good PCB design practises must be followed to ensure both signal integrity and that the PMB can support the power required. The PMB design adheres to recommendations from TI&rsquo;s SLUA660A Advanced Gas Gauge Circuit Design document.<insert reference> This ensures that the required components are wired properly in the circuit.</p>
+<p>The PMB is a 4-Layer PCB with the top and bottom layer for signals, and the middle layer acting as the power and ground plane.</p>
+<p>To remain backwards compatible, the PMB has the same dimensions as the previous PMB and have most of its connectors in the same location on the PCB.
+<Insert Reference to Appendix>
+&lt;Insert calculation for designs in appendix (refer to OneNote)&gt;</p>
+<h4 id="831-design-for-high-power-handling">8.3.1 Design for High Power Handling<a hidden class="anchor" aria-hidden="true" href="#831-design-for-high-power-handling">#</a></h4>
+<p>The PMB is designed to be able to supply 40A. Hence, 2oz copper was used on the outer layers of the PCB, where the power path are, to reduce temperature rise. The traces are also made as wide as possible to reduce resistance.</p>
+<p><img loading="lazy" src="3dpower.png" alt="3D Model of Power Path"  />
+</p>
+<h5 id="figure-xxx-3d-model-of-power-path">Figure XXX: 3D Model of Power Path<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-3d-model-of-power-path">#</a></h5>
+<p><img loading="lazy" src="toppower.png" alt="Power Path on the Top Layer"  />
+</p>
+<h5 id="figure-xxx-power-path-on-the-top-layer">Figure XXX: Power Path on the Top Layer<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-power-path-on-the-top-layer">#</a></h5>
+<p>The IPTC014N10NM5 MOSFET was chosen as it has top side cooling package. This allows the use of thermal pad to conduct the heat from the MOSFET to the top of the battery hull &lt;Insert Reference: <a href="https://www.infineon.com/dgdl/Infineon-Board_Assembly_Recommendations-Gullwing-Package-v05_00-EN.pdf?fileId=5546d46275b79adb0175b7da356300e6%3e" target="_blank">https://www.infineon.com/dgdl/Infineon-Board_Assembly_Recommendations-Gullwing-Package-v05_00-EN.pdf?fileId=5546d46275b79adb0175b7da356300e6></a>.</p>
+<p><img loading="lazy" src="pcbmosfet.png" alt="MOSFET Highlighted on The New PMB"  />
+</p>
+<h5 id="figure-xxx-mosfet-highlighted-on-the-new-pmb">Figure XXX: MOSFET Highlighted on The New PMB<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-mosfet-highlighted-on-the-new-pmb">#</a></h5>
+<p>A test was conducted to compare the new MOSFET with the old MOSFET and it&rsquo;s thermal conducting capabilities. The PMB is placed Within the enclosed battery hull with starting temperature of 28 Celsius. A continuous current draw of 40A was carried out for 10 minutes. A thermal camera was then use to measure the temperature of the PCB.</p>
+<p><img loading="lazy" src="newpmbthermal.jpg" alt="Thermal Image of the New PMB"  />
+</p>
+<h5 id="figure-xxx-thermal-image-of-the-new-pmb-after-load-test">Figure XXX: Thermal Image of the New PMB after Load Test<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-thermal-image-of-the-new-pmb-after-load-test">#</a></h5>
+<p><img loading="lazy" src="thermaloldpmb.jpg" alt="Thermal Image of the Old PMB"  />
+</p>
+<h5 id="figure-xxx-thermal-image-of-the-old-pmb-after-load-test">Figure XXX: Thermal Image of the Old PMB after Load Test<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-thermal-image-of-the-old-pmb-after-load-test">#</a></h5>
+<p>It can be observed that the old PMB has a higher temperature of the load test, indicating that the MOSFETs on the new PMB are better at conducting thermal heat away.</p>
+<p>To ensure reliable power supply, a power consumption chart was drawn up to verify that the selected voltage regulator are able to supply enough power.</p>
+<p><img loading="lazy" src="pmbpowerconsume.png" alt="PMB&rsquo;s Power Consumption Chart"  />
+</p>
+<h5 id="figure-xxx-pmbs-power-consumption-chart">Figure XXX: PMB&rsquo;s Power Consumption Chart<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-pmbs-power-consumption-chart">#</a></h5>
+<h4 id="832-design-for-signal-integrity">8.3.2 Design for Signal Integrity<a hidden class="anchor" aria-hidden="true" href="#832-design-for-signal-integrity">#</a></h4>
+<p>Ensuring that the signal transmitted on the data line are not affected by noise is critical to creating a reliable PMB.</p>
+<p>Firstly, the higher power section of the PMB is on the opposite side to the lower power section of the PMB.</p>
+<p><img loading="lazy" src="highlowsplit.png" alt="Split between Higher and Lower Power Section of the PMB"  />
+</p>
+<h5 id="figure-xxx-split-between-higher-and-lower-power-sections-of-the-pmb-red-line-divides-the-sections">Figure XXX: Split between Higher and Lower Power Sections of the PMB (Red Line Divides the Sections)<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-split-between-higher-and-lower-power-sections-of-the-pmb-red-line-divides-the-sections">#</a></h5>
+<p>Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller&rsquo;s components. An LDO was then use to step down from the isolated 5V to 3.3V for components that required 3.3V.</p>
+<p>Additionally, as the SMBus signal used to communicate with the BQ40Z50 chip comes from the high power section, a I2C isolator was also used. To protect the SMBus lines, Zener Diodes and TVS diodes are connected to the lines to provide electrostatic discharge and over voltage protection.</p>
+<p>The various Power and Nets are summarised in the table below:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Power and Ground Nets</strong></th>
+          <th style="text-align: left"><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">+3V3, +5, GND</td>
+          <td style="text-align: left">Isolated power and ground to power the components associated with the microcontroller.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Batt_Pos, Batt_Neg</td>
+          <td style="text-align: left">Positive and negative input from the battery.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">AUV_Pos, +3V3_UnIso, AUV_Neg</td>
+          <td style="text-align: left">Positive and negative output to the AUV, and a 3V3 that references the AUV_Neg.</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="table-xxxx-table-of-power-and-ground-nets-with-its-description">Table XXXX: Table of Power and Ground Nets with Its Description<a hidden class="anchor" aria-hidden="true" href="#table-xxxx-table-of-power-and-ground-nets-with-its-description">#</a></h5>
+<p>This can be further seen in the division of the Power and Ground Plane within the PMB.</p>
+<p><img loading="lazy" src="pcbpowerplane.png" alt="PMB Power Plane"  />
+</p>
+<h5 id="figure-xxx-pmb-power-plane">Figure XXX: PMB Power Plane<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-pmb-power-plane">#</a></h5>
+<p><img loading="lazy" src="pmbgndplane.png" alt="PMB Ground Plane"  />
+</p>
+<h5 id="figure-xxx-pmb-ground-plane">Figure XXX: PMB Ground Plane<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-pmb-ground-plane">#</a></h5>
+<h4 id="834-user-interface">8.3.4 User Interface<a hidden class="anchor" aria-hidden="true" href="#834-user-interface">#</a></h4>
+<p>By using a reed switch and a latching relay, the battery can be powered on and off without unsealing the hull. To power on the system, the &ldquo;ON&rdquo; reed switch closes and activates the relay. However, to turn off the system, the MCU reads the &ldquo;OFF&rdquo; reed switch. When the MCU reads &ldquo;HIGH&rdquo;, indicating that a magnet is placed at the &ldquo;OFF&rdquo; reed switch, the MCU is able to stop any tasks before sending a signal to reset the relay. This can potentially be useful down the line if local logging is implemented as the microcontroller can close the file before powering off to avoid any corruption.</p>
+<p><img loading="lazy" src="relaycircuit.png" alt="Relay Circuit on The PMB"  />
+</p>
+<h5 id="figure-xxx-relay-circuit-on-the-pmb">Figure XXX: Relay Circuit on The PMB<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-relay-circuit-on-the-pmb">#</a></h5>
+<p>Key telemetry information being displayed on the screen can also alert users immediately to any potential issues within the battery hull.</p>
+<p><img loading="lazy" src="telemandreed.jpg" alt="Telemetry Display and Reed Switches for The Battery Hull"  />
+</p>
+<h5 id="figure-xxx-telemetry-display-and-reed-switches-for-the-battery-hull">Figure XXX: Telemetry Display and Reed Switches for The Battery Hull<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-telemetry-display-and-reed-switches-for-the-battery-hull">#</a></h5>
+<p>The top and bottom view of the assembled PMB as well as its components can be seen in the image below.</p>
+<p><img loading="lazy" src="pmbtop.png" alt="PMB Top View"  />
+</p>
+<h5 id="figure-xxx-top-view-of-pmb">Figure XXX: Top View of PMB<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-top-view-of-pmb">#</a></h5>
+<p><img loading="lazy" src="pmbbottom.png" alt="PMB Bottom View"  />
+</p>
+<h5 id="figure-xxx-bottom-view-of-pmb">Figure XXX: Bottom View of PMB<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-bottom-view-of-pmb">#</a></h5>
 <hr>
 <h2 id="9-system-evaluation">9. System Evaluation<a hidden class="anchor" aria-hidden="true" href="#9-system-evaluation">#</a></h2>
 <ul>
@@ -1326,6 +1378,8 @@ forget to turn off the charger, especially after fatigue from a long day of pool
 <ul>
 <li>No Pull Down for Isolator Signal</li>
 <li>No pull up for I2C</li>
+<li>Go through mistakes that was in the PCB</li>
+<li>and list the possible improvement also</li>
 </ul>
 </li>
 </ul>
@@ -1392,7 +1446,6 @@ forget to turn off the charger, especially after fatigue from a long day of pool
 <li>Look at OneNote on PCB explanation</li>
 </ul>
 </li>
-<li>BQStudio Configuration (Insert Link to the Page)</li>
 </ul>
 <h2 id="appendix-3d-model-of-auv45-power-management-board">Appendix: 3D Model of AUV4.5 Power Management Board<a hidden class="anchor" aria-hidden="true" href="#appendix-3d-model-of-auv45-power-management-board">#</a></h2>
 <div style="display: flex; justify-content: center;">
