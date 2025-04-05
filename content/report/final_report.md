@@ -278,7 +278,7 @@ Summary of the system design, will go into details below how everything work etc
 ---
 
 ## 6. Improving AUV Performance
-One way to improve the AUV's performance is by extending its run time. This allows for longer in-water test by reducing the interruption of changing batteries. This allows for continuos testing to simulate longer actual competition runs. Two methods were implemented to achieve this: renewing the current batteries and introducing accurate state-of-charge (SoC) estimation.
+One way to improve the AUV's performance is by extending its run time. This enables longer in-water testing by reducing interruptions due to battery swaps. This supports uninterrupted testing to better simulate longer competition runs. Two methods were implemented to achieve this: renewing the current batteries and introducing accurate state-of-charge (SoC) estimation.
 
 
 ### 6.1 Battery Renewal
@@ -287,12 +287,12 @@ The batteries have been in use for over 2 years, with an estimated 200 cycles co
 ![Battery Cycle Life](cyclestats.png)
 ##### Figure XXX: Information on The Cycle Life of The Current Battery
   
-Considering, that it is likely we will use the same battery hull for a few more years of competition, the batteries should be renewed to avoid more degradation.
+Given that the same battery hull is likely to remain in use for a few more years of competition, the batteries should be renewed to avoid more degradation.
 
 Another factor in changing batteries is that we usually require 6 batteries for each AUV, organised into three sets of two: one set in use, one set charging, and one set kept as spares. Therefore, selecting cost-effective batteries can result in significant savings
 for the team.
 
-| **Specification**                          | **GrePow LiPo (current)** | **Raitan Li-ion** | **MaxAmp Li-ion** |
+| **Specification**                          | **GrePow LiPo (current)** | **Raitan Li-Ion** | **MaxAmp Li-Ion** |
 | ------------------------------------------ | ------------------------- | ----------------- | ----------------- |
 | Configuration                              | 4S1P                      | 4S4P              | 4S3P              |
 | Fit within the current battery dimensions? | Yes                       | Yes               | Yes               |
@@ -303,7 +303,7 @@ for the team.
 
 ##### Table XXXX : Table of Comparison for Batteries
 
-Lithium-ion batteries were chosen for comparison due to its longer lifespan and higher energy density <Insert Reference https://www.unmannedsystemstechnology.com/feature/lipo-vs-lithium-ion-batteries-for-unmanned-robotics-applications/>. With its higher capacity and lower cost, the Raitan Li-ion battery was selected. Additionally, the team’s prior experience with Raitan provided confidence in the reliability and performance of their product.
+Lithium-ion batteries were chosen for comparison due to its longer lifespan and higher energy density <Insert Reference https://www.unmannedsystemstechnology.com/feature/lipo-vs-lithium-ion-batteries-for-unmanned-robotics-applications/>. With its higher capacity and lower cost, the Raitan Li-Ion battery was selected. Additionally, the team’s prior experience with Raitan provided confidence in the reliability and performance of their product.
 
 Two Raitan Li-Ion batteries were procured for testing and compared with the current batteries.
 
@@ -332,7 +332,7 @@ As mentioned in [Section 2.3.2](#232-limited-capabilities-of-battery-fuel-gauge)
 #### 6.2.1 Literature Review
 Looking at RoboSub 2023 and RoboSub 2024 Teams' Technical Design Report, only 2 other teams (Cornell University <https://robonation.org/app/uploads/sites/4/2024/07/RS24_TDR_Cornell-compressed.pdf> and The Ohio State University <https://robonation.org/app/uploads/sites/4/2023/06/TDR_THEOhioStateUniversity_RS2023-compressed.pdf>) developed a PMB with a battery gauge. The teams used the BQ40Z50 and BQ40Z80 chips from Texas Instruments (TI) respectively.
 
-#### 6.2.1 Justification for Chip Selection
+#### 6.2.2 Justification for Chip Selection
 Additionally TI, offers extensive community support on its forum and provides numerous resources guiding customers in using its chips (Figure XXXX, Figure XXXX, Figure XXX). 
 
 ![TI's Forum Search Result](forum.png)
@@ -349,7 +349,7 @@ Additionally, its software application "bqStudio" provides an easy interface wit
 ![Screenshot of bQStudio](bq.png)
 ##### Figure XXX: Screenshot of bQStudio
 
-To leverage on the huge amount of resources available and increase likelihood of success, a compatible chip from the TI family was shortlisted. Furthermore, being successfully implemented by multiple teams indicate that the chip has benefits.
+To leverage the extensive resources available and increase likelihood of success, a compatible chip from the TI family was shortlisted. Furthermore, being successfully implemented by multiple teams indicate that the chip has benefits.
 
 | **Feature**               | **BQ34110 (Current)**                                                  | **BQ40Z50 (Proposed)**                                                                                                                                   |
 | ------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -358,7 +358,7 @@ To leverage on the huge amount of resources available and increase likelihood of
 
 BQ40Z50 was chosen as it supports up to 4-Series Li-Ion or LiPo Battery Packs. It also offers programmable protection features (Section XXXX) as well as Impedance Tracking and Cell Balancing (Section XXX). The chip is also able to track the number of cycles the batteries have been through. This reduces the need to guess when the batter capacity falls below a certain amount and hence prepare the operator to procure a new set of batteries.
 
-##### Evaluation of SoC Accuracy
+##### 6.2.3 Evaluation of SoC Accuracy
 Hence, to evaluate the SoC accuracy, the new Li-Ion battery along with the PMB went through a learning cycle <https://www.ti.com/lit/an/slua903/slua903.pdf?ts=1743852291712&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FBQ40Z50>.
 
 When discharged at a constant current of 7A, the Voltage and SoC reported by BQ40Z50 was recorded (Table XXX). When using the LiPo battery, the team had a threshold of 15.2V (nominal voltage + 0.4V). Based on the chart, this would be roughly at 40% Depth of Discharge (DoD) (Figure XXX).
@@ -390,7 +390,6 @@ The BQ40Z50 is also able to report the time taken to fully charge the batteries,
 | :------: | :------------: | :----------------------------------: | :--------------------: | :-----------------: | :-----------------: |
 |    A     |    8:20 PM     |             16.42V, 84%              |        9:30 PM         |       9:10 PM       |    20 mins early    |
 |    B     |    1:07 AM     |             15.76V, 65%              |        3:15 AM         |       2:41 AM       |    34 mins early    |
-
 
 
 This can be useful as it allows members to better plan and anticipate battery changes at pool tests. While the predicted end time tends to be conservative, this behaviour is preferable as it provides a useful buffer when planning battery swaps.
