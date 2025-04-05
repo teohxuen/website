@@ -52,15 +52,24 @@ TODO:
 
 ## 2. Problem Background
 ### 2.1 Introduction
-Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs and builds Autonomous Underwater Vehicles (AUVs) for the annual RoboSub competition. Following lessons learned from AUV4.1’s participation in RoboSub 2023, the team is concurrently developing AUV4.5 for RoboSub 2025 and AUV5.0 for RoboSub 2026.
+Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs and builds Autonomous Underwater Vehicles (AUVs) for the annual RoboSub competition. Following lessons learned from AUV4.1’s participation in RoboSub 2023, the team is concurrently developing AUV4.5 for RoboSub 2025 and AUV5.0 for RoboSub 2026 (Table 1).
 
 ![AUV4.1 at RoboSub 2023](RoboSub2023.jpeg)
 ##### Figure 1: AUV4.1 at RoboSub 2023
 
+| **Competition** | **Vehicles Deployed** |
+| :-------------- | :-------------------- |
+| RoboSub 2023    | AUV4.1                |
+| RoboSub 2025    | AUV4.5                |
+| RoboSub 2026    | AUV4.5 and AUV5.0     |
+##### Table 1: AUV Deployments in RoboSub Competitions
+
+AUV4.5 retains the same hull design as AUV4.1 but features a newly developed electrical and software subsystem. This new electrical subsystem is designed to be mechanically compatible with the existing AUV4.1 hull while also serving as the baseline for AUV5.0. 
+
 ### 2.2 Current System
 The current power system for the AUVs comprises two main components, the Battery Hull and the Battery Charging Box (BCB). Each Battery Hull houses a Power Monitoring Board (PMB) and a LiPo battery.
 
-The PMB is reports key telemetry data, such as the battery's voltage, current, battery hull's temperature and pressure, both on the screen and via the CAN Bus. Two such hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during pool test by eliminating the need to unseal the main vehicle hull.
+The PMB monitors and reports key telemetry data, such as the battery's voltage, current, battery hull's temperature and pressure, both on the screen and via the CAN Bus. Two such hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during pool test by eliminating the need to unseal the main vehicle hull.
 
 ![Battery Hull](BatteryHull.png)
 ##### Figure 2: Metal 3D-Printed Battery Hull
@@ -72,7 +81,7 @@ The PMB is reports key telemetry data, such as the battery's voltage, current, b
 ![Assembled Battery Hull](assembled.png)
 ##### Figure 4: Assembled Battery Hull
 
-The BCB comprises of a AC-DC power supply and a LiPo charger. It includes connectors that interface directly with the battery hull, allowing the battery to be charged without removing it from the hull.
+The BCB comprises an AC-DC power supply and a LiPo charger. It includes connectors that interface directly with the battery hull, allowing the battery to be charged without removing it from the hull.
 
 ![Battery Charging Box](bcb.png)
 ##### Figure 5: Battery Charging Box
@@ -91,7 +100,7 @@ The PMB currently uses BQ34110 chip as a gas gauge, which is designed for rarely
 
 ![Discharge Voltage Curve](voltagecapacity.webp)
 ##### Figure 7: Typical Li-Ion Discharge Voltage Curve [2]
-<Insert Reference>
+<Insert Reference: https://www.ufinebattery.com/blog/useful-overview-of-lipo-battery-voltage/>
 
 #### 2.3.3 Challenges with Tracking Battery Hull's Pressure and Temperature
 During assembly, the battery hull is pressurised. Monitoring changes in pressure and temperature can alert the team to potential leaks. Currently, this tracking is done manually and only when a leak is
@@ -101,7 +110,7 @@ suspected. his reactive approach limits the availability of historical data. Man
 ##### Figure 8: Manually Logging Battery's Hull and Temperature on the Battery Hull's Lid
 
 ![Manually Logging Battery's Hull and Temperature on Excel](excel.png)
-##### Figure 9: Manually Logging Battery's Hull and Temperature on tExcel
+##### Figure 9: Manually Logging Battery's Hull and Temperature on Excel
 
 ### 2.4 Problem Analysis  
 The limitations in the current system can be split into three overarching themes: poor user operability, limited runtime and reduced reliability. These themes and their associated limitations are summarised in Table 1.
@@ -111,7 +120,7 @@ The limitations in the current system can be split into three overarching themes
   <thead>
     <tr>
       <th><b>Category</b></th>
-      <th><b>Challenge</b></th>
+      <th><b>Limitations</b></th>
     </tr>
   </thead>
   <tbody>
@@ -139,7 +148,7 @@ The limitations in the current system can be split into three overarching themes
   </tbody>
 </table>
 
-##### Table 1: Categorisation of System Limitations
+##### Table 2: Categorisation of System Limitations
 
 Poor user operability increases the likelihood of mistakes at competition, especailly under time constraints or operator fatigure. Furthermore, limited run time can lead to less testing opportunities and ultimately impacting competition performance (Table 2, Table 3). Finally, poor reliability increases the risk of mid-run failures or unplanned maintenace, leading to increased downtime.
 
@@ -148,7 +157,7 @@ Poor user operability increases the likelihood of mistakes at competition, espec
 | Testing Time in Singapore |    200 Hours    |    330 Hours    |
 |  Final Score (adjusted)   |      1450       |      4450       |
 
-##### Table 2: Table of Competition Results and Testing Time in Singapore
+##### Table 3: Table of Competition Results and Testing Time in Singapore
 
 
 |    **Team**     | **Final Score** | **Testing Time** |
@@ -159,7 +168,7 @@ Poor user operability increases the likelihood of mistakes at competition, espec
 | **Inspiration** |      1600       |     25 Hours     |
 |     **NTU**     |      1050       |     17 Hours     |
 
-##### Table 3: Comparison of Final Score and Testing Time at RobotX 2024
+##### Table 4: Comparison of Final Score and Testing Time at RobotX 2024
 
 
 ---
@@ -180,28 +189,48 @@ The project goal can be summarised as:
 
 ## 4. Design Considerations
   
-### 4.1 Functional Requirements  
-  - Basic Criteria (can be presented in a table)
-    - Able to power 40A continuous
-    - Can spike X A
-    - Able to communicate with rest of AUV
-    - Same Interface
-      - Reed Switch to turn on and off
-      - Able to display key stats on screen
+### 4.1 Backward Compatibility
 
-### 4.2 Backward Compatibility
-- Design Specification
-  - Need to fit in the same hull (Backward Compatibility)
-    - PMB size constraints
-    - Have to use the same connector and pins
-    - Becasue we deploying AUV4.5
-    - Minimal modification allow for easy swap (get to work with new and old PMB)
-    - Streamline spare prep and lower cost by leveraging Economies of Scale
+As outlined in Section 2.1, AUV4.5 has the same mechanical structure as AUV4.1. As such, the new PMB must remain mechanically and electrically compatible with the AUV4.1 battery hull. This backward compatibility ensures minimal modficiation to the existing support infrastructure when using the new PMB. Futhermore, designing to meet AUV4.1's specifications would also ensures forward compatibility with AUV5.0. This approach enables cross-platform use of the same PMB, reducing the need for custom variants and lowering the manufacturing cost by leveraging economies of scale.
+
+To maintain backwards compatibility, the following constraints were identified.
+
+| **Characteristics**  | **Constraints**                                                                               |
+| :------------------- | :-------------------------------------------------------------------------------------------- |
+| Dimensions           | The PMB and battery must fit within the internal volume of the AUV4.1 battery hull enclosure. |
+| Electrical Interface | Existing connectors for power delivery and charging must be retained.                         |
+
+##### Table 5: Design Constraints for Backward Compatibility
+
+
+### 4.2 Functional Requirements  
+In addition to physical compatibility, the PMB must meet or exceed the technical performance of its predecessor. The following functional requirements were defined to ensure the board can support AUV4.1, AUV4.5 and AUV5.0.
+
+| **Technical Capabilities** | **Specifications**                                                                |
+| :------------------------- | :-------------------------------------------------------------------------------- |
+| Voltage Output             | 14.8V to 16.8V (4S)                                                               |
+| Continuous Current         | 40A                                                                               |
+| Communication Protocol     | CAN2.0                                                                            |
+| Telemetry                  | Voltage, Current, Internal Pressure, Internal Temperature displayed on the screen |
+
+The 40A current specification is based on the rated continuous current limit of the SubConn Low Profile Connector on the battery hull <Insert Reference https://www.macartney.com/connectivity/subconn/subconn-low-profile-series/subconn-low-profile-9-contacts/>. This provides sufficient headroom, as testing indicates a typical current draw of 11A per battery when moving at full-speed. CAN Bus is used for inter-board communication within the AUV, hence CAN bus integration is crtical.
+
+##### Table 6: Core Functional Requirements for PMB
 
 ### 4.3 Component Standardisation
-  - Ease of Production and Spares (competition experience)
-    - Less stuff to pack
-    - MCU, CAN Chip etc are standardised.
+
+To reduce cost and simplify procurement, certain components of the PMB are shared with the other PCBs onboard the AUV. Specifically, the STM32F103C8T6 and the ISOW1044B isolated CAN Transciever (Table 7). This standardisation reduces design effort and chance of error as the same schematic capture and layout can be reused across the PCBs. This also allows for easier spare prepartion as the same component can act as spares for the different PCBs.
+
+<img src="mcuschematic.png" alt="Common Schematic for STM32F103C8T6" style="max-width: 100%;">
+
+##### Figure 10: Common Schematic for STM32F103C8T6
+
+| **Component** | **Reason for Selection**                                                                                                          |
+| :------------ | :-------------------------------------------------------------------------------------------------------------------------------- |
+| STM32F103C8T6 | A widely used microcontroller that is onboard the "Blue-Pill" development board, ensuring high availability and supply stability. |
+| ISOW1044B     | Combines the isolated regulator and CAN transceiver into one single component, saving space onboard the PCB.                      |
+
+##### Table 7: Reasons for the Components Selected for Standardisation 
   
 
 ---  
@@ -232,13 +261,6 @@ Summary of the system design, will go into details below how everything work etc
   - Turn off is MCU detect reed switch and activate a signal
     - Allows MCU to do whatever it needds to do before pwoering off.
 
-
-<!-- - Overall System Architecture
-  - How is everythinkg linked together
-    - Architecture Diagram
-  - Say which thing can solve what
-- Mention that alternatives were discussed below
-- Create table of need to be done,must have etc -->
 
 ---
 
