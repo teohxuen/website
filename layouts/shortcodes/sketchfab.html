@@ -1,0 +1,7 @@
+<div class="sketchfab-embed-wrapper">
+    <iframe frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+        allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered
+        web-share width="{{ .Get " width" | default "640" }}" height="{{ .Get " height" | default "480" }}"
+        src="https://sketchfab.com/models/{{ .Get " id" }}/embed?ui_theme={{ .Get "theme" | default "light" }}">
+    </iframe>
+</div>

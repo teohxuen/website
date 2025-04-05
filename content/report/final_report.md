@@ -34,6 +34,7 @@ disableAnchoredHeadings: false
 |   **AUV**   | Autonomous Underwater Vehicle |
 |  **BBAS**   | Bumblebee Autonomous Systems  |
 |   **BCB**   |     Battery Charging Box      |
+|   **BTB**   |    Battery Telemetry Board    |
 |   **CAN**   |    Controller Area Network    |
 |   **OCS**   |   Operator Control Station    |
 |   **PCB**   |     Printed Circuit Board     |
@@ -41,6 +42,7 @@ disableAnchoredHeadings: false
 |   **SoC**   |        State of Charge        |
 
 </div>
+
 
 
 
@@ -349,14 +351,18 @@ Additionally, its software application "bqStudio" provides an easy interface wit
 ![Screenshot of bQStudio](bq.png)
 ##### Figure XXX: Screenshot of bQStudio
 
-To leverage the extensive resources available and increase likelihood of success, a compatible chip from the TI family was shortlisted. Successful implementations by teams such as Cornell and OSU further validate the chip’s reliability in AUV applications.
+To leverage the extensive resources available and increase likelihood of success, a compatible chip from the TI family was shortlisted. Successful implementations by teams such as Cornell and OSU further validate the chip’s reliability in AUV applications. 
 
 | **Feature**               | **BQ34110 (Current)**                                                  | **BQ40Z50 (Proposed)**                                                                                                                                   |
 | ------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Battery Gauging Algorithm | Compensated End-of-Discharge Voltage                                   | TI’s Impedance Track                                                                                                                                     |
 | Algorithm Comparison      | - Inaccurate SoC after idle period<br>- Affected by aged battery<br> - | - Remains accurate after idle<br>- Resistant to ageing and temperature changes<br>- Remains accurate at high level of discharge.<br> - Lower error rate. |
 
-BQ40Z50 was chosen as it supports up to 4-Series Li-Ion or LiPo Battery Packs. It also offers programmable protection features (Section XXXX) as well as Impedance Tracking and Cell Balancing (Section XXX). The chip is also able to track the number of cycles the batteries have been through. This reduces the need to guess when the batter capacity falls below a certain amount and hence prepare the operator to procure a new set of batteries.
+BQ40Z50 was chosen as it supports up to 4-Series Li-Ion or LiPo Battery Packs. It also offers programmable protection features (Section XXXX) as well as Impedance Tracking and Cell Balancing (Section XXX). The chip is also able to track the number of cycles the batteries have been through. This reduces the need to guess when the batter capacity falls below a certain amount and hence prepare the operator to procure a new set of batteries. Furthermore, its large number of available stocks ensures that the PMB can be easily reproduced or repaired in the future if necessary.
+
+![BQ40Z50 Availability on Mouser](bq40z50mouser.png)
+##### Figure XXX: BQ40Z50 Availability on Mouser
+
 
 ##### 6.2.3 Evaluation of SoC Accuracy
 Hence, to evaluate the SoC accuracy, the new Li-Ion battery along with the PMB went through a learning cycle <https://www.ti.com/lit/an/slua903/slua903.pdf?ts=1743852291712&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FBQ40Z50>.
@@ -398,64 +404,137 @@ This can be useful as it allows members to better plan and anticipate battery ch
 
 ## 7. Enhance User Operability and Workflow
 
-One part of the project is to enhance user operability and workflow. User operability can be improved by allowing for easier operation and maintenace of the battery hull, reducing AUV's downtime. Improved workflow can help to identify potential issues and allow for early maintenance. Both user operability and workflow can come together to increase reliabilty of the vehicle.
-
-
-Aim to make it easier for memerbs to oeprate and maintain vehicle to keep vehcile reliable despite long operation hours. Main goal is to reduce down time but icnreasing reliability. Help to prevent damage to battery hulls or vehicle. Prevent taking people away from development by fixing damges.
+One part of the project is to enhance user operability and workflow. User operability can be improved by allowing for easier operation and maintenance of the battery hull, reducing AUV's downtime. Easier maintenance can also help prevent damage to the battery hulls. Improved workflow can help to identify potential issues and allow for early detection of faults. Both user operability and workflow can come together to increase the reliability of the vehicle.
 
 ### 7.1 In-Hull Firmware Flashing
-  - Allows for flashing and update without opening hull
-    - Reduces error during reseasling, reduces downtime
-    - Tested during RobotX 2024 where a USB port was exposed on the ASV to allow for firmware flashing
-  - Few Option
-    - CAN Bus Flashing to allow for flashing via CAN
-      - Require higher overhead as you need a more expensive microcontroller
-      - Need build own bootloader
-      - Show old connector where CAN is alreaday exposed
-    - Use the original Balance Connector
-      - Explain that with the BQ40Z50 chip, balancing can be done with the chip, so balancing dont have to use charger to balance.
-        - Frees up the connector
-      - Reduce changes needed to be done
-      - Allows to expose the BQ chip comms also
-  - Insert image of old balance connector vs new balance connector
+Currently, the microcontroller on the PMB can only be programmed via the exposed Serial Wire Debug (SWD) pins on the PCB inside the battery hull. This process is time-consuming and increases the risk of sealing errors during reassembly. By enabling in-hull firmware flashing, software updates can be performed without physical disassembly, significantly reducing maintenance time and increasing operational efficiency.
+
+#### 7.1.1 Prior Implementation: RobotX 2024
+
+In-hull flashing was successfully implemented during RobotX 2024. A USB port was exposed on the side of the hulls onboard the Autonomous Surface Vessel (ASV), allowing members to update the firmware without opening the hull. This cuts down the time required for firmware update from five minutes to one minute.
+
+![USB Port for Flashing on the ASV](hullflashing.jpg)
+##### Figure XXX: USB Port for Flashing on ASV4.0
+
+#### 7.1.2 Design Concept 1 - Firmware Flashing via CAN Bus
+Initially, an option was to use the CAN lines to flash firmware onto the microcontroller.
+
+![AUV4.1 Battery Hull Power Connector Pinout](battconnector.jpg)
+##### Figure XXX: AUV4.1 Battery Hull Power Connector Pinout
+
+However, this option increases complexity of the system as a bootloader has to be written to support the firmware upload over CAN Bus. 
+  
+#### 7.1.3 Design Concept 2 - Repurposing the Balance Connector
+
+An alternate approach is to repurpose the AUV4.1 balance connector, which was originally used to expose the LiPo battery's balance pins for external cell balancing during charging. However, as the BQ40Z50 chip support cell balancing, this connector is now redundant and can be reassigned for other functions. 
+
+![Old Balance Connector Pin Out](oldbal.png)
+##### Figure XXX: Old Balance Connector Pin Out
+
+The Balance Connector can be re-wired within the battery hull to expose the microcontroller programming pins (SWDIO, SWDCLK, RESET and Ground). Since communication with the BQ40Z50 chip is via SMBus, the SMBus lines (SMBD, SMBC and SMB GND) can also be exposed on the same connector. This allows the user to programme the microcontroller and the BQ40Z50 chip without unsealing the hull, reducing down time. Furthermore, it does not require significant development effort to implement this feature. 
+
+![New Balance Connector Pin Out](newbal.png)
+##### Figure XXX: New Balance Connector Pin Out
+
   
 ### 7.2 Remote Status Monitoring
-  - AS mentioned in xxx manual logging was used to track if battery hull is sealed
-  - Difficult to determine slow leak
-  - Upload relevant data online
-  - This provide historical data for operator to reference easily without unsealing the hull
-    - Can be useful for leak
-    - Or to track degradation of battery
-    - Or to track if cells are becoming unbalanced
-      - All of which should be rectified to ensure that AUV battery can function properly
-  - Few Option
-    - MCU with Wireless Capability
-      - Not suitable for Metal hull
-    - Accompanying PCB for BCB
-      - Same connector used to charge also hold the CAN Lines
-      - Able to connect CAN Line to the PCB to retrieve data from the BCB
-      - BCB would then be able to upload the data online
-    - Chose the BCB option as we dont need the PMB to have access to the internet all the time. This is as when it is turned on, it is sually connected to the AUV or the BCB. When it is connected to AUV it would have access to the Internet
-      - Insert diagram from interim report
-  - While BCB means we need extra component, it is worth while as we can implement additional features (mentioned in section xxx) we can use it
-  - Especially since the PMB will be on only when conencted to AUV or BCB
-  - Go through BCB PCB design
-    - Powered with USB-C allow to power with the Charger itself (no need extra plug)
-    - Have ESP32 to get the CAN stuff and publish online with ESP capability
-      - Insert CAN Table 
-      - ![CAN Table](image.png)
-    - Talk about how it receive the CAN messages and use the Google App Script to Publish into its relevant scripts
-    - Test
-      - Simulated with Serial Communication with the computer
-    - Chose google sheet instead of database as it is easy for all members to use and track. Can even use on phone. 
-  - current time obtained from NTP
-  - Can say that previously there was plan for local logging -> included in te design of the PMB
-      - As the data would be uploaded online by either the AUV or the BCB, there isnt really a need
-      - Accessing the local data is more troublesome as you have to unseal the hull.
-  - To ensure data accuracy there is a timeut for the stats
-    - If any stats dont come within 2x its reporting frequency the data is cleared and not reported to prevent posting outdated data
-  - Use a table to compare what is shown on the screen, what is reported to telegram and what is sent to google sheet
-  - Explain the differences (difference in purpose)
+As discussed in in [Section 2.3.3](#233-challenges-with-tracking-battery-hulls-pressure-and-temperature),the team currently relies on manual logging to monitor the battery hull’s internal pressure and temperature. This lack of historical data makes it difficult to determine if there is a slow leak. Furthermore recording key telemetry information such as individual cell voltages, state of health can also be logged to track the degradation of the batteries.
+
+As such, the requirements for the remote status monitoring and its reasoning can be summarised below.
+
+| **Requirements**              | **Reasoning**                                                                                                                   |
+| :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| Automated Reporting           | To avoid human error.                                                                                                           |
+| Wireless Update Data          | To avoid unsealing the hull to retrieve the data.                                                                               |
+| Low Barrier of Entry Database | As members from different sub-teams have to maintain the Battery Hull, the storage database should be easily accessed and used. |
+##### Table XXX: Requirements for Remote Status Monitoring and Their Justifications
+
+### 7.2.1 Design Concept 1 - Microcontroller with Wireless Capabilities
+The initial design involved using a microcontroller with built-in WiFi capabilities (STM32Wx, Espressif MCUs), allowing it to connect to the internet whenever the battery hull is powered on. However, this approach is not ideal as the PMB is placed within a 3D printed metal hull, which would act as a Faraday cage. This would weaken the WiFi signal leading to unreliable connections.
+
+Given that the battery is already connected to the internet when it is attached to the AUV (Figure XXX), wireless capabilities are only necessary when the battery hull is charging in the BCB. 
+
+![Diagram of Data Flow from PMB to the Internet](pmbtointernetauv.png)
+##### Figure XXX: Diagram of Data Flow from PMB to the Internet
+
+### 7.2.2 Design Concept 2 - Accompanying PCB Within the Battery Charging Box
+
+To address these limitations, a revised design places a PCB with wireless capabilities in the BCB. The battery hull connects to the LiPo charger in the BCB via the connector in Figure XXX. As such, the CAN Low and CAN High data line are unused. Using this connection, a microcontroller can retrieve data from the PMB when it is charging and upload it online. 
+
+Hence the a Battery Telemetry Board (BTB) was designed to reside within the BCB. It uses an Espressif32-DevKitC V4 as it was readily available in the lab. While this would mean an additional component is required to reside within the BCB, it is worthwhile as other features such as [Real-Time Safety and Status Notifications](#81-real-time-safety-and-status-notifications) can be implemented on the same Battery Telemetry Board.
+
+They key components of the BTB and its purpose are summarised in the table below:
+
+| **Key Components**                  | **Functions**                                                              |
+| :---------------------------------- | :------------------------------------------------------------------------- |
+| Espressif ESP32-DevKitC V4          | Microcontroller with WiFi capabilities to upload telemetry online.         |
+| SSD1306                             | Onboard screen to display key information.                                 |
+| ISOW1044B                           | Isolated CAN transceiver to allow for CAN communication with the PMB.      |
+| Buzzer                              | Used to alert user of any potential fault.                                 |
+| USB-C Connector & Voltage Regulator | To power the board directly from the LiPo charger to simplify integration. |
+##### Table XXX: Components and Functions of the Battery Telemetry Board (BTB)
+
+![Labelled Components on BTB](btpcomponents.png)
+##### Figure XXX: Labelled Components on BTB
+
+<Include in Appendix the Power Consumption Chart of BTB and the calculations>
+
+<Include in Appendix the Schematic and Layout of BTP>
+
+
+### 7.2.3 Data Flow
+
+The PMB constantly reports telemetry via 5 CAN Messages.
+
+<Include in Appendix how the CAN Messages Work>
+
+![List of CAN Messages](canmsgs.png)
+##### Figure XXX: Data Flow from BTB to Telegram Channel and Google Sheets
+
+The BTB interprets the CAN messages and packages it to be sent to the Telegram Channel and a Google App Script. The Google App Script will then update the respective Google Sheets based on the PMB ID. The time recorded is obtained via NTP.
+
+Google Sheets was chosen as it is a low barrier of entry, allowing all members to easily access their data. Furthermore, it does not require any additional applications to view the data.
+
+![Data Flow from BTB to Telegram Channel and Google Sheets](dataflowbtb.png)
+
+##### Figure XXX: Data Flow from BTB to Telegram Channel and Google Sheets
+
+![BCB Google Sheet](bcbexcel.png)
+
+##### Figure XXX: Data Flow from BTB to Telegram Channel and Google Sheets
+
+To ensure data being published is accurate, there is a time out for all the telemetry received. If the BTP does not receive the same message ID from the same PMB within two times of its reporting frequency, all the data from that PMB is cleared. This ensures that only accurate data is recorded to not pollute the dataset for analysis. 
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center;"><strong>Telemetry</strong></th>
+      <th style="text-align:center;"><strong>Reported on PMB Screen</strong></th>
+      <th style="text-align:center;"><strong>Reported on Telegram Channel</strong></th>
+      <th style="text-align:center;"><strong>Recorded on Google Sheet</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Voltage</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>Cell1 Voltage</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>Cell2 Voltage</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>Cell3 Voltage</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>Cell4 Voltage</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>Current</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>SoC</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>Time to Full</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>Average Power</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>State of Health FCC</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>Internal Pressure</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>Temp Probe 1</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>Temp Probe 2</td><td style="background-color:#f8c6c6; text-align:center;">N</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+    <tr><td>Internal Temperature</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td><td style="background-color:#c6f6c3; text-align:center;">Y</td></tr>
+  </tbody>
+</table>
+
+##### Table XXXX: Summary of Telemetry Availability Across Interfaces
+
+Due to limited space on the screen, only high-priority telemetry is shown to avoid clutter. The Telegram channel provides immediate operational updates, while full datasets are continuously uploaded to Google Sheets for future analysis. This tiered reporting strategy balances usability with traceability, ensuring the data remains actionable without overwhelming users.
 
 ---
 
@@ -476,7 +555,7 @@ During the testing and development of the Autonomous Surface Vessel, a Telegram 
 Hence, using Telegram Channel as a form of notification was chosen as it was tried and proven to be effective. Furthermore, as Telegram is used to communicate in the team, members would already have it installed on their devices, lowering the barrier of entry for using this system. By utilising a Telegram Channel also allows for multiple members to be notified of any issues. This reduces the chance of an alert being missed.
 
 #### 8.1.3 Implementation
-When the data is sent from the BCB to the Google Sheet, the same Google App Script is used to check for the following conditions:
+When the data is sent from the BTB to the Google Sheet, the same Google App Script is used to check for the following conditions:
 
 | **Condition**                                               | **Notification**                             |
 | :---------------------------------------------------------- | :------------------------------------------- |
@@ -526,7 +605,7 @@ The threshold of 0.5 is determined by observing the change in temperature and in
 |    112.47    |    30    |  3.749  |       -0.128       |
 ##### Table XXX: Changes in Pressure and Temperature of Battery Hull B
 
-By feeding various data into the BCB, we are able to simulate a leaking hull, leading to an alert sent to the Telegram Channel.
+By feeding various data to the BTB, we are able to simulate a leaking hull, leading to an alert sent to the Telegram Channel.
 
 ![Telegram Channel Reporting a Possible Leak](ratio.png)
 ##### Figure XXX: Telegram Channel Reporting a Possible Leak in PMB2
@@ -655,3 +734,30 @@ forget to turn off the charger, especially after fatigue from a long day of pool
   - Look at OneNote on PCB explanation
 - BQStudio Configuration (Insert Link to the Page)
 
+## Appendix: 3D Model of AUV4.5 Power Management Board
+
+<div style="display: flex; justify-content: center;">
+  <div class="sketchfab-embed-wrapper" style="width: 100%; max-width: 900px;">
+    <iframe title="AUV4.5-2 Power Management Board 3D Model"
+            frameborder="0"
+            allowfullscreen
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+            allow="autoplay; fullscreen; xr-spatial-tracking"
+            xr-spatial-tracking
+            execution-while-out-of-viewport
+            execution-while-not-rendered
+            web-share
+            style="width: 100%; height: 480px;"
+            src="https://sketchfab.com/models/1ba9f9a1e7d0487896ffd8acb5602e95/embed">
+    </iframe>
+    <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A; text-align: center;">
+      <a href="https://sketchfab.com/3d-models/step-no-variations-for-auv4-5-2-pmb-pcbdoc-1ba9f9a1e7d0487896ffd8acb5602e95?utm_medium=embed&utm_campaign=share-popup&utm_content=1ba9f9a1e7d0487896ffd8acb5602e95"
+         target="_blank"
+         rel="nofollow"
+         style="font-weight: bold; color:black;">
+        AUV4.5-2 Power Management Board 3D Model
+      </a>
+    </p>
+  </div>
+</div>
