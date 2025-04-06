@@ -48,7 +48,7 @@ Finally, I am deeply grateful to my family for their unwavering patience and sup
 
 This project focuses on developing a Power Monitoring Board for the upcoming Autonomous Underwater Vehicle, AUV4.5. The PMB is a critical component of the vehicle’s electrical system, designed to interface the battery reliably and safely with the AUV. 
 
-The new PMB introduces key features such as accurate state-of-charge tracking and in-hull firmware upgrades while maintaining backward compatibility with AUV4.1. Additionally, a new Battery Telemetry Board (BTB) will be integrated into the Battery Charging Box (BCB) enabling real-time monitoring, wireless data upload and automated fault detection during battery charging.
+The new PMB introduces key features such as accurate state-of-charge tracking and in-hull firmware upgrades while maintaining backward compatibility with AUV4.1. Additionally, a new Battery Telemetry Board (BTB) will be integrated into the Battery Charging Box (BCB) enabling real-time monitoring, wireless data upload and automated fault detection throughout battery charging.
 
 ---
 
@@ -385,7 +385,7 @@ This can be useful as it allows members to better plan and anticipate battery ch
 
 ## 7. Enhancing User Operability and Workflow
 
-One part of the project is to enhance user operability and workflow. User operability can be improved by allowing for easier operation and maintenance of the battery hull, reducing AUV's downtime. Easier maintenance can also help prevent damage to the battery hulls. Improved workflow can help to identify potential issues and allow for early detection of faults. Both user operability and workflow can come together to increase the reliability of the vehicle.
+One part of the project is to enhance user operability and workflow. User operability is improved by simplifying operation and maintenance of the battery hull, reducing AUV's downtime. Easier maintenance can also help prevent damage to the battery hulls. Improved workflow can help to identify potential issues and allow for early detection of faults. Both user operability and workflow can come together to increase the reliability of the vehicle.
 
 ### 7.1 In-Hull Firmware Flashing
 Currently, the microcontroller on the PMB can only be programmed via the exposed Serial Wire Debug (SWD) pins on the PCB inside the battery hull. This process is time-consuming and increases the risk of sealing errors during reassembly. By enabling in-hull firmware flashing, software updates can be performed without physical disassembly, significantly reducing maintenance time and increasing operational efficiency.
@@ -462,7 +462,7 @@ BTB Schematics are in Appendix A.
 
 ### 7.2.3 Data Flow
 
-The PMB constantly reports telemetry via five CAN Messages. The data sent over the messages includes critical information for fault detection (e.g.: voltage, current, internal pressure and temperature), information that can be useful to track degradation (E.g.: individual cell voltages, state of health) are also sent to be documented. Finally, telemetry data that can help in operational planning such as time to full charge and time to empty is transmitted to support efficient pool test scheduling.
+The PMB constantly reports telemetry via five CAN Messages. The data sent over the messages includes critical information for fault detection (e.g.: voltage, current, internal pressure and temperature), information that can be useful to track degradation (E.g.: individual cell voltages, state of health) are also sent to be documented. Finally, telemetry data that helps in operational planning such as time to full charge and time to empty is transmitted to support efficient pool test scheduling.
 
 ![List of CAN Messages](canmsgs.png)
 ##### Figure 29: Data Flow from BTB to Telegram Channel and Google Sheets
@@ -646,7 +646,7 @@ A test was conducted to compare the new MOSFET with the old MOSFET and its therm
 
 It can be observed that the old PMB has a higher temperature after the load test, indicating that the MOSFETs on the new PMB are better at conducting thermal heat away.
 
-To ensure reliable power supply, a power consumption chart was drawn up to verify that the selected voltage regulator are able to supply enough power.
+To ensure reliable power supply, a power consumption chart was drawn up to verify that the selected voltage regulators are able to supply enough power.
 
 ![PMB's Power Consumption Chart](pmbpowerconsume.png)
 ##### Figure 42: PMB's Power Consumption Chart
@@ -661,7 +661,7 @@ Firstly, the board was split into high-power and low-power zones to minimise int
 
 Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller's components. A low-dropout regulator (LDO) was used to step down 3.3V for 3.3V components.
 
-The BQ40Z50 communicates via SMBus, which crosses between the high and lower power sections. Therefore an I2C isolator is used. To protect the SMBus lines from electrostatic discharge and voltage spikes, TVS and Zener diodes are connected to the lines
+The BQ40Z50 communicates via SMBus, which spans both the high-power low-power sections. Therefore an I2C isolator is used. To protect the SMBus lines from electrostatic discharge and voltage spikes, TVS and Zener diodes are connected to the lines
 
 The various Power and Nets are summarised in the table below:
 
@@ -754,7 +754,7 @@ Due to limited availability of serviceable battery hulls and competing  prioriti
 
 The BQ40Z50 supports communication of target charging voltage and  current via SMBus. This opens the opportunity to develop a custom charger that interfaces directly with the battery pack, enabling smart charge regulation. The BTB can be integrated with the custom charger to report the charging status.
 
-One usability issue identified relates to connector reuse. In an effort to minimise modifications to the existing battery hull, identical connectors were used for both battery balance lines and microcontroller programming pins. This design choice introduces the risk of incorrect connections during assembly, which could damage the microcontroller. While backward compatibility was prioritised, minor modifications should still be made when necessary to prevent user error and enhance system robustness.
+One usability issue identified relates to connector reuse. To minimise modifications to the existing battery hull, identical connectors were used for both battery balance lines and microcontroller programming pins. This design choice introduces the risk of incorrect connections during assembly, which could damage the microcontroller. While backward compatibility was prioritised, minor modifications should still be made when necessary to prevent user error and enhance system robustness.
 
 If no major issues are discovered during pool testing, the PMB will be deployed at RoboSub 2025 and RoboSub 2026 across the AUVs fielded by BBAS. Furthermore, with BBAS releasing our PCB schematics online, the PMB can serve as a reference to other AUV teams working on battery management systems. Notably, no internet-connected charging system were observed at RoboSub 2023. By demonstrating this feature at RoboSub 2025, BBAS can inspire other teams to implement remote monitoring for their systems.
 
