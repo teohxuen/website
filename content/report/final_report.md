@@ -184,7 +184,7 @@ The project goal can be summarised as:
     </b>
 </div>
 
-### 3.1.1 Project Sub Goals
+### 3.1.1 Project Sub-Goals
 Hence, a three-Pronged approach was used to guide the development of the PMB, with each sub-goal detailed in its respective section.
 
 | **Sub Goals**                          |                  **Section Number**                   |
@@ -284,7 +284,7 @@ Operationally, each AUV requires six batteries, organised into three sets of two
 | Maximum Current Draw                       | 60A                       | 80A               | 75A               |
 | Cost                                       | SGD 320                   | SGD 250           | SGD 451           |
 
-##### Table 9 : Table of Comparison for Batteries
+##### Table 9 : Battery Comparison Table
 
 Lithium-ion batteries were chosen for comparison due to its longer lifespan and higher energy density [3]. With its higher capacity and lower cost, the Raitan Li-Ion battery was selected. Additionally, the team’s prior experience with Raitan provided confidence in the reliability and performance of their product.
 
@@ -383,7 +383,7 @@ This can be useful as it allows members to better plan and anticipate battery ch
 
 ---
 
-## 7. Enhance User Operability and Workflow
+## 7. Enhancing User Operability and Workflow
 
 One part of the project is to enhance user operability and workflow. User operability can be improved by allowing for easier operation and maintenance of the battery hull, reducing AUV's downtime. Easier maintenance can also help prevent damage to the battery hulls. Improved workflow can help to identify potential issues and allow for early detection of faults. Both user operability and workflow can come together to increase the reliability of the vehicle.
 
@@ -423,12 +423,12 @@ As discussed in in [Section 2.3.3](#233-challenges-with-tracking-battery-hulls-p
 
 As such, the requirements for the remote status monitoring and its reasoning can be summarised below.
 
-| **Requirements**              | **Reasoning**                                                                                                                   |
+| **Requirements**              | **Rationale**                                                                                                                   |
 | :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
 | Automated Reporting           | To avoid human error.                                                                                                           |
 | Wireless Update Data          | To avoid unsealing the hull to retrieve the data.                                                                               |
 | Low Barrier of Entry Database | As members from different sub-teams have to maintain the Battery Hull, the storage database should be easily accessed and used. |
-##### Table 13: Requirements for Remote Status Monitoring and Their Justifications
+##### Table 13: “Requirements and Rationale for Remote Status Monitoring
 
 ### 7.2.1 Design Concept 1 - Microcontroller with Wireless Capabilities
 The initial design involved using a microcontroller with built-in WiFi capabilities (STM32Wx, Espressif MCUs), allowing it to connect to the internet whenever the battery hull is powered on. However, this approach is not ideal as the PMB is placed within a 3D printed metal hull, which would act as a Faraday cage. This would weaken the WiFi signal leading to unreliable connections.
@@ -436,7 +436,7 @@ The initial design involved using a microcontroller with built-in WiFi capabilit
 Given that the battery is already connected to the internet when it is attached to the AUV (Figure 27), wireless capabilities are only necessary when the battery hull is charging in the BCB. 
 
 ![Diagram of Data Flow from PMB to the Internet](pmbtointernetauv.png)
-##### Figure 27: Diagram of Data Flow from PMB to the Internet
+##### Figure 27: Data Flow from PMB to the Internet
 
 ### 7.2.2 Design Concept 2 - Accompanying PCB Within the Battery Charging Box
 
@@ -477,7 +477,7 @@ Google Sheets was chosen as it has a low barrier of entry, allowing all members 
 
 ![BCB Google Sheet](bcbexcel.png)
 
-##### Figure 31: Data Flow from BTB to Telegram Channel and Google Sheets
+##### Figure 31: Recorded Telemetry on Google Sheets
 
 To ensure data being published is accurate, there is a time out for all the telemetry received. If the BTP does not receive the same message ID from the same PMB within two times of its reporting frequency, all the data from that PMB is cleared. This ensures that only accurate data is recorded to not pollute the dataset for analysis. 
 
@@ -611,7 +611,7 @@ Several key safety features were configured and tested:
 | Overload in Discharge Protection (AOLD) | Almost instantaneous cut off when discharging above the set current limit.                                                            |
 | Over Charging Current Protection (OCC)  | When the charging current is higher than the preset threshold, the Charging MOSFET is turned off.                                     |
 
-##### Table 20: Using bQStudio to configure Protection Settings
+##### Table 20: Test Results for BQ40Z50 Protection Features
 
 Additionally, there is a secondary overvoltage protection chip (BQ294701) monitors cell voltages independently and can also activate the fuse if an overvoltage is detected. This act as a fallback if the BQ40Z50 is malfunctioning. 
 
@@ -716,7 +716,7 @@ The new design is able to meet the functional requirements stated in [Section 4]
 | Telemetry           |     Yes      | Voltage, current, and internal pressure are displayed on the telemetry screen. Voltage was verified with a multimeter; current was calibrated using a load tester. |
 | Charging            |     Yes      | Able to charge the battery.                                                                                                                                        |
 
-##### Table 22: Comparison between Functional Requirements and Its Status
+##### Table 22: Verification of Functional Requirements
 
 The sub-goals set out in [Section 3](#3-project-goal) have been met. 
 
@@ -737,10 +737,10 @@ Unfortunately, there were also mistakes when designing the PCBs that have to be 
 ##### Table 24: Summary of PCB Mistakes and Its Fixes
 
 ![PMB Fix](pmbfix.png)
-##### Figure 50: Soldering Pull Down Resistor on PMB
+##### Figure 50: Soldering Pull-Down Resistor on PMB
 
 ![BTB Fix](btpfix.png)
-##### Figure 51: Soldering Pull Down Resistor on BTB
+##### Figure 51: Soldering Pull-Down Resistor on BTB
   
 The integration of SoC tracking, protection features and remote status monitoring redefines the PMB from being a passive Power Monitoring Board to a Power Management Board. Furthermore, the addition of a BTB to the BCB provides an integrated system to monitor and alert operators of potential faults within the AUV's battery system. 
 
