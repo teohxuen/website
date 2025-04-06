@@ -12,17 +12,16 @@ showToc: true
 disableAnchoredHeadings: false
 ---
 
-## Acknowledgement
+## Acknowledgements
 
-- Bumblebee Team, especially Elec Team to bounce idea with
-- Zi Yang and Tan Chern Lin for providing feedback, Chen Jia Wei for troubleshooting. Marvin for giving the idea.
-- Guk Yi Siong for helping in obtaining power consumption data
-- Ananyan for  validating my mechanical ideas
-- Ms Annie, Patrick, KK, Graham
-- Parker Schless from Cornell AUV for his advice when I faced problems
-- Eugene for taking time to review the project and providing advice
-- School for providing the lab, lab equipment and resources
-- sponsors for helping the team also
+Firstly, I would like to thank Team Bumblebee for the opportunity to work on this project.This project would not have been possible without the support of the many dedicated Bumblebee Members. I am especially grateful to Chai Zi Yang and Tan Chern Lin Justin for taking the time to review my PCB designs, Chen Jia Wei for spending countless hours troubleshooting with me and Marvin Pranajaya for his valuable advice on the Power Management Board. I would also like to thank Guk Yi Siong for assisting with the collection of power consumption data during in-water testing and Ananya Agarwal for her work on the Battery Hulls. 
+
+Additionally, I would like to express my gratitude to Parker Schless from Cornell AUV, for generously taking the time to address my technical queries on the implementation of the BQ40Z50 chip.
+
+I also wish to acknowledge the support provided by the NUS College of Engineering, particularly Ms Annie, Mr Patrick, and Mr Graham from the Engineering Design and Innovation Centre. I would also like to thank Prof Goh Cher Hiang and Mr Eugene Ee for taking the time to review my project and provide valuable advice.
+
+Finally, I am deeply grateful to my family for their unwavering patience and support through my journey in Team Bumblebee.
+
 ----
 ## List of Common Acronyms
 
@@ -43,14 +42,13 @@ disableAnchoredHeadings: false
 
 </div>
 
-
-
-
 ---
 
 ## 1. Summary
 
-TODO:
+This project focuses on developing a Power Monitoring Board for the upcoming Autonomous Underwater Vehicle, AUV4.5. The PMB is a critical component of the vehicle’s electrical system, designed to interface the battery reliably and safely with the AUV. 
+
+The new PMB introduces key features such as accurate state-of-charge tracking and in-hull firmware upgrades while maintaining backward compatibility with AUV4.1. Additionally, a new Battery Telemetry Board (BTB) will be integrated into the Battery Charging Box (BCB) enabling real-time monitoring, wireless data upload and automated fault detection during battery charging.
 
 ---
 
@@ -62,10 +60,10 @@ Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs a
 ##### Figure 1: AUV4.1 at RoboSub 2023
 
 | **Competition** | **Vehicles Deployed** |
-| :-------------- | :-------------------- |
-| RoboSub 2023    | AUV4.1                |
-| RoboSub 2025    | AUV4.5                |
-| RoboSub 2026    | AUV4.5 and AUV5.0     |
+| :-------------: | :-------------------: |
+|  RoboSub 2023   |        AUV4.1         |
+|  RoboSub 2025   |        AUV4.5         |
+|  RoboSub 2026   |   AUV4.5 and AUV5.0   |
 ##### Table 1: AUV Deployments in RoboSub Competitions
 
 AUV4.5 retains the same hull design as AUV4.1 but features a newly developed electrical and software subsystem. This new electrical subsystem is designed to be mechanically compatible with the existing AUV4.1 hull while also serving as the baseline for AUV5.0. 
@@ -174,7 +172,6 @@ Poor user operability increases the likelihood of mistakes at competition, espec
 
 ##### Table 4: Comparison of Final Score and Testing Time at RobotX 2024
 
-
 ---
 
 ## 3. Project Goal
@@ -194,9 +191,9 @@ Hence, a three-Pronged approach wass used to guide the development of the PMB, w
 
 | **Sub Goals**                          |                  **Section Number**                   |
 | :------------------------------------- | :---------------------------------------------------: |
-| Enhance User Operability and Work Flow |   [Section 8](#8-improving-safety-and-reliability)    |
-| Improve Safety and Reliability         | [Section 7](#7-enhance-user-operability-and-workflow) |
-| Improve AUV Performance                |   [Section 6](#8-improving-safety-and-reliability)    |
+| Enhance User Operability and Work Flow | [Section 7](#7-enhance-user-operability-and-workflow) |
+| Improve Safety and Reliability         |   [Section 8](#8-improving-safety-and-reliability)    |
+| Improve AUV Performance                |       [Section 6](#6-improving-auv-performance)       |
 ##### Table 5: Sub Goals and Corresponding Report Section
 
 ---
@@ -732,66 +729,58 @@ The final layout and assembled PCB are shown below.
 ---
 
 ## 9. System Evaluation
-  - Basic Feature
-    - Refer to earlier table to see if able to meet all the requirements
-    - Able to be backward compatible -> can fit into old battery hull, can be turned on with reed switch, can charge, can discharge
-    - Able to report telemetry, able to draw, able to charge
-      - Verified reporting is accurate -> Voltage measured with multimeter
-      - Current is calibrated with a load tester drawing a constant load
-      - Discharging and Charging State of Battery Verified
-  - Improvements (use a before: after table)
-    - Run Time: Increased
-    - User Operability and Maintenace: 25 mins to 5mins to upload, constant logging
-    - Reliability -> able to detect leak immediately
-    - Have another table that compares old PMB and New PMB
-      - Interfaces
-      - Data Reporting
-      - Ease of use etc.
-  - Mistakes
-    - No Pull Down for Isolator Signal
-    - No pull up for I2C
-    - Go through mistakes that was in the PCB
-    - and list the possible improvement also
+
+The new design is able to meet the functional requirements stated in [Section 4](#4-design-considerations).
+
+| **Requirements**    | **Achieved** | **Description**                                                                                                                                                    |
+| :------------------ | :----------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Backward Compatible |     Yes      | The battery and PMB fit within the previous battery hull and use the existing connectors.                                                                          |
+| Voltage Output      |     Yes      | A 4S Li-Ion battery was used.                                                                                                                                      |
+| Continuous Current  |     Yes      | Tested that the board is able to draw 40A for 10 minutes.                                                                                                          |
+| Telemetry           |     Yes      | Voltage, current, and internal pressure are displayed on the telemetry screen. Voltage was verified with a multimeter; current was calibrated using a load tester. |
+| Charging            |     Yes      | Able to charge the battery.                                                                                                                                        |
+
+##### Table XXX: Comparison between Functional Requirements and Its Status
+
+The sub goals set out in [Section 3](#3-project-goal) has been met. 
+
+| **Sub Goals**                          | **Implementation**                                                                                        | **Improvements**                                                                                                                          |
+| :------------------------------------- | :-------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| Enhance User Operability and Work Flow | - In-hull firmware update via balance connector<br>- Remote status monitoring via Battery Telemetry Board | - Firmware update time reduced from 25 minutes to 3 minutes.<br>- Members can track charging status and refer to historical battery data. |
+| Improve Safety and Reliability         | - Real-time safety and status notification via Telegram<br>- Protection features with BQ40Z50             | - Immediate alerts when faults are detected.<br>- AUV electrical system is protected from potential electrical faults.                    |
+| Improve AUV Performance                | - New Li-Ion batteries<br>- Accurate SoC estimation with BQ40Z50                                          | - In-water testing time can be extended.                                                                                                  |
+##### Table XXX: Summary of Sub Goals and Its Implementation and Improvements
+
+Unfortunately, there were also mistakes when designing the PCBs that have to be rectified when testing.
+
+| **PCB** | **Mistake**                                                                       | **Problems**                                                                    | **Current Fix**                                                                |
+| :-----: | :-------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ | :----------------------------------------------------------------------------- |
+|   PMB   | No pull-up resistor on the I2C lines between the MCU, screen, and pressure sensor | Unable to establish communications on I2C lines                                 | Pull-up resistor soldered onto the board                                       |
+|   PMB   | No pull-down resistor for the signal from the MCU to reset the reed switch        | Relay would be reset when the MCU is powered on, leading to the power being cut | Pull-down resistor soldered onto the board                                     |
+|   BTB   | Resistors from the CC lines on the USB-C connector are pulled up instead of down  | USB-C would not negotiate properly for power delivery                           | Existing resistor removed and new resistor soldered to pull CC lines to ground |
+##### Table XXX: Summary of PCB Mistakes and Its Fixes
+
+![PMB Fix](pmbfix.png)
+##### Figure XXX: Soldering Pull Down Resistor on PMB
+
+![BTB Fix](btpfix.png)
+##### Figure XXX: Soldering Pull Down Resistor on BTB
   
+The integration of SoC tracking, protection features and remote status monitoring redefines the PMB from being a passive Power Monitoring Board to a Power Management Board. Furthermore, the addition of a BTB to the BCB provides an integrated system to monitor and alert operators of potential faults within the AUV's battery system. 
 
-
-
----
-
-## 10. Impact
-  - To be deployed at RoboSub 2025
-  - PCB Designed will be released to help other teams design their own PMB
-  - Internet connected BCB was not seen at RoboSub, with teams moving towards battery pods, this is something that can be useful for them
-  
+Designed with backward and forward compatibility in mind, the new system is built to support current and future AUV platforms. This implementation enhance safety, usability and reliability, putting the team in a This changes being done while keeping in mind of backwards and forwards compatibility, positions the team for continued success at RoboSub. 
 
 ---
 
-## 11. Future Work
+## 11. Impact and Future Work
 
-- Test with the AUV
-  - Unable to do so due to limited hull and pool test
-  - Did not want to open and swap out the PMB as the hulls are old and notoriously hard to seal
-  - Was waiting for development of new hull to put the new pmb in
-- Merge BCB into a Smart Charger
-  - Communciate with PMB to negoitate desired current and voltage
-  - Can get data directly from the charger also
-- Better User Operability
-  - Using same connector for Balance Pin and Flashing
-      - works for previous PMB as it is connected to each other
-      - Does not work as thsi fried everything
-    - Future Work
-      - Change connector to something different so you dont accidentally misconnect
-      - More work and not interchangeable but its just crimp 1x so its not too bad
-    - should ahve integrated protection into the line
-      - clamping diode to prevent over 3v3
-      - diode to prevent reverse polarity
+Due to limited availability of serviceable battery hulls and competing  priorities during pool test, the new battery system has not been tested in-water with the AUV. Hence, testing with the AUV should be done to fully validate the entire system under actual operating conditions.
 
----
+The BQ40Z50 supports communication of target charging voltage and  current via SMBus. This opens the opportunity to develop a custom charger that interfaces directly with the battery pack, enabling smart charge regulation. The BTP can be integrated with the custom charger to report the charging status.
 
-## 12. Conclusion
+One usability issue identified relates to connector reuse. In an effort to minimise modifications to the existing battery hull, identical connectors were used for both battery balance lines and microcontroller programming pins. This design choice introduces the risk of incorrect connections during assembly, which could damage the microcontroller. While backward compatibility was prioritised, minor modifications should still be made when necessary to prevent user error and enhance system robustness.
 
-- Move from Power Monitoring to Power Management
-- Well Integrated system to deliver xxxx AUV for RoboSub
+If no major issues are discovered during pool testing, the PMB will be deployed at RoboSub 2025 and RoboSub 2026 across the AUVs fielded by BBAS. Furthermore, with BBAS releasing our PCB schematics online, the PMB can serve as a reference to other AUV teams working on battery management systems. Notably, no internet-connected charging system were observed at RoboSub 2023. By demonstrating this feature at RoboSub 2025, BBAS can inspire other teams to implement remote monitoring for their systems.
 
 ---
 
@@ -801,16 +790,43 @@ The final layout and assembled PCB are shown below.
 
 ## Appendix
 
-- PCB Schematic and Routing
+
 - Calculations
   - Look at OneNote on PCB explanation
 
+## Appendix: PCB Schematics
++ [Power Monitoring Board Schematic](PMB4.5-2Schematics.pdf)
++ [Battery Telemetry Board Schematic](btpschematic.pdf)
 
-## Appendix: 3D Model of AUV4.5 Power Management Board
+## Appendix: Individual Layers of Power Monitoring Board
+
+![PMB Top Layer](pmbtoponly.png)
+##### Top Layer of PMB
+
+![PMB Power Plane](pmbpwronly.png)
+##### Power Plane of PMB
+
+![PMB Ground Plane](pmbgndonly.png)
+##### Ground Plane of PMB
+
+![PMB Bottom Layer](pmbbottomonly.png)
+##### Bottom Layer of PMB
+
+## Appendix: Relay Circuit Calculation
+![Relay Circuit Calculation](relaycircuitcalc.png)
+##### Relay Circuit Calculation
+
+## Appendix: Battery Specification
+
+
+## Appendix: AUV Electrical Architecture
+
+
+## Appendix: 3D Model of AUV4.5 Power Monitoring Board
 
 <div style="display: flex; justify-content: center;">
   <div class="sketchfab-embed-wrapper" style="width: 100%; max-width: 900px;">
-    <iframe title="AUV4.5-2 Power Management Board 3D Model"
+    <iframe title="AUV4.5 Power Monitoring Board 3D Model"
             frameborder="0"
             allowfullscreen
             mozallowfullscreen="true"
@@ -828,7 +844,7 @@ The final layout and assembled PCB are shown below.
          target="_blank"
          rel="nofollow"
          style="font-weight: bold; color:black;">
-        AUV4.5-2 Power Management Board 3D Model
+        AUV4.5 Power Management Board 3D Model
       </a>
     </p>
   </div>
