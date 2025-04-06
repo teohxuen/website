@@ -351,7 +351,7 @@ Hence, to evaluate the SoC accuracy, the new Li-Ion battery along with the PMB w
 When discharged at a constant current of 7A, the Voltage and SoC reported by BQ40Z50 was recorded (Table 11). When using the LiPo battery, the team had a threshold of 15.2V (nominal voltage + 0.4V). Based on the chart, this would be roughly at 40% Depth of Discharge (DoD) (Figure 23).
 
 ![Voltage to Capacity](blog-lipo-battery-voltage-quick-chart.webp)
-##### Figure 23: Chart of Voltage and its Corresponding Capacity
+##### Figure 23: Chart of Voltage and its Corresponding Capacity [2]
 
 If we were to do the same for the Li-Ion battery the threshold would be 14.8V. This would mean that the run would end before 65 minutes. However, by using SoC the vehicle would be able to run to at least 75 minutes, extending the run time by 15.4 %.
 
@@ -458,23 +458,18 @@ They key components of the BTB and its purpose are summarised in the table below
 ![Labelled Components on BTB](btpcomponents.png)
 ##### Figure 28: Labelled Components on BTB
 
-<Include in Appendix the Power Consumption Chart of BTB and the calculations>
-
-<Include in Appendix the Schematic and Layout of BTP>
-
+BTB Schematics are in Appendix A.
 
 ### 7.2.3 Data Flow
 
-The PMB constantly reports telemetry via 5 CAN Messages.
-
-<Include in Appendix how the CAN Messages Work>
+The PMB constantly reports telemetry via five CAN Messages. The data sent over the messages includes critical information for fault detection (e.g.: voltage, current, internal pressure and temperature), information that can be useful to track degradation (E.g.: individual cell voltages, state of health) are also sent to be documented. Finally, telemetry data that can help in operational planning such as time to full charge and time to empty is transmitted to support efficient pool test scheduling.
 
 ![List of CAN Messages](canmsgs.png)
 ##### Figure 29: Data Flow from BTB to Telegram Channel and Google Sheets
 
 The BTB interprets the CAN messages and packages it to be sent to the Telegram Channel and a Google App Script. The Google App Script will then update the respective Google Sheets based on the PMB ID. The time recorded is obtained via NTP.
 
-Google Sheets was chosen as it is a low barrier of entry, allowing all members to easily access their data. Furthermore, it does not require any additional applications to view the data.
+Google Sheets was chosen as it has a low barrier of entry, allowing all members to easily access their data. Furthermore, it does not require any additional applications to view the data.
 
 ![Data Flow from BTB to Telegram Channel and Google Sheets](dataflowbtb.png)
 
@@ -780,8 +775,6 @@ If no major issues are discovered during pool testing, the PMB will be deployed 
 11. Texas Instruments, “Achieving The Successful Learning Cycle,” Application Report, Jul. 2018
 
 ---
-
-## Appendix
 
 ## Appendix A: PCB Schematics
 + [Power Monitoring Board Schematic](PMB4.5-2Schematics.pdf)
