@@ -14,7 +14,7 @@ disableAnchoredHeadings: false
 
 ## Acknowledgements
 
-Firstly, I would like to thank Team Bumblebee for the opportunity to work on this project.This project would not have been possible without the support of the many dedicated Bumblebee Members. I am especially grateful to Chai Zi Yang and Tan Chern Lin Justin for taking the time to review my PCB designs, Chen Jia Wei for spending countless hours troubleshooting with me and Marvin Pranajaya for his valuable advice on the Power Management Board. I would also like to thank Guk Yi Siong for assisting with the collection of power consumption data during in-water testing and Ananya Agarwal for her work on the Battery Hulls. 
+Firstly, I would like to thank Team Bumblebee for the opportunity to work on this project. This project would not have been possible without the support of the many dedicated Bumblebee members. I am especially grateful to Chai Zi Yang and Tan Chern Lin Justin for taking the time to review my PCB designs, Chen Jia Wei for spending countless hours troubleshooting with me and Marvin Pranajaya for his valuable advice on the Power Management Board. I would also like to thank Guk Yi Siong for assisting with the collection of power consumption data during in-water testing and Ananya Agarwal for her work on the battery hulls. 
 
 Additionally, I would like to express my gratitude to Parker Schless from Cornell AUV, for generously taking the time to address my technical queries on the implementation of the BQ40Z50 chip.
 
@@ -69,7 +69,7 @@ Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs a
 AUV4.5 retains the same hull design as AUV4.1 but features a newly developed electrical and software subsystem. This new electrical subsystem is designed to be mechanically compatible with the existing AUV4.1 hull while also serving as the baseline for AUV5.0. 
 
 ### 2.2 Current System
-The current power system for the AUVs comprises two main components, the Battery Hull (Figure 2) and the Battery Charging Box (BCB). Each Battery Hull houses a Power Monitoring Board (PMB) and a LiPo battery.
+The current power system for the AUVs comprises two main components, the battery hull (Figure 2) and the Battery Charging Box (BCB). Each battery hull houses a Power Monitoring Board (PMB) and a LiPo battery.
 
 The PMB (Figure 3) monitors and reports key telemetry data, such as the battery's voltage, current, battery hull's temperature and pressure, both on the screen and via the CAN Bus. Two such hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during pool test by eliminating the need to unseal the main vehicle hull.
 
@@ -105,7 +105,7 @@ The PMB currently uses BQ34110 chip as a gas gauge, which is designed for rarely
 
 #### 2.3.3 Challenges with Tracking Battery Hull's Pressure and Temperature
 During assembly, the battery hull is pressurised. Monitoring changes in pressure and temperature can alert the team to potential leaks. Currently, this tracking is done manually and only when a leak is
-suspected. his reactive approach limits the availability of historical data. Manual tracking can lead to missing data or recording error, reducing the effectiveness of leak detection.
+suspected. This reactive approach limits the availability of historical data. Manual tracking can lead to missing data or recording errors, reducing the effectiveness of leak detection.
 
 ![Manually Logging Battery's Hull and Temperature on the Battery Hull's Lid](manualtrack.png)
 ##### Figure 8: Manually Logging Battery's Hull and Temperature on the Battery Hull's Lid
@@ -185,7 +185,7 @@ The project goal can be summarised as:
 </div>
 
 ### 3.1.1 Project Sub Goals
-Hence, a three-Pronged approach wass used to guide the development of the PMB, with each sub-goal detailed in its respective section.
+Hence, a three-Pronged approach was used to guide the development of the PMB, with each sub-goal detailed in its respective section.
 
 | **Sub Goals**                          |                  **Section Number**                   |
 | :------------------------------------- | :---------------------------------------------------: |
@@ -200,7 +200,7 @@ Hence, a three-Pronged approach wass used to guide the development of the PMB, w
   
 ### 4.1 Backward Compatibility
 
-As outlined in [Section 2.1](#21-introduction), AUV4.5 has the same mechanical structure as AUV4.1. As such, the new PMB must remain mechanically and electrically compatible with the AUV4.1 battery hull. This backward compatibility ensures minimal modification to the existing support infrastructure when using the new PMB. Furthermore, designing to meet AUV4.1's specifications would also ensures forward compatibility with AUV5.0. This approach enables component reuse across AUV4.1, AUV4.5 and AUV5.0, reducing the need for custom variants and lowering the manufacturing cost by leveraging economies of scale.
+As outlined in [Section 2.1](#21-introduction), AUV4.5 has the same mechanical structure as AUV4.1. As such, the new PMB must remain mechanically and electrically compatible with the AUV4.1 battery hull. This backward compatibility ensures minimal modification to the existing support infrastructure when using the new PMB. Furthermore, designing to meet AUV4.1's specifications would also ensure forward compatibility with AUV5.0. This approach enables component reuse across AUV4.1, AUV4.5 and AUV5.0, reducing the need for custom variants and lowering the manufacturing cost by leveraging economies of scale.
 
 To maintain backwards compatibility, the following constraints were identified.
 
@@ -339,7 +339,7 @@ To leverage the extensive resources available and increase likelihood of success
 | Battery Gauging Algorithm | Compensated End-of-Discharge Voltage                                 | TI’s Impedance Track                                                                                                                                     |
 | Algorithm Comparison [10] | - Inaccurate SoC after idle period<br>- Affected by aged battery<br> | - Remains accurate after idle<br>- Resistant to ageing and temperature changes<br>- Remains accurate at high level of discharge.<br> - Lower error rate. |
 
-BQ40Z50 was chosen as it supports up to 4-Series Li-Ion or LiPo Battery Packs. It also offers programmable protection features ([Section 8.2](#82-protection-features)) as well as Impedance Tracking and Cell Balancing. The chip is also able to track the number of cycles the batteries have been through. This reduces the need to guess when the batter capacity falls below a certain amount and hence prepare the operator to procure a new set of batteries. Furthermore, its large number of available stocks (Figure 22) ensures that the PMB can be easily reproduced or repaired in the future if necessary.
+BQ40Z50 was chosen as it supports up to 4-Series Li-Ion or LiPo Battery Packs. It also offers programmable protection features ([Section 8.2](#82-protection-features)) as well as Impedance Tracking and Cell Balancing. The chip is also able to track the number of cycles the batteries have been through. This reduces the need to guess when the battery capacity falls below a certain amount and hence prepare the operator to procure a new set of batteries. Furthermore, its large number of available stocks (Figure 22) ensures that the PMB can be easily reproduced or repaired in the future if necessary.
 
 ![BQ40Z50 Availability on Mouser](bq40z50mouser.png)
 ##### Figure 22: BQ40Z50 Availability on Mouser
@@ -442,9 +442,9 @@ Given that the battery is already connected to the internet when it is attached 
 
 To address these limitations, a revised design places a PCB with wireless capabilities in the BCB. The battery hull connects to the LiPo charger in the BCB via the connector in Figure 24. As such, the CAN Low and CAN High data line are unused during charging. Using this connection, a microcontroller can retrieve data from the PMB when it is charging and upload it online. 
 
-Hence the a Battery Telemetry Board (BTB) was designed to reside within the BCB. It uses an Espressif32-DevKitC V4 as it was readily available in the lab. While this would mean an additional component is required to reside within the BCB, it is worthwhile as other features such as [Real-Time Safety and Status Notifications](#81-real-time-safety-and-status-notifications) can be implemented on the same Battery Telemetry Board.
+Hence, a Battery Telemetry Board (BTB) was designed to reside within the BCB. It uses an Espressif32-DevKitC V4 as it was readily available in the lab. While this would mean an additional component is required to reside within the BCB, it is worthwhile as other features such as [Real-Time Safety and Status Notifications](#81-real-time-safety-and-status-notifications) can be implemented on the same Battery Telemetry Board.
 
-They key components of the BTB and its purpose are summarised in the table below:
+The key components of the BTB and its purpose are summarised in the table below:
 
 | **Key Components**                  | **Functions**                                                              |
 | :---------------------------------- | :------------------------------------------------------------------------- |
@@ -515,14 +515,14 @@ Due to limited space on the screen, only high-priority telemetry is shown to avo
 ---
 
 ## 8. Improving Safety and Reliability
-Ensuring safety and reliability of the system requires timely identification and mitigation of faults must be before it damages the system. his section outlines three key strategies: leak detection in the battery hull, robust electrical protection features, and utilising good electrical practises to design a high power PCB.
+Ensuring safety and reliability of the system requires timely identification and mitigation of faults  before it damages the system. This section outlines three key strategies: leak detection in the battery hull, robust electrical protection features, and utilising good electrical practises to design a high power PCB.
 
 
 ### 8.1 Real-Time Safety and Status Notifications
 As mentioned in [Section 2.3.3](#233-challenges-with-tracking-battery-hulls-pressure-and-temperature), slow battery hull leaks are difficult to detect without consistent data. A possible solution will be the automatic notification of team members when a leak is detected by the system.
 
 #### 8.1.1 Past Experiences
-During the testing and development of the Autonomous Surface Vessel, a Telegram Channel was running on the ASV to periodically report the battery voltage and current draw. This proved invaluable as it help the team to anticipate and prepare for battery swaps. Furthermore, it helped the team to identify a load-balancing issue in the vehicle that would have otherwise gone unnoticed.
+During the testing and development of the Autonomous Surface Vessel, a Telegram Channel was running on the ASV to periodically report the battery voltage and current draw. This proved invaluable as it helped the team to anticipate and prepare for battery swaps. Furthermore, it helped the team to identify a load-balancing issue in the vehicle that would have otherwise gone unnoticed.
 
 ![Telegram Channel Reporting ASV's Battery Status](tele.png)
 ##### Figure 32: Telegram Channel Reporting ASV's Battery Status
@@ -539,7 +539,7 @@ A Google App Script processes data uploaded from the Battery Telemetry Board (BT
 | Drop in the Ratio of Internal Pressure to Temperature > 0.5 | ALERT: PMB MIGHT BE leaking, please observe. |
 ##### Table 16: Leak Detection Thresholds and Corresponding Notifications
 
-The leak detection is based on the Gay Lussac's Law [4] which states that the pressure of a gas is directly proportional to its temperature at constant volume. Hence, if the Battery Hull is not leaking, the amount of gas in the hull should remain the same. Thus, the ratio of internal pressure to temperature should remain consistent despite temperature changes. Therefore, a significant deviation in this ratio would suggest a potential leak.
+The leak detection is based on the Gay Lussac's Law [4] which states that the pressure of a gas is directly proportional to its temperature at constant volume. Hence, if the battery hull is not leaking, the amount of gas in the hull should remain the same. Thus, the ratio of internal pressure to temperature should remain consistent despite temperature changes. Therefore, a significant deviation in this ratio would suggest a potential leak.
 
 To obtain the previous Internal Pressure to Temperature ratio, the Google App Script obtains the last recorded data for the PMB on the Google Sheet.
 
@@ -581,7 +581,7 @@ The threshold of 0.5 is determined by observing the change in temperature and in
 |    112.47    |    30    |  3.749  |       -0.128       |
 ##### Table 19: Changes in Pressure and Temperature of Battery Hull B
 
-By feeding various data to the BTB, we are able to simulate a leaking hull, leading to an alert sent to the Telegram Channel.
+By feeding various data to the BTB, a simulated leak scenario was tested to verify detection logic. This lead to an alert sent to the Telegram Channel.
 
 ![Telegram Channel Reporting a Possible Leak](ratio.png)
 ##### Figure 33: Telegram Channel Reporting a Possible Leak in PMB2
@@ -596,7 +596,7 @@ forget to turn off the charger, especially after fatigue from a long day of pool
 ##### Figure 35: Telegram Channel Reporting a Fully Charged PMB1
 
 ### 8.2 Protection Features
-BQ40Z50 comprises of various protection features. This includes two tiers of protection. The first tier disconnect the circuits via MOSFETs, while the second tier permanently disable the battery pack by blowing the fuse.  Within the first tier there are also hardware protections that can be configured for faster a response from the chip.
+BQ40Z50 comprises various protection features. This includes two tiers of protection. The first tier disconnects the circuits via MOSFETs, while the second tier permanently disables the battery pack by blowing the fuse.  Within the first tier there are also hardware protections that can be configured for a faster response from the chip.
 
 These features collectively protect the vehicle from electrical fault, improving the reliability of the system.
 
@@ -613,7 +613,7 @@ Several key safety features were configured and tested:
 
 ##### Table 20: Using bQStudio to configure Protection Settings
 
-Additionally, there is a secondary overvoltage protection chip (BQ294701) monitors cell voltages independently and can also activate the fuse if an overvoltage is detected. This act as a fall back if the BQ40Z50 is malfunctioning. 
+Additionally, there is a secondary overvoltage protection chip (BQ294701) monitors cell voltages independently and can also activate the fuse if an overvoltage is detected. This act as a fallback if the BQ40Z50 is malfunctioning. 
 
 ### 8.3 PMB PCB Design
  To ensure that the PMB is reliable, good PCB design practices  must be followed to ensure both signal integrity and that the PMB can support the power required. The PMB design adheres to recommendations from TI's SLUA660A Advanced Gas Gauge Circuit Design document [5], ensuring proper layout and component interfacing.
@@ -631,12 +631,12 @@ The PMB is designed to handle 40A of continuous current. Hence, 2oz copper was u
 ![Power Path on the Top Layer](toppower.png)
 ##### Figure 38: Power Path on the Top Layer
 
-The IPTC014N10NM5 MOSFET was chosen as it has a top side cooling package. This allows the use of thermal pad to conduct the heat from the MOSFET to the top of the battery hull [6].
+The IPTC014N10NM5 MOSFET was chosen as it has a top side cooling package. This allows the use of thermal pads to conduct the heat from the MOSFET to the top of the battery hull [6].
 
 ![MOSFET Highlighted on The New PMB](pcbmosfet.png)
 ##### Figure 39: MOSFET Highlighted on The New PMB
 
-A test was conducted to compare the new MOSFET with the old MOSFET and it's thermal conducting capabilities. The PMB is placed Within the enclosed battery hull with starting temperature of 28 Celsius. A continuous current draw of 40A was carried out for 10 minutes. A thermal camera was then use to measure the temperature of the PCB.
+A test was conducted to compare the new MOSFET with the old MOSFET and its thermal conducting capabilities. The PMB is placed Within the enclosed battery hull with starting temperature of 28 Celsius. A continuous current draw of 40A was carried out for 10 minutes. A thermal camera was then used to measure the temperature of the PCB.
 
 ![Thermal Image of the New PMB](newpmbthermal.jpg)
 ##### Figure 40: Thermal Image of the New PMB after Load Test
@@ -652,14 +652,14 @@ To ensure reliable power supply, a power consumption chart was drawn up to verif
 ##### Figure 42: PMB's Power Consumption Chart
 
 #### 8.3.2 Design for Signal Integrity
-Ensuring that the signals transmitted on the data lines are not affected by noise are critical to creating a reliable PMB.
+Ensuring that the signals transmitted on the data lines are not degraded by noise is critical to creating a reliable PMB.
 
 Firstly, the board was split into high-power and low-power zones to minimise interference.
 
 ![Split between Higher and Lower Power Section of the PMB](highlowsplit.png)
 ##### Figure 43: Split between Higher and Lower Power Sections of the PMB (Red Line Divides the Sections)
 
-Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller's components. A low-droput regulator (LDO) was used to step down 3.3V for 3.3V components.
+Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller's components. A low-dropout regulator (LDO) was used to step down 3.3V for 3.3V components.
 
 The BQ40Z50 communicates via SMBus, which crosses between the high and lower power sections. Therefore an I2C isolator is used. To protect the SMBus lines from electrostatic discharge and voltage spikes, TVS and Zener diodes are connected to the lines
 
@@ -683,7 +683,7 @@ This can be further seen in the division of the Power and Ground Plane within th
 ##### Figure 45: PMB Ground Plane
 
 #### 8.3.4 User Interface
-The PMB uses reed-switches and latching relay to allow the battery to be turned on or off without unsealing the hull. To turn off the system, the MCU Checks for a HIGH signal from the "OFF" reed switch, ensuring that the relay is only reset after tasks are safely concluded. This would be critical to prevent file corruption if onboard logging is implemented.
+The PMB uses reed-switches and latching relay to allow the battery to be turned on or off without unsealing the hull. To turn off the system, the microcontroller checks for a HIGH signal from the "OFF" reed switch, ensuring that the relay is only reset after tasks are safely concluded. This would be critical to prevent file corruption if onboard logging is implemented.
 
 ![Relay Circuit on The PMB](relaycircuit.png)
 ##### Figure 46: Relay Circuit on The PMB
@@ -718,13 +718,13 @@ The new design is able to meet the functional requirements stated in [Section 4]
 
 ##### Table 22: Comparison between Functional Requirements and Its Status
 
-The sub goals set out in [Section 3](#3-project-goal) has been met. 
+The sub-goals set out in [Section 3](#3-project-goal) have been met. 
 
-| **Sub Goals**                          | **Implementation**                                                                                        | **Improvements**                                                                                                                          |
-| :------------------------------------- | :-------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| Enhance User Operability and Work Flow | - In-hull firmware update via balance connector<br>- Remote status monitoring via Battery Telemetry Board | - Firmware update time reduced from 25 minutes to 3 minutes.<br>- Members can track charging status and refer to historical battery data. |
-| Improve Safety and Reliability         | - Real-time safety and status notification via Telegram<br>- Protection features with BQ40Z50             | - Immediate alerts when faults are detected.<br>- AUV electrical system is protected from potential electrical faults.                    |
-| Improve AUV Performance                | - New Li-Ion batteries<br>- Accurate SoC estimation with BQ40Z50                                          | - In-water testing time can be extended.                                                                                                  |
+| **Sub Goals**                          | **Implementation**                                                                                        | **Improvements**                                                                                                                   |
+| :------------------------------------- | :-------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| Enhance User Operability and Work Flow | - In-hull firmware update via balance connector<br>- Remote status monitoring via Battery Telemetry Board | - Firmware update time reduced from 25 minutes to 3 minutes.<br>- Members can monitor charging progress and access historical data |
+| Improve Safety and Reliability         | - Real-time safety and status notification via Telegram<br>- Protection features with BQ40Z50             | - Immediate alerts when faults are detected.<br>- AUV electrical system is protected from potential electrical faults.             |
+| Improve AUV Performance                | - New Li-Ion batteries<br>- Accurate SoC estimation with BQ40Z50                                          | - In-water testing time can be extended.                                                                                           |
 ##### Table 23: Summary of Sub Goals and Its Implementation and Improvements
 
 Unfortunately, there were also mistakes when designing the PCBs that have to be rectified when testing.
@@ -744,15 +744,15 @@ Unfortunately, there were also mistakes when designing the PCBs that have to be 
   
 The integration of SoC tracking, protection features and remote status monitoring redefines the PMB from being a passive Power Monitoring Board to a Power Management Board. Furthermore, the addition of a BTB to the BCB provides an integrated system to monitor and alert operators of potential faults within the AUV's battery system. 
 
-Designed with backward and forward compatibility in mind, the new system is built to support current and future AUV platforms. This implementation enhance safety, usability and reliability, putting the team in a This changes being done while keeping in mind of backwards and forwards compatibility, positions the team for continued success at RoboSub. 
+Designed with backward and forward compatibility in mind, the new system is built to support current and future AUV platforms. These changes, made with backward and forward compatibility in mind, enhance safety, usability, and reliability, positions the team for continued success at RoboSub. 
 
 ---
 
 ## 11. Impact and Future Work
 
-Due to limited availability of serviceable battery hulls and competing  priorities during pool test, the new battery system has not been tested in-water with the AUV. Hence, testing with the AUV should be done to fully validate the entire system under actual operating conditions.
+Due to limited availability of serviceable battery hulls and competing  priorities during pool tests, the new battery system has not been tested in-water with the AUV. Hence, testing with the AUV should be done to fully validate the entire system under actual operating conditions.
 
-The BQ40Z50 supports communication of target charging voltage and  current via SMBus. This opens the opportunity to develop a custom charger that interfaces directly with the battery pack, enabling smart charge regulation. The BTP can be integrated with the custom charger to report the charging status.
+The BQ40Z50 supports communication of target charging voltage and  current via SMBus. This opens the opportunity to develop a custom charger that interfaces directly with the battery pack, enabling smart charge regulation. The BTB can be integrated with the custom charger to report the charging status.
 
 One usability issue identified relates to connector reuse. In an effort to minimise modifications to the existing battery hull, identical connectors were used for both battery balance lines and microcontroller programming pins. This design choice introduces the risk of incorrect connections during assembly, which could damage the microcontroller. While backward compatibility was prioritised, minor modifications should still be made when necessary to prevent user error and enhance system robustness.
 
