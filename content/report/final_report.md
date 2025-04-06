@@ -419,7 +419,7 @@ In-hull flashing was successfully implemented during RobotX 2024. A USB port was
 #### 7.1.2 Design Concept 1 - Firmware Flashing via CAN Bus
 Initially, an option was to use the CAN lines to flash firmware onto the microcontroller.
 
-![AUV4.1 Battery Hull Power Connector Pinout](battconnector.jpg)
+![AUV4.1 Battery Hull Power Connector Pinout](battconnector.png)
 ##### Figure XXX: AUV4.1 Battery Hull Power Connector Pinout
 
 However, this option increases complexity of the system as a bootloader has to be written to support the firmware upload over CAN Bus. 
@@ -640,16 +640,17 @@ Several key safety features were configured and tested:
 Additionally, there is a secondary overvoltage protection chip (BQ294701) monitors cell voltages independently and can also activate the fuse if an overvoltage is detected. This act as a fall back if the BQ40Z50 is malfunctioning. 
 
 ### 8.3 PMB PCB Design
- To ensure that the PMB is reliable, good PCB design practises must be followed to ensure both signal integrity and that the PMB can support the power required. The PMB design adheres to recommendations from TI's SLUA660A Advanced Gas Gauge Circuit Design document.<insert reference> This ensures that the required components are wired properly in the circuit.
+ To ensure that the PMB is reliable, good PCB design practices  must be followed to ensure both signal integrity and that the PMB can support the power required. The PMB design adheres to recommendations from TI's SLUA660A Advanced Gas Gauge Circuit Design document<insert reference>, ensuring proper layout and component interfacing.
 
- The PMB is a 4-Layer PCB with the top and bottom layer for signals, and the middle layer acting as the power and ground plane.
+ The PMB is a 4-Layer PCB with signal routing on the outer layers and dedicated internal planes for power and ground.
 
- To remain backwards compatible, the PMB has the same dimensions as the previous PMB and have most of its connectors in the same location on the PCB.
+ To remain backwards compatible, the PMB has the same dimensions and connector layout as its predecessor.
+
  <Insert Reference to Appendix>
  <Insert calculation for designs in appendix (refer to OneNote)>
 
 #### 8.3.1 Design for High Power Handling
-The PMB is designed to be able to supply 40A. Hence, 2oz copper was used on the outer layers of the PCB, where the power path are, to reduce temperature rise. The traces are also made as wide as possible to reduce resistance.
+The PMB is designed to handle 40A of continuous current. Hence, 2oz copper was used on the outer layers of the PCB, where the power path are, to reduce temperature rise. The traces are also made as wide as possible to reduce resistance.
 
 ![3D Model of Power Path](3dpower.png)
 ##### Figure XXX: 3D Model of Power Path
@@ -657,7 +658,7 @@ The PMB is designed to be able to supply 40A. Hence, 2oz copper was used on the 
 ![Power Path on the Top Layer](toppower.png)
 ##### Figure XXX: Power Path on the Top Layer
 
-The IPTC014N10NM5 MOSFET was chosen as it has top side cooling package. This allows the use of thermal pad to conduct the heat from the MOSFET to the top of the battery hull <Insert Reference: https://www.infineon.com/dgdl/Infineon-Board_Assembly_Recommendations-Gullwing-Package-v05_00-EN.pdf?fileId=5546d46275b79adb0175b7da356300e6>.
+The IPTC014N10NM5 MOSFET was chosen as it has a top side cooling package. This allows the use of thermal pad to conduct the heat from the MOSFET to the top of the battery hull <Insert Reference: https://www.infineon.com/dgdl/Infineon-Board_Assembly_Recommendations-Gullwing-Package-v05_00-EN.pdf?fileId=5546d46275b79adb0175b7da356300e6>.
 
 ![MOSFET Highlighted on The New PMB](pcbmosfet.png)
 ##### Figure XXX: MOSFET Highlighted on The New PMB
@@ -670,7 +671,7 @@ A test was conducted to compare the new MOSFET with the old MOSFET and it's ther
 ![Thermal Image of the Old PMB](thermaloldpmb.jpg)
 ##### Figure XXX: Thermal Image of the Old PMB after Load Test
 
-It can be observed that the old PMB has a higher temperature of the load test, indicating that the MOSFETs on the new PMB are better at conducting thermal heat away.
+It can be observed that the old PMB has a higher temperature after the load test, indicating that the MOSFETs on the new PMB are better at conducting thermal heat away.
 
 To ensure reliable power supply, a power consumption chart was drawn up to verify that the selected voltage regulator are able to supply enough power.
 
@@ -678,16 +679,16 @@ To ensure reliable power supply, a power consumption chart was drawn up to verif
 ##### Figure XXX: PMB's Power Consumption Chart
 
 #### 8.3.2 Design for Signal Integrity
-Ensuring that the signal transmitted on the data line are not affected by noise is critical to creating a reliable PMB.
+Ensuring that the signals transmitted on the data lines are not affected by noise are critical to creating a reliable PMB.
 
-Firstly, the higher power section of the PMB is on the opposite side to the lower power section of the PMB.
+Firstly, the board was split into high-power and low-power zones to minimise interference.
 
 ![Split between Higher and Lower Power Section of the PMB](highlowsplit.png)
 ##### Figure XXX: Split between Higher and Lower Power Sections of the PMB (Red Line Divides the Sections)
 
-Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller's components. An LDO was then use to step down from the isolated 5V to 3.3V for components that required 3.3V.
+Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller's components. A low-droput regulator (LDO) was used to step down 3.3V for 3.3V components.
 
-Additionally, as the SMBus signal used to communicate with the BQ40Z50 chip comes from the high power section, a I2C isolator was also used. To protect the SMBus lines, Zener Diodes and TVS diodes are connected to the lines to provide electrostatic discharge and over voltage protection.
+The BQ40Z50 communicates via SMBus, which crosses between the high and lower power sections. Therefore an I2C isolator is used. To protect the SMBus lines from electrostatic discharge and voltage spikes, TVS and Zener diodes are connected to the lines
 
 The various Power and Nets are summarised in the table below:
 
@@ -709,7 +710,7 @@ This can be further seen in the division of the Power and Ground Plane within th
 ##### Figure XXX: PMB Ground Plane
 
 #### 8.3.4 User Interface
-By using a reed switch and a latching relay, the battery can be powered on and off without unsealing the hull. To power on the system, the "ON" reed switch closes and activates the relay. However, to turn off the system, the MCU reads the "OFF" reed switch. When the MCU reads "HIGH", indicating that a magnet is placed at the "OFF" reed switch, the MCU is able to stop any tasks before sending a signal to reset the relay. This can potentially be useful down the line if local logging is implemented as the microcontroller can close the file before powering off to avoid any corruption.
+The PMB uses reed-switches and latching relay to allow the battery to be turned on or off without unsealing the hull. To turn off the system, the MCU Checks for a HIGH signal from the "OFF" reed switch, ensuring that the relay is only reset after tasks are safely concluded. This would be critical to prevent file corruption if onboard logging is implemented.
 
 ![Relay Circuit on The PMB](relaycircuit.png)
 ##### Figure XXX: Relay Circuit on The PMB
@@ -720,7 +721,7 @@ Key telemetry information being displayed on the screen can also alert users imm
 ##### Figure XXX: Telemetry Display and Reed Switches for The Battery Hull
 
 
-The top and bottom view of the assembled PMB as well as its components can be seen in the image below.
+The final layout and assembled PCB are shown below.
 
 ![PMB Top View](pmbtop.png)
 ##### Figure XXX: Top View of PMB

@@ -69,7 +69,7 @@
     
   ],
   "articleBody": "Acknowledgement Bumblebee Team, especially Elec Team to bounce idea with Zi Yang and Tan Chern Lin for providing feedback, Chen Jia Wei for troubleshooting. Marvin for giving the idea. Guk Yi Siong for helping in obtaining power consumption data Ananyan for validating my mechanical ideas Ms Annie, Patrick, KK, Graham Parker Schless from Cornell AUV for his advice when I faced problems Eugene for taking time to review the project and providing advice School for providing the lab, lab equipment and resources sponsors for helping the team also List of Common Acronyms Acronym Definition ASV Autonomous Surface Vessel AUV Autonomous Underwater Vehicle BBAS Bumblebee Autonomous Systems BCB Battery Charging Box BTB Battery Telemetry Board CAN Controller Area Network OCS Operator Control Station PCB Printed Circuit Board PMB Power Monitoring Board SoC State of Charge 1. Summary TODO:\n2. Problem Background 2.1 Introduction Bumblebee Autonomous Systems (BBAS) is a student-led project team that designs and builds Autonomous Underwater Vehicles (AUVs) for the annual RoboSub competition. Following lessons learned from AUV4.1’s participation in RoboSub 2023 (Figure 1), the team is concurrently developing AUV4.5 for RoboSub 2025 and AUV5.0 for RoboSub 2026 (Table 1).\nFigure 1: AUV4.1 at RoboSub 2023 Competition Vehicles Deployed RoboSub 2023 AUV4.1 RoboSub 2025 AUV4.5 RoboSub 2026 AUV4.5 and AUV5.0 Table 1: AUV Deployments in RoboSub Competitions AUV4.5 retains the same hull design as AUV4.1 but features a newly developed electrical and software subsystem. This new electrical subsystem is designed to be mechanically compatible with the existing AUV4.1 hull while also serving as the baseline for AUV5.0.\n2.2 Current System The current power system for the AUVs comprises two main components, the Battery Hull (Figure 2) and the Battery Charging Box (BCB). Each Battery Hull houses a Power Monitoring Board (PMB) and a LiPo battery.\nThe PMB (Figure 3) monitors and reports key telemetry data, such as the battery’s voltage, current, battery hull’s temperature and pressure, both on the screen and via the CAN Bus. Two such hulls are connected to power to the AUV. The waterproof designs allows for quick battery swap during pool test by eliminating the need to unseal the main vehicle hull.\nFigure 2: Metal 3D-Printed Battery Hull Figure 3: AUV4.1’s Power Monitoring Board Figure 4: Assembled Battery Hull The BCB (Figure 5) comprises an AC-DC power supply and a LiPo charger. It includes connectors that interface directly with the battery hull, allowing the battery to be charged without removing it from the hull.\nFigure 5: Battery Charging Box 2.3 Limitations of Current System Deploying the current system at RoboSub 2023 identified several challenges.\n2.3.1 Challenges with Battery Hull Sealing The limited space within the battery hull and the need for a watertight seal, makes sealing and unsealing the hull a challenging and time-consuming process. Without error, unsealing takes 2 members approximately 10 minutes, while resealing requires another 15 minutes. However, the confined space often results in disconnected cables during assembly, further complicating the process. This overhead increase downtime and the risk of assembly errors.\nFigure 6: Two Man Team Attempting to Seal a Battery Hull at RoboSub 2023 2.3.2 Limited Capabilities of Battery Fuel Gauge The PMB currently uses BQ34110 chip as a gas gauge, which is designed for rarely discharged applications and lacks essential protection features [1] , reducing the AUV’s reliability. Furthermore, the battery gauging capability was also not used, leading the team to rely on voltage readings to estimate the capacity of the battery. This method is inaccurate as the battery voltage remains relatively constant over a significant portion of the discharge cycle, while the actual capacity decreases rapidly (Figure 7). To err on the side of caution, the pool test is ended when the voltage drops to the nominal level, further limiting the AUV’s runtime.\nFigure 7: Typical Li-Ion Discharge Voltage Curve [2] ",
-  "wordCount" : "5909",
+  "wordCount" : "5803",
   "inLanguage": "en",
   "datePublished": "2025-04-03T00:00:00Z",
   "dateModified": "2025-04-04T00:00:00Z",
@@ -869,7 +869,7 @@ Summary of the system design, will go into details below how everything work etc
 <h5 id="figure-xxx-usb-port-for-flashing-on-asv40">Figure XXX: USB Port for Flashing on ASV4.0<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-usb-port-for-flashing-on-asv40">#</a></h5>
 <h4 id="712-design-concept-1---firmware-flashing-via-can-bus">7.1.2 Design Concept 1 - Firmware Flashing via CAN Bus<a hidden class="anchor" aria-hidden="true" href="#712-design-concept-1---firmware-flashing-via-can-bus">#</a></h4>
 <p>Initially, an option was to use the CAN lines to flash firmware onto the microcontroller.</p>
-<p><img loading="lazy" src="battconnector.jpg" alt="AUV4.1 Battery Hull Power Connector Pinout"  />
+<p><img loading="lazy" src="battconnector.png" alt="AUV4.1 Battery Hull Power Connector Pinout"  />
 </p>
 <h5 id="figure-xxx-auv41-battery-hull-power-connector-pinout">Figure XXX: AUV4.1 Battery Hull Power Connector Pinout<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-auv41-battery-hull-power-connector-pinout">#</a></h5>
 <p>However, this option increases complexity of the system as a bootloader has to be written to support the firmware upload over CAN Bus.</p>
@@ -1260,20 +1260,20 @@ forget to turn off the charger, especially after fatigue from a long day of pool
 <h5 id="figure-xxx-using-bqstudio-to-configure-protection-settings">Figure XXX: Using bQStudio to configure Protection Settings<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-using-bqstudio-to-configure-protection-settings">#</a></h5>
 <p>Additionally, there is a secondary overvoltage protection chip (BQ294701) monitors cell voltages independently and can also activate the fuse if an overvoltage is detected. This act as a fall back if the BQ40Z50 is malfunctioning.</p>
 <h3 id="83-pmb-pcb-design">8.3 PMB PCB Design<a hidden class="anchor" aria-hidden="true" href="#83-pmb-pcb-design">#</a></h3>
-<p>To ensure that the PMB is reliable, good PCB design practises must be followed to ensure both signal integrity and that the PMB can support the power required. The PMB design adheres to recommendations from TI&rsquo;s SLUA660A Advanced Gas Gauge Circuit Design document.<insert reference> This ensures that the required components are wired properly in the circuit.</p>
-<p>The PMB is a 4-Layer PCB with the top and bottom layer for signals, and the middle layer acting as the power and ground plane.</p>
-<p>To remain backwards compatible, the PMB has the same dimensions as the previous PMB and have most of its connectors in the same location on the PCB.
-<Insert Reference to Appendix>
-&lt;Insert calculation for designs in appendix (refer to OneNote)&gt;</p>
+<p>To ensure that the PMB is reliable, good PCB design practices  must be followed to ensure both signal integrity and that the PMB can support the power required. The PMB design adheres to recommendations from TI&rsquo;s SLUA660A Advanced Gas Gauge Circuit Design document<insert reference>, ensuring proper layout and component interfacing.</p>
+<p>The PMB is a 4-Layer PCB with signal routing on the outer layers and dedicated internal planes for power and ground.</p>
+<p>To remain backwards compatible, the PMB has the same dimensions and connector layout as its predecessor.</p>
+ <Insert Reference to Appendix>
+ <Insert calculation for designs in appendix (refer to OneNote)>
 <h4 id="831-design-for-high-power-handling">8.3.1 Design for High Power Handling<a hidden class="anchor" aria-hidden="true" href="#831-design-for-high-power-handling">#</a></h4>
-<p>The PMB is designed to be able to supply 40A. Hence, 2oz copper was used on the outer layers of the PCB, where the power path are, to reduce temperature rise. The traces are also made as wide as possible to reduce resistance.</p>
+<p>The PMB is designed to handle 40A of continuous current. Hence, 2oz copper was used on the outer layers of the PCB, where the power path are, to reduce temperature rise. The traces are also made as wide as possible to reduce resistance.</p>
 <p><img loading="lazy" src="3dpower.png" alt="3D Model of Power Path"  />
 </p>
 <h5 id="figure-xxx-3d-model-of-power-path">Figure XXX: 3D Model of Power Path<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-3d-model-of-power-path">#</a></h5>
 <p><img loading="lazy" src="toppower.png" alt="Power Path on the Top Layer"  />
 </p>
 <h5 id="figure-xxx-power-path-on-the-top-layer">Figure XXX: Power Path on the Top Layer<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-power-path-on-the-top-layer">#</a></h5>
-<p>The IPTC014N10NM5 MOSFET was chosen as it has top side cooling package. This allows the use of thermal pad to conduct the heat from the MOSFET to the top of the battery hull &lt;Insert Reference: <a href="https://www.infineon.com/dgdl/Infineon-Board_Assembly_Recommendations-Gullwing-Package-v05_00-EN.pdf?fileId=5546d46275b79adb0175b7da356300e6%3e" target="_blank">https://www.infineon.com/dgdl/Infineon-Board_Assembly_Recommendations-Gullwing-Package-v05_00-EN.pdf?fileId=5546d46275b79adb0175b7da356300e6></a>.</p>
+<p>The IPTC014N10NM5 MOSFET was chosen as it has a top side cooling package. This allows the use of thermal pad to conduct the heat from the MOSFET to the top of the battery hull &lt;Insert Reference: <a href="https://www.infineon.com/dgdl/Infineon-Board_Assembly_Recommendations-Gullwing-Package-v05_00-EN.pdf?fileId=5546d46275b79adb0175b7da356300e6%3e" target="_blank">https://www.infineon.com/dgdl/Infineon-Board_Assembly_Recommendations-Gullwing-Package-v05_00-EN.pdf?fileId=5546d46275b79adb0175b7da356300e6></a>.</p>
 <p><img loading="lazy" src="pcbmosfet.png" alt="MOSFET Highlighted on The New PMB"  />
 </p>
 <h5 id="figure-xxx-mosfet-highlighted-on-the-new-pmb">Figure XXX: MOSFET Highlighted on The New PMB<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-mosfet-highlighted-on-the-new-pmb">#</a></h5>
@@ -1284,19 +1284,19 @@ forget to turn off the charger, especially after fatigue from a long day of pool
 <p><img loading="lazy" src="thermaloldpmb.jpg" alt="Thermal Image of the Old PMB"  />
 </p>
 <h5 id="figure-xxx-thermal-image-of-the-old-pmb-after-load-test">Figure XXX: Thermal Image of the Old PMB after Load Test<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-thermal-image-of-the-old-pmb-after-load-test">#</a></h5>
-<p>It can be observed that the old PMB has a higher temperature of the load test, indicating that the MOSFETs on the new PMB are better at conducting thermal heat away.</p>
+<p>It can be observed that the old PMB has a higher temperature after the load test, indicating that the MOSFETs on the new PMB are better at conducting thermal heat away.</p>
 <p>To ensure reliable power supply, a power consumption chart was drawn up to verify that the selected voltage regulator are able to supply enough power.</p>
 <p><img loading="lazy" src="pmbpowerconsume.png" alt="PMB&rsquo;s Power Consumption Chart"  />
 </p>
 <h5 id="figure-xxx-pmbs-power-consumption-chart">Figure XXX: PMB&rsquo;s Power Consumption Chart<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-pmbs-power-consumption-chart">#</a></h5>
 <h4 id="832-design-for-signal-integrity">8.3.2 Design for Signal Integrity<a hidden class="anchor" aria-hidden="true" href="#832-design-for-signal-integrity">#</a></h4>
-<p>Ensuring that the signal transmitted on the data line are not affected by noise is critical to creating a reliable PMB.</p>
-<p>Firstly, the higher power section of the PMB is on the opposite side to the lower power section of the PMB.</p>
+<p>Ensuring that the signals transmitted on the data lines are not affected by noise are critical to creating a reliable PMB.</p>
+<p>Firstly, the board was split into high-power and low-power zones to minimise interference.</p>
 <p><img loading="lazy" src="highlowsplit.png" alt="Split between Higher and Lower Power Section of the PMB"  />
 </p>
 <h5 id="figure-xxx-split-between-higher-and-lower-power-sections-of-the-pmb-red-line-divides-the-sections">Figure XXX: Split between Higher and Lower Power Sections of the PMB (Red Line Divides the Sections)<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-split-between-higher-and-lower-power-sections-of-the-pmb-red-line-divides-the-sections">#</a></h5>
-<p>Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller&rsquo;s components. An LDO was then use to step down from the isolated 5V to 3.3V for components that required 3.3V.</p>
-<p>Additionally, as the SMBus signal used to communicate with the BQ40Z50 chip comes from the high power section, a I2C isolator was also used. To protect the SMBus lines, Zener Diodes and TVS diodes are connected to the lines to provide electrostatic discharge and over voltage protection.</p>
+<p>Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller&rsquo;s components. A low-droput regulator (LDO) was used to step down 3.3V for 3.3V components.</p>
+<p>The BQ40Z50 communicates via SMBus, which crosses between the high and lower power sections. Therefore an I2C isolator is used. To protect the SMBus lines from electrostatic discharge and voltage spikes, TVS and Zener diodes are connected to the lines</p>
 <p>The various Power and Nets are summarised in the table below:</p>
 <table>
   <thead>
@@ -1329,7 +1329,7 @@ forget to turn off the charger, especially after fatigue from a long day of pool
 </p>
 <h5 id="figure-xxx-pmb-ground-plane">Figure XXX: PMB Ground Plane<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-pmb-ground-plane">#</a></h5>
 <h4 id="834-user-interface">8.3.4 User Interface<a hidden class="anchor" aria-hidden="true" href="#834-user-interface">#</a></h4>
-<p>By using a reed switch and a latching relay, the battery can be powered on and off without unsealing the hull. To power on the system, the &ldquo;ON&rdquo; reed switch closes and activates the relay. However, to turn off the system, the MCU reads the &ldquo;OFF&rdquo; reed switch. When the MCU reads &ldquo;HIGH&rdquo;, indicating that a magnet is placed at the &ldquo;OFF&rdquo; reed switch, the MCU is able to stop any tasks before sending a signal to reset the relay. This can potentially be useful down the line if local logging is implemented as the microcontroller can close the file before powering off to avoid any corruption.</p>
+<p>The PMB uses reed-switches and latching relay to allow the battery to be turned on or off without unsealing the hull. To turn off the system, the MCU Checks for a HIGH signal from the &ldquo;OFF&rdquo; reed switch, ensuring that the relay is only reset after tasks are safely concluded. This would be critical to prevent file corruption if onboard logging is implemented.</p>
 <p><img loading="lazy" src="relaycircuit.png" alt="Relay Circuit on The PMB"  />
 </p>
 <h5 id="figure-xxx-relay-circuit-on-the-pmb">Figure XXX: Relay Circuit on The PMB<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-relay-circuit-on-the-pmb">#</a></h5>
@@ -1337,7 +1337,7 @@ forget to turn off the charger, especially after fatigue from a long day of pool
 <p><img loading="lazy" src="telemandreed.jpg" alt="Telemetry Display and Reed Switches for The Battery Hull"  />
 </p>
 <h5 id="figure-xxx-telemetry-display-and-reed-switches-for-the-battery-hull">Figure XXX: Telemetry Display and Reed Switches for The Battery Hull<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-telemetry-display-and-reed-switches-for-the-battery-hull">#</a></h5>
-<p>The top and bottom view of the assembled PMB as well as its components can be seen in the image below.</p>
+<p>The final layout and assembled PCB are shown below.</p>
 <p><img loading="lazy" src="pmbtop.png" alt="PMB Top View"  />
 </p>
 <h5 id="figure-xxx-top-view-of-pmb">Figure XXX: Top View of PMB<a hidden class="anchor" aria-hidden="true" href="#figure-xxx-top-view-of-pmb">#</a></h5>
