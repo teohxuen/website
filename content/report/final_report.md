@@ -175,7 +175,6 @@ Poor user operability increases the likelihood of mistakes at competition, espec
 ---
 
 ## 3. Project Goal
-
 As a competition team, the primary objective is to maximise vehicle performance at RoboSub. By enhancing user operability and ensuring safe operation, the PMB directly contributes to system reliability, allowing for more in-water testing, and ultimately better competition performance.
 
 The project goal can be summarised as:
@@ -186,7 +185,7 @@ The project goal can be summarised as:
     </b>
 </div>
 
-<br>
+### 3.1.1 Project Sub Goals
 Hence, a three-Pronged approach wass used to guide the development of the PMB, with each sub-goal detailed in its respective section.
 
 | **Sub Goals**                          |                  **Section Number**                   |
@@ -790,10 +789,6 @@ If no major issues are discovered during pool testing, the PMB will be deployed 
 
 ## Appendix
 
-
-- Calculations
-  - Look at OneNote on PCB explanation
-
 ## Appendix: PCB Schematics
 + [Power Monitoring Board Schematic](PMB4.5-2Schematics.pdf)
 + [Battery Telemetry Board Schematic](btpschematic.pdf)
@@ -813,14 +808,13 @@ If no major issues are discovered during pool testing, the PMB will be deployed 
 ##### Bottom Layer of PMB
 
 ## Appendix: Relay Circuit Calculation
+
 ![Relay Circuit Calculation](relaycircuitcalc.png)
 ##### Relay Circuit Calculation
 
 ## Appendix: Battery Specification
-
-
-## Appendix: AUV Electrical Architecture
-
++ [AUV4.1 LiPo Battery](lipobatt.pdf)
++ [AUV4.5 Li-Ion Battery](liionbatt.pdf)
 
 ## Appendix: 3D Model of AUV4.5 Power Monitoring Board
 
