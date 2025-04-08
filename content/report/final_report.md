@@ -14,7 +14,7 @@ disableAnchoredHeadings: false
 
 ## Acknowledgements
 
-Firstly, I would like to thank Team Bumblebee for the opportunity to work on this project. This project would not have been possible without the support of the many dedicated Bumblebee members. I am especially grateful to Chai Zi Yang and Tan Chern Lin Justin for taking the time to review my PCB designs, Chen Jia Wei for spending countless hours troubleshooting with me and Marvin Pranajaya for his valuable advice on the Power Management Board. I would also like to thank Guk Yi Siong for assisting with the collection of power consumption data during in-water testing and Ananya Agarwal for her work on the battery hulls. 
+Firstly, I would like to thank Team Bumblebee for the opportunity to work on this project. This project would not have been possible without the support of the many dedicated Bumblebee members. I am especially grateful to Chai Zi Yang and Tan Chern Lin Justin for taking the time to review my PCB designs, Chen Jia Wei for spending countless hours troubleshooting with me and Marvin Pranajaya for his valuable advice on the Power Management Board. I also appreciate the guidance and technical input from Zhang Yijian, Sim Justin, and Irwin Kong, which supported the firmware development of the Power Monitoring Board. Special thanks to Guk Yi Siong for assisting with the collection of power consumption data during in-water testing, and to Ananya Agarwal for her work on the battery hulls. 
 
 Additionally, I would like to express my gratitude to Parker Schless from Cornell AUV, for generously taking the time to address my technical queries on the implementation of the BQ40Z50 chip.
 
