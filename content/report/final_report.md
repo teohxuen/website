@@ -465,14 +465,14 @@ The BTB schematics are provided in Appendix A.
 
 ### 7.2.3 Data Flow
 
-The PMB constantly reports telemetry via five CAN Messages. The data sent over the messages includes critical information for fault detection (e.g.: voltage, current, internal pressure and temperature), information that can be useful to track degradation (E.g.: individual cell voltages, state of health) are also sent to be documented. Finally, telemetry data that helps in operational planning such as time to full charge and time to empty is transmitted to support efficient pool test scheduling.
+The PMB continuously transmit telemetry via five CAN Messages. These includes critical information for fault detection (e.g.: voltage, current, internal pressure and temperature), as well as data for monitoring degradation (e.g.: individual cell voltages, state of health). Additionally, telemetry data that helps in operational planning such as time to full charge and time to empty are transmitted to support efficient pool test scheduling.
 
 ![List of CAN Messages](canmsgs.png)
 ##### Figure 29: Data Flow from BTB to Telegram Channel and Google Sheets
 
-The BTB interprets the CAN messages and packages it to be sent to the Telegram Channel and a Google App Script. The Google App Script will then update the respective Google Sheets based on the PMB ID. The time recorded is obtained via NTP.
+The BTB interprets the CAN messages and packages it to be sent to the Telegram Channel and a Google App Script. The Google App Script will then update the respective Google Sheets based on the PMB ID. The time recorded is obtained via Network Time Protocol (NTP).
 
-Google Sheets was chosen as it has a low barrier of entry, allowing all members to easily access their data. Furthermore, it does not require any additional applications to view the data.
+Google Sheets was chosen as it has a low barrier of entry, allowing all members to easily access the data. Furthermore, it does not require any additional applications to view the data.
 
 ![Data Flow from BTB to Telegram Channel and Google Sheets](dataflowbtb.png)
 
@@ -482,7 +482,7 @@ Google Sheets was chosen as it has a low barrier of entry, allowing all members 
 
 ##### Figure 31: Recorded Telemetry on Google Sheets
 
-To ensure data being published is accurate, there is a time out for all the telemetry received. If the BTP does not receive the same message ID from the same PMB within two times of its reporting frequency, all the data from that PMB is cleared. This ensures that only accurate data is recorded to not pollute the dataset for analysis. 
+To ensure accurate data is being published,a timeout mechanism is implemented for all incoming telemetry. If the BTP does not receive the same message ID from the same PMB within twice its expected interval, all the data from that PMB will not be recorded. This ensures that only valid data is retained, preserving the integrity of the dataset for analysis.
 
 <table>
   <thead>
@@ -513,7 +513,7 @@ To ensure data being published is accurate, there is a time out for all the tele
 
 ##### Table 15: Summary of Telemetry Availability Across Interfaces
 
-Due to limited space on the screen, only high-priority telemetry is shown to avoid clutter. The Telegram channel provides immediate operational updates, while full datasets are continuously uploaded to Google Sheets for future analysis. This tiered reporting strategy balances usability with traceability, ensuring the data remains actionable without overwhelming users.
+Due to limited space on the screen, only high-priority telemetry is shown to avoid clutter. The Telegram channel provides immediate operational updates, while full datasets are continuously uploaded to Google Sheets for future analysis. This tiered reporting approach balances operational clarity without sacrificing traceability.
 
 ---
 
@@ -525,7 +525,7 @@ Ensuring safety and reliability of the system requires timely identification and
 As mentioned in [Section 2.3.3](#233-challenges-with-tracking-battery-hulls-pressure-and-temperature), slow battery hull leaks are difficult to detect without consistent data. A possible solution will be the automatic notification of team members when a leak is detected by the system.
 
 #### 8.1.1 Past Experiences
-During the testing and development of the Autonomous Surface Vessel, a Telegram Channel was running on the ASV to periodically report the battery voltage and current draw. This proved invaluable as it helped the team to anticipate and prepare for battery swaps. Furthermore, it helped the team to identify a load-balancing issue in the vehicle that would have otherwise gone unnoticed.
+During the testing and development of the Autonomous Surface Vessel (ASV), a Telegram Channel was running on the ASV to periodically report the battery voltage and current draw. This proved invaluable as it allowed the team to anticipate and prepare for battery swaps. Furthermore, it helped the team to identify a load-balancing issue in the vehicle that would have otherwise gone unnoticed.
 
 ![Telegram Channel Reporting ASV's Battery Status](tele.png)
 ##### Figure 32: Telegram Channel Reporting ASV's Battery Status
@@ -612,11 +612,11 @@ Several key safety features were configured and tested:
 | :-------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
 | Overcurrent in Discharge (OCD)          | Used a load tester to verify that discharging above the set current value for the specified time would turn off the discharge MOSFET. |
 | Overload in Discharge Protection (AOLD) | Almost instantaneous cut off when discharging above the set current limit.                                                            |
-| Over Charging Current Protection (OCC)  | When the charging current is higher than the preset threshold, the Charging MOSFET is turned off.                                     |
+| Over Charging Current Protection (OCC)  | When the charging current is higher than the preset threshold, the charging MOSFET is turned off.                                     |
 
 ##### Table 20: Test Results for BQ40Z50 Protection Features
 
-Additionally, there is a secondary overvoltage protection chip (BQ294701) monitors cell voltages independently and can also activate the fuse if an overvoltage is detected. This act as a fallback if the BQ40Z50 is malfunctioning. 
+Additionally, a secondary overvoltage protection chip (BQ294701) monitors cell voltages independently and can also activate the fuse if an overvoltage is detected. This act as a fallback if the BQ40Z50 is malfunctioning. 
 
 ### 8.3 PMB PCB Design
  To ensure that the PMB is reliable, good PCB design practices  must be followed to ensure both signal integrity and that the PMB can support the power required. The PMB design adheres to recommendations from TI's SLUA660A Advanced Gas Gauge Circuit Design document [5], ensuring proper layout and component interfacing.
@@ -639,7 +639,7 @@ The IPTC014N10NM5 MOSFET was chosen as it has a top side cooling package. This a
 ![MOSFET Highlighted on The New PMB](pcbmosfet.png)
 ##### Figure 39: MOSFET Highlighted on The New PMB
 
-A test was conducted to compare the new MOSFET with the old MOSFET and its thermal conducting capabilities. The PMB is placed Within the enclosed battery hull with starting temperature of 28 Celsius. A continuous current draw of 40A was carried out for 10 minutes. A thermal camera was then used to measure the temperature of the PCB.
+A test was conducted to compare the new MOSFET with the old MOSFET and its thermal conducting capabilities. The PMB is placed within the enclosed battery hull with starting temperature of 28 degree Celsius. A continuous current draw of 40A was carried out for 10 minutes. A thermal camera was then used to measure the temperature of the PCB.
 
 ![Thermal Image of the New PMB](newpmbthermal.jpg)
 ##### Figure 40: Thermal Image of the New PMB after Load Test
@@ -662,11 +662,11 @@ Firstly, the board was split into high-power and low-power zones to minimise int
 ![Split between Higher and Lower Power Section of the PMB](highlowsplit.png)
 ##### Figure 43: Split between Higher and Lower Power Sections of the PMB (Red Line Divides the Sections)
 
-Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller's components. A low-dropout regulator (LDO) was used to step down 3.3V for 3.3V components.
+Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller's components. A low-dropout regulator (LDO) was used to step down to 3.3V for 3.3V components.
 
 The BQ40Z50 communicates via SMBus, which spans both the high-power low-power sections. Therefore an I2C isolator is used. To protect the SMBus lines from electrostatic discharge and voltage spikes, TVS and Zener diodes are connected to the lines
 
-The various Power and Nets are summarised in the table below:
+The various power and ground nets are summarised in the table below:
 
 
 | **Power and Ground Nets**    | **Description**                                                                        |
@@ -686,7 +686,7 @@ This can be further seen in the division of the Power and Ground Plane within th
 ##### Figure 45: PMB Ground Plane
 
 #### 8.3.4 User Interface
-The PMB uses reed-switches and latching relay to allow the battery to be turned on or off without unsealing the hull. To turn off the system, the microcontroller checks for a HIGH signal from the "OFF" reed switch, ensuring that the relay is only reset after tasks are safely concluded. This would be critical to prevent file corruption if onboard logging is implemented.
+The PMB uses reed switches and latching relay to allow the battery to be turned on or off without unsealing the hull. To turn off the system, the microcontroller checks for a HIGH signal from the "OFF" reed switch, ensuring that the relay is only reset after tasks are safely concluded. This would be critical to prevent file corruption if onboard logging is implemented.
 
 ![Relay Circuit on The PMB](relaycircuit.png)
 ##### Figure 46: Relay Circuit on The PMB
@@ -711,13 +711,13 @@ The final layout and assembled PCB are shown below.
 
 The new design is able to meet the functional requirements stated in [Section 4](#4-design-considerations).
 
-| **Requirements**    | **Achieved** | **Description**                                                                                                                                                    |
-| :------------------ | :----------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Backward Compatible |     Yes      | The battery and PMB fit within the previous battery hull and use the existing connectors.                                                                          |
-| Voltage Output      |     Yes      | A 4S Li-Ion battery was used.                                                                                                                                      |
-| Continuous Current  |     Yes      | Tested that the board is able to draw 40A for 10 minutes.                                                                                                          |
-| Telemetry           |     Yes      | Voltage, current, and internal pressure are displayed on the telemetry screen. Voltage was verified with a multimeter; current was calibrated using a load tester. |
-| Charging            |     Yes      | Able to charge the battery.                                                                                                                                        |
+| **Requirements**    | **Achieved** | **Description**                                                                                                                                                           |
+| :------------------ | :----------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Backward Compatible |     Yes      | The battery and PMB fit within the previous battery hull and use the existing connectors.                                                                                 |
+| Voltage Output      |     Yes      | A 4S Li-Ion battery was used.                                                                                                                                             |
+| Continuous Current  |     Yes      | Tested that the board is able to draw 40A for 10 minutes.                                                                                                                 |
+| Telemetry           |     Yes      | Voltage, current, and internal pressure are displayed on the telemetry screen. Voltage was verified with a multimeter and the current was calibrated using a load tester. |
+| Charging            |     Yes      | Able to charge the battery.                                                                                                                                               |
 
 ##### Table 22: Verification of Functional Requirements
 
@@ -730,13 +730,13 @@ The sub-goals set out in [Section 3](#3-project-goal) have been met.
 | Improve AUV Performance                | - New Li-Ion batteries<br>- Accurate SoC estimation with BQ40Z50                                          | - In-water testing time can be extended.                                                                                           |
 ##### Table 23: Summary of Sub Goals and Its Implementation and Improvements
 
-Unfortunately, there were also mistakes when designing the PCBs that have to be rectified when testing.
+Unfortunately, there were also mistakes when designing the PCBs that had to be rectified during testing.
 
-| **PCB** | **Mistake**                                                                       | **Problems**                                                                    | **Current Fix**                                                                |
-| :-----: | :-------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ | :----------------------------------------------------------------------------- |
-|   PMB   | No pull-up resistor on the I2C lines between the MCU, screen, and pressure sensor | Unable to establish communications on I2C lines                                 | Pull-up resistor soldered onto the board                                       |
-|   PMB   | No pull-down resistor for the signal from the MCU to reset the reed switch        | Relay would be reset when the MCU is powered on, leading to the power being cut | Pull-down resistor soldered onto the board                                     |
-|   BTB   | Resistors from the CC lines on the USB-C connector are pulled up instead of down  | USB-C would not negotiate properly for power delivery                           | Existing resistor removed and new resistor soldered to pull CC lines to ground |
+| **PCB** | **Mistake**                                                                                      | **Problems**                                                                    | **Current Fix**                                                                |
+| :-----: | :----------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ | :----------------------------------------------------------------------------- |
+|   PMB   | No pull-up resistor on the I2C lines connecting the microcontroller, screen, and pressure sensor | Unable to establish communications on I2C lines                                 | Pull-up resistor soldered onto the board                                       |
+|   PMB   | No pull-down resistor for the signal from the microcontroller to reset the reed switch           | Relay would be reset when the MCU is powered on, leading to the power being cut | Pull-down resistor soldered onto the board                                     |
+|   BTB   | Resistors from the CC lines on the USB-C connector are pulled up instead of down                 | USB-C would not negotiate properly for power delivery                           | Existing resistor removed and new resistor soldered to pull CC lines to ground |
 ##### Table 24: Summary of PCB Mistakes and Its Fixes
 
 ![PMB Fix](pmbfix.png)
@@ -747,7 +747,7 @@ Unfortunately, there were also mistakes when designing the PCBs that have to be 
   
 The integration of SoC tracking, protection features and remote status monitoring redefines the PMB from being a passive Power Monitoring Board to a Power Management Board. Furthermore, the addition of a BTB to the BCB provides an integrated system to monitor and alert operators of potential faults within the AUV's battery system. 
 
-Designed with backward and forward compatibility in mind, the new system is built to support current and future AUV platforms. These changes, made with backward and forward compatibility in mind, enhance safety, usability, and reliability, positions the team for continued success at RoboSub. 
+Designed with backward and forward compatibility in mind, the new system is built to support current and future AUV platforms. These changes enhance safety, usability, and reliability, positioning the team for continued success at RoboSub. 
 
 ---
 
@@ -757,7 +757,7 @@ Due to limited availability of serviceable battery hulls and competing  prioriti
 
 The BQ40Z50 supports communication of target charging voltage and  current via SMBus. This opens the opportunity to develop a custom charger that interfaces directly with the battery pack, enabling smart charge regulation. The BTB can be integrated with the custom charger to report the charging status.
 
-One usability issue identified relates to connector reuse. To minimise modifications to the existing battery hull, identical connectors were used for both battery balance lines and microcontroller programming pins. This design choice introduces the risk of incorrect connections during assembly, which could damage the microcontroller. While backward compatibility was prioritised, minor modifications should still be made when necessary to prevent user error and enhance system robustness.
+One usability issue identified relates to connector reuse. To minimise modifications to the existing battery hull, identical connectors were used for both battery balance lines and the microcontroller programming pins. This design choice introduces the risk of incorrect connections during assembly, which could damage the microcontroller. While backward compatibility was prioritised, minor modifications should still be made when necessary to prevent user error and enhance system robustness.
 
 If no major issues are discovered during pool testing, the PMB will be deployed at RoboSub 2025 and RoboSub 2026 across the AUVs fielded by BBAS. Furthermore, with BBAS releasing our PCB schematics online, the PMB can serve as a reference to other AUV teams working on battery management systems. Notably, no internet-connected charging system were observed at RoboSub 2023. By demonstrating this feature at RoboSub 2025, BBAS can inspire other teams to implement remote monitoring for their systems.
 
