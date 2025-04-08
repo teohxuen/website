@@ -114,7 +114,7 @@ suspected. This reactive approach limits the availability of historical data. Ma
 ##### Figure 9: Manually Logging Battery's Hull and Temperature on Excel
 
 ### 2.4 Problem Analysis  
-The limitations in the current system can be split into three overarching themes: poor user operability, limited runtime and reduced reliability. These themes and their associated limitations are summarised in Table 1.
+The limitations in the current system can be split into three overarching themes: poor user operability, limited runtime and reduced reliability. These themes and their associated limitations are summarised in Table 2.
 
 
 <table>
@@ -151,7 +151,7 @@ The limitations in the current system can be split into three overarching themes
 
 ##### Table 2: Categorisation of System Limitations
 
-Poor user operability increases the likelihood of mistakes at competition, especially under time constraints or operator fatigue. Furthermore, limited run time can lead to less testing opportunities and ultimately impacting competition performance (Table 2, Table 3). Finally, poor reliability increases the risk of mid-run failures or unplanned maintenance, leading to increased downtime.
+Poor user operability increases the likelihood of mistakes at competition, especially under time constraints or operator fatigue. Furthermore, limited run time can lead to less testing opportunities and ultimately impacting competition performance (Table 3, Table 4). Finally, poor reliability increases the risk of mid-run failures or unplanned maintenance, leading to poor results.
 
 |                           | **RobotX 2022** | **RobotX 2024** |
 | :-----------------------: | :-------------: | :-------------: |
@@ -204,10 +204,10 @@ As outlined in [Section 2.1](#21-introduction), AUV4.5 has the same mechanical s
 
 To maintain backwards compatibility, the following constraints were identified.
 
-| **Characteristics**  | **Constraints**                                                                                |
-| :------------------- | :--------------------------------------------------------------------------------------------- |
-| Dimensions           | The PMB and battery must fit within a 192mm x 77.5mm x 44mm volume of the AUV4.1 battery hull. |
-| Electrical Interface | Existing connectors for power delivery and charging must be retained.                          |
+| **Characteristics**  | **Constraints**                                                                        |
+| :------------------- | :------------------------------------------------------------------------------------- |
+| Dimensions           | The battery must fit within a 192mm x 77.5mm x 44mm volume of the AUV4.1 battery hull. |
+| Electrical Interface | Existing connectors for power delivery and charging must be retained.                  |
 
 ##### Table 6: Design Constraints for Backward Compatibility
 
@@ -230,7 +230,7 @@ The 40A current specification is based on the rated continuous current limit of 
 
 ### 4.3 Component Standardisation
 
-To reduce cost and simplify procurement, certain components of the PMB are shared with the other PCBs onboard the AUV. Specifically, the STM32F103C8T6 and the ISOW1044B isolated CAN Transceiver (Table 7). This standardisation reduces design effort and chance of error as the same validated schematic and layout can be reused across the PCBs. This also allows for easier spare preparation as the same component can act as spares for the different PCBs.
+To reduce cost and simplify procurement, certain components of the PMB are shared with the other PCBs onboard the AUV. Specifically, the STM32F103C8T6 and the ISOW1044B isolated CAN Transceiver (Table 8). This standardisation reduces design effort and chance of error as the same validated schematic can be reused across the PCBs. This also allows for easier spare preparation as the same component can act as spares for the different PCBs.
 
 <img src="mcuschematic.png" alt="Common Schematic for STM32F103C8T6" style="max-width: 100%;">
 
@@ -248,7 +248,7 @@ To reduce cost and simplify procurement, certain components of the PMB are share
 
 ## 5. System Architecture
 
-In this section, the summarised power, electrical and connector architectures provide a big picture of the system. This aims to provide a holistic understanding of how the system is structured before delving into the detailed design of the PMB. Subsequent sections will explain how the design choices support the overall project goals.
+This section presents the summarised power, electrical and connector architectures to provide a high-level overview of the systems. Subsequent sections will explain how the design choices support the overall project goals.
 
 ![Summarised Power Architecture of PMB](powerarch.png)
 ##### Figure 11: Summarised Power Architecture of PMB
@@ -262,7 +262,7 @@ In this section, the summarised power, electrical and connector architectures pr
 ---
 
 ## 6. Improving AUV Performance
-One way to improve the AUV's performance is by extending its run time. This enables longer in-water testing by reducing interruptions due to battery swaps. This supports uninterrupted testing to better simulate longer competition runs. Two methods were implemented to achieve this: renewing the current batteries and introducing accurate state-of-charge (SoC) estimation.
+One way to improve the AUV's performance is by extending its run time. This enables longer in-water testing by reducing interruptions due to battery swaps. This uninterrupted testing can better simulate longer competition runs. Two methods were implemented to achieve this: renewing the current batteries and introducing accurate state-of-charge (SoC) estimation.
 
 
 ### 6.1 Battery Renewal
@@ -271,7 +271,7 @@ The batteries have been in use for over 2 years, with an estimated 200 cycles co
 ![Battery Cycle Life](cyclestats.png)
 ##### Figure 14: Information on The Cycle Life of The Current Battery
   
-As the current battery hull design is expected to remain in use for several more competition cycles, the batteries should be renewed to avoid more degradation.
+As the current battery hull design is expected to remain in use for several more competition cycles, the batteries should be renewed to avoid further degradation.
 
 Operationally, each AUV requires six batteries, organised into three sets of two: one set in use, one set charging, and one set on standby. Therefore, selecting cost-effective batteries can result in significant savings for the team.
 
@@ -282,13 +282,13 @@ Operationally, each AUV requires six batteries, organised into three sets of two
 | Capacity                                   | 15000mAh                  | 16000mAh          | 15000mAh          |
 | Weight                                     | 1355g                     | 1200g             | 898g              |
 | Maximum Current Draw                       | 60A                       | 80A               | 75A               |
-| Cost                                       | SGD 320                   | SGD 250           | SGD 451           |
+| Cost Per Battery                           | SGD 320                   | SGD 250           | SGD 451           |
 
 ##### Table 9 : Battery Comparison Table
 
 Lithium-ion batteries were chosen for comparison due to its longer lifespan and higher energy density [3]. With its higher capacity and lower cost, the Raitan Li-Ion battery was selected. Additionally, the team’s prior experience with Raitan provided confidence in the reliability and performance of their product.
 
-Two Raitan Li-Ion batteries were procured for testing and compared with the current batteries.
+Two Raitan Li-Ion batteries were procured for testing and comparison with the current batteries.
 
 | **Specification**                                           | **GrePow LiPo (current)** | **Raitan Li-Ion (New)** |
 | :---------------------------------------------------------- | :------------------------ | :---------------------- |
@@ -307,7 +307,7 @@ Two Raitan Li-Ion batteries were procured for testing and compared with the curr
 ![Photo of New Batteries in AUV4.1 Battery Hull](newbatthull.png)
 ##### Figure 17: Photo of New Batteries in AUV4.1 Battery Hull
 
-Raitan Li-Ion battery has been verified to be comparable to the GrePow LiPo battery making it a suitable replacement for the old batteries.
+Raitan Li-Ion battery has been verified to be comparable to the GrePow LiPo battery (Table 10), while fitting within the dimension constraints (Table 6), making it a suitable replacement for the old batteries.
 
 ### 6.2 Accurate SoC Estimation
 As mentioned in [Section 2.3.2](#232-limited-capabilities-of-battery-fuel-gauge), the team previously relied on voltage to estimate the battery capacity. This approach tends to end tests prematurely, as conservative voltage thresholds fail to account for load and battery age. By utilising the gauging feature on battery management chip, we can determine a more accurate SoC, allowing in-water tests to run longer without risking battery damage.
