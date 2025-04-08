@@ -332,28 +332,28 @@ Additionally, its software application "bqStudio" provides an easy interface wit
 ![Screenshot of bQStudio](bq.png)
 ##### Figure 21: Screenshot of bQStudio
 
-To leverage the extensive resources available and increase likelihood of success, a compatible chip from the TI family was shortlisted. Successful implementations by teams such as Cornell and OSU further validate the chip’s reliability in AUV applications. 
+To leverage the extensive resources available and increase likelihood of success, a compatible chip from the TI family was shortlisted. Successful implementations by teams such as Cornell and The Ohio State University further validate the chip’s reliability in AUV applications. 
 
 | **Feature**               | **BQ34110 (Current)**                                                | **BQ40Z50 (Proposed)**                                                                                                                                   |
 | ------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Battery Gauging Algorithm | Compensated End-of-Discharge Voltage                                 | TI’s Impedance Track                                                                                                                                     |
 | Algorithm Comparison [10] | - Inaccurate SoC after idle period<br>- Affected by aged battery<br> | - Remains accurate after idle<br>- Resistant to ageing and temperature changes<br>- Remains accurate at high level of discharge.<br> - Lower error rate. |
 
-BQ40Z50 was chosen as it supports up to 4-Series Li-Ion or LiPo Battery Packs. It also offers programmable protection features ([Section 8.2](#82-protection-features)) as well as Impedance Tracking and Cell Balancing. The chip is also able to track the number of cycles the batteries have been through. This reduces the need to guess when the battery capacity falls below a certain amount and hence prepare the operator to procure a new set of batteries. Furthermore, its large number of available stocks (Figure 22) ensures that the PMB can be easily reproduced or repaired in the future if necessary.
+BQ40Z50 was chosen as it supports up to 4-Series Li-Ion or LiPo Battery Packs. It also offers programmable protection features ([Section 8.2](#82-protection-features)) as well as Impedance Tracking and cell balancing. The chip also tracks the number of charge-discharge cycles and calculates the full charge capacity of the battery, eliminating the need for guesswork when assessing battery degradation. This allows operators to proactively plan for battery replacement. Furthermore, its large number of available stocks (Figure 22) ensures that the PMB can be easily reproduced or repaired in the future if necessary.
 
 ![BQ40Z50 Availability on Mouser](bq40z50mouser.png)
 ##### Figure 22: BQ40Z50 Availability on Mouser
 
 
 #### 6.2.3 Evaluation of SoC Accuracy
-Hence, to evaluate the SoC accuracy, the new Li-Ion battery along with the PMB went through a learning cycle [11].
+To ensure accurate data reporting, the BQ40Z50 chip requires a learning cycle to collect key parameters of the battery pack. To evaluate SOC accuracy, the new Li-Ion battery underwent a learning cycle with the BQ40Z50 chip on the PMB [11].
 
-When discharged at a constant current of 7A, the Voltage and SoC reported by BQ40Z50 was recorded (Table 11). When using the LiPo battery, the team had a threshold of 15.2V (nominal voltage + 0.4V). Based on the chart, this would be roughly at 40% Depth of Discharge (DoD) (Figure 23).
+When discharged at a constant current of 7A, the Voltage and SoC reported by BQ40Z50 was recorded (Table 11). When using the LiPo battery previously, the team had a threshold of 15.2V (nominal voltage + 0.4V). Based on the chart, this would be at roughly 40% capacity (Figure 23).
 
 ![Voltage to Capacity](blog-lipo-battery-voltage-quick-chart.webp)
 ##### Figure 23: Chart of Voltage and its Corresponding Capacity [2]
 
-If we were to do the same for the Li-Ion battery the threshold would be 14.8V. This would mean that the run would end before 65 minutes. However, by using SoC the vehicle would be able to run to at least 75 minutes, extending the run time by 15.4 %.
+If the Li-Ion battery were limited by a fixed threshold of 14.8V (nominal voltage + 0.4V), testing would conclude in 65 minute(Table 11). In contrast, using SoC tracking and targeting just over 40% remaining capacity allows the vehicle to operate for at least 75 minutes. This extends runtime by 15.4%.
 
 
 | **Time (minutes)** | **Voltage (V)** | **Relative State of Charge Reported by BQ40Z50** |
@@ -367,10 +367,9 @@ If we were to do the same for the Li-Ion battery the threshold would be 14.8V. T
 |         65         |      14.68      |                       51%                        |
 |         75         |      14.4       |                       45%                        |
 
-
 ##### Table 11: BQ40Z50 SoC Reporting During Constant Current Discharge
 
-The BQ40Z50 is also able to report the time taken to fully charge the batteries, and time taken to fully discharge the batteries. This time is calculated by the average power draw of the batteries.
+The BQ40Z50 is also able to report the estimated time taken to fully charge or fully discharge the batteries. This estimation is calculated by the average power draw of the batteries.
 
 
 | **Case** | **Start Time** | **Starting Battery Voltage and SoC** | **Predicted End Time** | **Actual End Time** | **Time Difference** |
@@ -379,7 +378,7 @@ The BQ40Z50 is also able to report the time taken to fully charge the batteries,
 |    B     |    1:07 AM     |             15.76V, 65%              |        3:15 AM         |       2:41 AM       |    34 mins early    |
 ##### Table 12: Battery Charging Time Compared to BQ40Z50 Predicted End Time
 
-This can be useful as it allows members to better plan and anticipate battery changes at pool tests. While the predicted end time tends to be conservative, this behaviour is preferable as it provides a useful buffer when planning battery swaps.
+This can be useful as it allows members to better plan and anticipate battery changes at pool tests. While the predicted end time tends to be conservative, this behaviour is preferable as it provides a useful buffer when planning for battery swaps.
 
 ---
 
