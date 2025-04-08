@@ -338,6 +338,7 @@ To leverage the extensive resources available and increase likelihood of success
 | ------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Battery Gauging Algorithm | Compensated End-of-Discharge Voltage                                 | TI’s Impedance Track                                                                                                                                     |
 | Algorithm Comparison [10] | - Inaccurate SoC after idle period<br>- Affected by aged battery<br> | - Remains accurate after idle<br>- Resistant to ageing and temperature changes<br>- Remains accurate at high level of discharge.<br> - Lower error rate. |
+##### Table 11: Comparing BQ34110 and BQ40Z0
 
 BQ40Z50 was chosen as it supports up to 4-Series Li-Ion or LiPo Battery Packs. It also offers programmable protection features ([Section 8.2](#82-protection-features)) as well as Impedance Tracking and cell balancing. The chip also tracks the number of charge-discharge cycles and calculates the full charge capacity of the battery, eliminating the need for guesswork when assessing battery degradation. This allows operators to proactively plan for battery replacement. Furthermore, its large number of available stocks (Figure 22) ensures that the PMB can be easily reproduced or repaired in the future if necessary.
 
@@ -348,12 +349,12 @@ BQ40Z50 was chosen as it supports up to 4-Series Li-Ion or LiPo Battery Packs. I
 #### 6.2.3 Evaluation of SoC Accuracy
 To ensure accurate data reporting, the BQ40Z50 chip requires a learning cycle to collect key parameters of the battery pack. To evaluate SOC accuracy, the new Li-Ion battery underwent a learning cycle with the BQ40Z50 chip on the PMB [11].
 
-When discharged at a constant current of 7A, the Voltage and SoC reported by BQ40Z50 was recorded (Table 11). When using the LiPo battery previously, the team had a threshold of 15.2V (nominal voltage + 0.4V). Based on the chart, this would be at roughly 40% capacity (Figure 23).
+When discharged at a constant current of 7A, the Voltage and SoC reported by BQ40Z50 was recorded (Table 12). When using the LiPo battery previously, the team had a threshold of 15.2V (nominal voltage + 0.4V). Based on the chart, this would be at roughly 40% capacity (Figure 23).
 
 ![Voltage to Capacity](blog-lipo-battery-voltage-quick-chart.webp)
 ##### Figure 23: Chart of Voltage and its Corresponding Capacity [2]
 
-If the Li-Ion battery were limited by a fixed threshold of 14.8V (nominal voltage + 0.4V), testing would conclude in 65 minute(Table 11). In contrast, using SoC tracking and targeting just over 40% remaining capacity allows the vehicle to operate for at least 75 minutes. This extends runtime by 15.4%.
+If the Li-Ion battery were limited by a fixed threshold of 14.8V (nominal voltage + 0.4V), testing would conclude in 65 minute(Table 12). In contrast, using SoC tracking and targeting just over 40% remaining capacity allows the vehicle to operate for at least 75 minutes. This extends runtime by 15.4%.
 
 
 | **Time (minutes)** | **Voltage (V)** | **Relative State of Charge Reported by BQ40Z50** |
@@ -367,7 +368,7 @@ If the Li-Ion battery were limited by a fixed threshold of 14.8V (nominal voltag
 |         65         |      14.68      |                       51%                        |
 |         75         |      14.4       |                       45%                        |
 
-##### Table 11: BQ40Z50 SoC Reporting During Constant Current Discharge
+##### Table 12: BQ40Z50 SoC Reporting During Constant Current Discharge
 
 The BQ40Z50 is also able to report the estimated time taken to fully charge or fully discharge the batteries. This estimation is calculated by the average power draw of the batteries.
 
@@ -376,7 +377,7 @@ The BQ40Z50 is also able to report the estimated time taken to fully charge or f
 | :------: | :------------: | :----------------------------------: | :--------------------: | :-----------------: | :-----------------: |
 |    A     |    8:20 PM     |             16.42V, 84%              |        9:30 PM         |       9:10 PM       |    20 mins early    |
 |    B     |    1:07 AM     |             15.76V, 65%              |        3:15 AM         |       2:41 AM       |    34 mins early    |
-##### Table 12: Battery Charging Time Compared to BQ40Z50 Predicted End Time
+##### Table 13: Battery Charging Time Compared to BQ40Z50 Predicted End Time
 
 This can be useful as it allows members to better plan and anticipate battery changes at pool tests. While the predicted end time tends to be conservative, this behaviour is preferable as it provides a useful buffer when planning for battery swaps.
 
@@ -398,13 +399,13 @@ The microcontroller on the PMB currently requires firmware updates via exposed S
 In-hull flashing was successfully implemented during RobotX 2024. A USB port was exposed on the side of the hulls onboard the Autonomous Surface Vessel (ASV), allowing members to update the firmware without opening the hull. This cuts down the time required for firmware update from five minutes to one minute.
 
 ![USB Port for Flashing on the ASV](hullflashing.jpg)
-##### Figure 23: USB Port for Flashing on ASV4.0
+##### Figure 24: USB Port for Flashing on ASV4.0
 
 #### 7.1.2 Design Concept 1 - Firmware Flashing via CAN Bus
 Initially, an option was to use the CAN bus to flash firmware onto the microcontroller.
 
 ![AUV4.1 Battery Hull Power Connector Pinout](battconnector.png)
-##### Figure 24: AUV4.1 Battery Hull Power Connector Pinout
+##### Figure 25: AUV4.1 Battery Hull Power Connector Pinout
 
 However, this option increases complexity of the system as a bootloader has to be written to support the firmware upload over CAN Bus. 
   
@@ -413,12 +414,12 @@ However, this option increases complexity of the system as a bootloader has to b
 An alternate approach is to repurpose the AUV4.1 balance connector, which was originally used to expose the LiPo battery's balance pins for external cell balancing during charging. However, as the BQ40Z50 chip support cell balancing, this connector is now redundant and can be reassigned for other functions. 
 
 ![Old Balance Connector Pin Out](oldbal.png)
-##### Figure 25: Old Balance Connector Pin Out
+##### Figure 26: Old Balance Connector Pin Out
 
 The balance connector can be re-wired within the battery hull to expose the microcontroller programming pins (SWDIO, SWDCLK, RESET and Ground). Since communication with the BQ40Z50 chip is via SMBus, the SMBus lines (SMBD, SMBC and SMB GND) can also be exposed on the same connector. This allows the user to programme the microcontroller and the BQ40Z50 chip without unsealing the hull, reducing down time. Furthermore, it does not require significant development effort to implement this feature. 
 
 ![New Balance Connector Pin Out](newbal.png)
-##### Figure 26: New Balance Connector Pin Out
+##### Figure 27: New Balance Connector Pin Out
 
   
 ### 7.2 Remote Status Monitoring
@@ -431,19 +432,19 @@ To address these limitations, a remote status monitoring system was proposed. Th
 | Automated Reporting                  | Minimises human error by eliminating manual data. entry                                                                        |
 | Wireless Data Upload                 | Avoids the need to unseal the hull to retrieve the data.                                                                       |
 | Database with A Low-Barrier of Entry | As members from different sub-teams have to maintain the battery hulls, the storage database should be easy to access and use. |
-##### Table 13: “Requirements and Rationale for Remote Status Monitoring
+##### Table 14: “Requirements and Rationale for Remote Status Monitoring
 
 ### 7.2.1 Design Concept 1 - Microcontroller with Wireless Capabilities
 The initial design involved using a microcontroller with built-in WiFi capabilities (STM32Wx, Espressif MCUs), allowing it to connect to the internet whenever the battery hull is powered on. However, this approach is not ideal as the PMB is placed within a metal hull, which would act as a Faraday cage. This would weaken the WiFi signal leading to unreliable connections.
 
-Given that the battery is already connected to the internet when it is attached to the AUV (Figure 27), wireless capabilities are only necessary when the battery hull is charging in the BCB. 
+Given that the battery is already connected to the internet when it is attached to the AUV (Figure 28), wireless capabilities are only necessary when the battery hull is charging in the BCB. 
 
 ![Diagram of Data Flow from PMB to the Internet](pmbtointernetauv.png)
-##### Figure 27: Data Flow from PMB to the Internet
+##### Figure 28: Data Flow from PMB to the Internet
 
 ### 7.2.2 Design Concept 2 - Accompanying PCB Within the Battery Charging Box
 
-To address these limitations, a revised design places a PCB with wireless capabilities in the BCB. The battery hull connects to the LiPo charger in the BCB via the connector in Figure 24. As such, the CAN Low and CAN High data lines are unused during charging. Using this connection, a microcontroller can retrieve data from the PMB when it is charging and upload it online. 
+To address these limitations, a revised design places a PCB with wireless capabilities in the BCB. The battery hull connects to the LiPo charger in the BCB via the connector in Figure 25. As such, the CAN Low and CAN High data lines are unused during charging. Using this connection, a microcontroller can retrieve data from the PMB when it is charging and upload it online. 
 
 Hence, a Battery Telemetry Board (BTB) was designed to reside within the BCB. It uses an Espressif32-DevKitC V4 as it was readily available in the lab. While this would mean an additional component is required to reside within the BCB, it is worthwhile as other features such as [Real-Time Safety and Status Notifications](#81-real-time-safety-and-status-notifications) can be implemented on the same Battery Telemetry Board.
 
@@ -456,10 +457,10 @@ The key components of the BTB and its purpose are summarised in the table below:
 | ISOW1044B                           | Isolated CAN transceiver to allow for CAN communication with the PMB.      |
 | Buzzer                              | Used to alert user of any potential fault.                                 |
 | USB-C Connector & Voltage Regulator | To power the board directly from the LiPo charger to simplify integration. |
-##### Table 14: Components and Functions of the Battery Telemetry Board (BTB)
+##### Table 15: Components and Functions of the Battery Telemetry Board (BTB)
 
 ![Labelled Components on BTB](btpcomponents.png)
-##### Figure 28: Labelled Components on BTB
+##### Figure 29: Labelled Components on BTB
 
 The BTB schematics are provided in Appendix A.
 
@@ -468,7 +469,7 @@ The BTB schematics are provided in Appendix A.
 The PMB continuously transmit telemetry via five CAN Messages. These includes critical information for fault detection (e.g.: voltage, current, internal pressure and temperature), as well as data for monitoring degradation (e.g.: individual cell voltages, state of health). Additionally, telemetry data that helps in operational planning such as time to full charge and time to empty are transmitted to support efficient pool test scheduling.
 
 ![List of CAN Messages](canmsgs.png)
-##### Figure 29: Data Flow from BTB to Telegram Channel and Google Sheets
+##### Figure 30: Data Flow from BTB to Telegram Channel and Google Sheets
 
 The BTB interprets the CAN messages and packages it to be sent to the Telegram Channel and a Google App Script. The Google App Script will then update the respective Google Sheets based on the PMB ID. The time recorded is obtained via Network Time Protocol (NTP).
 
@@ -476,11 +477,11 @@ Google Sheets was chosen as it has a low barrier of entry, allowing all members 
 
 ![Data Flow from BTB to Telegram Channel and Google Sheets](dataflowbtb.png)
 
-##### Figure 30: Data Flow from BTB to Telegram Channel and Google Sheets
+##### Figure 31: Data Flow from BTB to Telegram Channel and Google Sheets
 
 ![BCB Google Sheet](bcbexcel.png)
 
-##### Figure 31: Recorded Telemetry on Google Sheets
+##### Figure 32: Recorded Telemetry on Google Sheets
 
 To ensure accurate data is being published,a timeout mechanism is implemented for all incoming telemetry. If the BTP does not receive the same message ID from the same PMB within twice its expected interval, all the data from that PMB will not be recorded. This ensures that only valid data is retained, preserving the integrity of the dataset for analysis.
 
@@ -511,7 +512,7 @@ To ensure accurate data is being published,a timeout mechanism is implemented fo
   </tbody>
 </table>
 
-##### Table 15: Summary of Telemetry Availability Across Interfaces
+##### Table 16: Summary of Telemetry Availability Across Interfaces
 
 Due to limited space on the screen, only high-priority telemetry is shown to avoid clutter. The Telegram channel provides immediate operational updates, while full datasets are continuously uploaded to Google Sheets for future analysis. This tiered reporting approach balances operational clarity without sacrificing traceability.
 
@@ -528,7 +529,7 @@ As mentioned in [Section 2.3.3](#233-challenges-with-tracking-battery-hulls-pres
 During the testing and development of the Autonomous Surface Vessel (ASV), a Telegram Channel was running on the ASV to periodically report the battery voltage and current draw. This proved invaluable as it allowed the team to anticipate and prepare for battery swaps. Furthermore, it helped the team to identify a load-balancing issue in the vehicle that would have otherwise gone unnoticed.
 
 ![Telegram Channel Reporting ASV's Battery Status](tele.png)
-##### Figure 32: Telegram Channel Reporting ASV's Battery Status
+##### Figure 33: Telegram Channel Reporting ASV's Battery Status
 
 #### 8.1.2 Chosen Method
 Telegram was selected as the alert platform due to its prior success and team-wide adoption. Furthermore, as it is used for internal communications, it provides a low-barrier of entry and high-visibility for any fault notification. 
@@ -540,7 +541,7 @@ A Google App Script processes data uploaded from the Battery Telemetry Board (BT
 | :---------------------------------------------------------- | :------------------------------------------- |
 | Internal Pressure Below 107                                 | ALERT: PMB IS LEAKING!                       |
 | Drop in the Ratio of Internal Pressure to Temperature > 0.5 | ALERT: PMB MIGHT BE leaking, please observe. |
-##### Table 16: Leak Detection Thresholds and Corresponding Notifications
+##### Table 17: Leak Detection Thresholds and Corresponding Notifications
 
 The leak detection is based on the Gay Lussac's Law [4] which states that the pressure of a gas is directly proportional to its temperature at constant volume. Hence, if the battery hull is not leaking, the amount of gas in the hull should remain the same. Thus, the ratio of internal pressure to temperature should remain consistent despite temperature changes. Therefore, a significant deviation in this ratio would suggest a potential leak.
 
@@ -558,7 +559,7 @@ The threshold of 0.5 is determined by observing the change in temperature and in
 |    110.71    |    28    |  3.954  |       -0.142       |
 |    110.80    |    28    |  3.957  |       0.003        |
 |    110.85    |    28    |  3.959  |       0.002        |
-##### Table 17: Changes in Pressure and Temperature of Battery Hull A
+##### Table 18: Changes in Pressure and Temperature of Battery Hull A
 
 | **Pressure** | **Temp** | **P/T** | **P/T Difference** |
 | :----------: | :------: | :-----: | :----------------: |
@@ -570,7 +571,7 @@ The threshold of 0.5 is determined by observing the change in temperature and in
 |    112.75    |    25    |  4.510  |       0.003        |
 |    112.80    |    25    |  4.512  |       0.002        |
 |    112.85    |    26    |  4.340  |       -0.172       |
-##### Table 18: Changes in Pressure and Temperature of Battery Hull B
+##### Table 19: Changes in Pressure and Temperature of Battery Hull B
 
 | **Pressure** | **Temp** | **P/T** | **P/T Difference** |
 | :----------: | :------: | :-----: | :----------------: |
@@ -582,21 +583,21 @@ The threshold of 0.5 is determined by observing the change in temperature and in
 |    112.34    |    29    |  3.874  |       0.004        |
 |    112.43    |    29    |  3.877  |       0.003        |
 |    112.47    |    30    |  3.749  |       -0.128       |
-##### Table 19: Changes in Pressure and Temperature of Battery Hull B
+##### Table 20: Changes in Pressure and Temperature of Battery Hull B
 
 By feeding various data to the BTB, a simulated leak scenario was tested to verify detection logic. This lead to an alert sent to the Telegram Channel.
 
 ![Telegram Channel Reporting a Possible Leak](ratio.png)
-##### Figure 33: Telegram Channel Reporting a Possible Leak in PMB2
+##### Figure 34: Telegram Channel Reporting a Possible Leak in PMB2
 
 ![Telegram Channel Reporting a Leak](leak.png)
-##### Figure 34: Telegram Channel Reporting a Leak in PMB1
+##### Figure 35: Telegram Channel Reporting a Leak in PMB1
 
 The same Telegram channel is also used to broadcast the progress of the battery charging and notifies members when it is fully charged. This feature addresses a common operational issue, where team members may
 forget to turn off the charger, especially after fatigue from a long day of pool tests. By receiving timely reminders, the team can ensure a safer operation by turning off the charger when the battery is fully charged.
 
 ![Telegram Channel Reporting Charged Battery](teletelem.png)
-##### Figure 35: Telegram Channel Reporting a Fully Charged PMB1
+##### Figure 36: Telegram Channel Reporting a Fully Charged PMB1
 
 ### 8.2 Protection Features
 BQ40Z50 comprises various protection features. This includes two tiers of protection. The first tier disconnects the circuits via MOSFETs, while the second tier permanently disables the battery pack by blowing the fuse.  Within the first tier there are also hardware protections that can be configured for a faster response from the chip.
@@ -604,7 +605,7 @@ BQ40Z50 comprises various protection features. This includes two tiers of protec
 These features collectively protect the vehicle from electrical fault, improving the reliability of the system.
 
 ![Using bQStudio to configure Protection Settings](protection.png)
-##### Figure 36: Configuring BQ40Z50 Protection Parameters in bqStudio
+##### Figure 37: Configuring BQ40Z50 Protection Parameters in bqStudio
 
 Several key safety features were configured and tested:
 
@@ -614,7 +615,7 @@ Several key safety features were configured and tested:
 | Overload in Discharge Protection (AOLD) | Almost instantaneous cut off when discharging above the set current limit.                                                            |
 | Over Charging Current Protection (OCC)  | When the charging current is higher than the preset threshold, the charging MOSFET is turned off.                                     |
 
-##### Table 20: Test Results for BQ40Z50 Protection Features
+##### Table 21: Test Results for BQ40Z50 Protection Features
 
 Additionally, a secondary overvoltage protection chip (BQ294701) monitors cell voltages independently and can also activate the fuse if an overvoltage is detected. This act as a fallback if the BQ40Z50 is malfunctioning. 
 
@@ -629,30 +630,30 @@ Additionally, a secondary overvoltage protection chip (BQ294701) monitors cell v
 The PMB is designed to handle 40A of continuous current. Hence, 2oz copper was used on the outer layers of the PCB, where the power path are, to reduce temperature rise. The traces are also made as wide as possible to reduce resistance.
 
 ![3D Model of Power Path](3dpower.png)
-##### Figure 37: 3D Model of Power Path
+##### Figure 38: 3D Model of Power Path
 
 ![Power Path on the Top Layer](toppower.png)
-##### Figure 38: Power Path on the Top Layer
+##### Figure 39: Power Path on the Top Layer
 
 The IPTC014N10NM5 MOSFET was chosen as it has a top side cooling package. This allows the use of thermal pads to conduct the heat from the MOSFET to the top of the battery hull [6].
 
 ![MOSFET Highlighted on The New PMB](pcbmosfet.png)
-##### Figure 39: MOSFET Highlighted on The New PMB
+##### Figure 40: MOSFET Highlighted on The New PMB
 
 A test was conducted to compare the new MOSFET with the old MOSFET and its thermal conducting capabilities. The PMB is placed within the enclosed battery hull with starting temperature of 28 degree Celsius. A continuous current draw of 40A was carried out for 10 minutes. A thermal camera was then used to measure the temperature of the PCB.
 
 ![Thermal Image of the New PMB](newpmbthermal.jpg)
-##### Figure 40: Thermal Image of the New PMB after Load Test
+##### Figure 41: Thermal Image of the New PMB after Load Test
 
 ![Thermal Image of the Old PMB](thermaloldpmb.jpg)
-##### Figure 41: Thermal Image of the Old PMB after Load Test
+##### Figure 42: Thermal Image of the Old PMB after Load Test
 
 It can be observed that the old PMB has a higher temperature after the load test, indicating that the MOSFETs on the new PMB are better at conducting thermal heat away.
 
 To ensure reliable power supply, a power consumption chart was drawn up to verify that the selected voltage regulators are able to supply enough power.
 
 ![PMB's Power Consumption Chart](pmbpowerconsume.png)
-##### Figure 42: PMB's Power Consumption Chart
+##### Figure 43: PMB's Power Consumption Chart
 
 #### 8.3.2 Design for Signal Integrity
 Ensuring that the signals transmitted on the data lines are not degraded by noise is critical to creating a reliable PMB.
@@ -660,7 +661,7 @@ Ensuring that the signals transmitted on the data lines are not degraded by nois
 Firstly, the board was split into high-power and low-power zones to minimise interference.
 
 ![Split between Higher and Lower Power Section of the PMB](highlowsplit.png)
-##### Figure 43: Split between Higher and Lower Power Sections of the PMB (Red Line Divides the Sections)
+##### Figure 44: Split between Higher and Lower Power Sections of the PMB (Red Line Divides the Sections)
 
 Due to the variation in current drawn from the battery, it is likely that there would be noise if the low power components were powered from the same source. Hence, an Isolated DC-DC regulator was used to isolate the Battery and AUV power from the microcontroller's components. A low-dropout regulator (LDO) was used to step down to 3.3V for 3.3V components.
 
@@ -675,35 +676,35 @@ The various power and ground nets are summarised in the table below:
 | Batt_Pos, Batt_Neg           | Positive and negative input from the battery.                                          |
 | AUV_Pos, +3V3_UnIso, AUV_Neg | Positive and negative output to the AUV, and a 3V3 that references the AUV_Neg.        |
 
-##### Table 21: Table of Power and Ground Nets with Its Description
+##### Table 22: Table of Power and Ground Nets with Its Description
 
 This can be further seen in the division of the Power and Ground Plane within the PMB. 
 
 ![PMB Power Plane](pcbpowerplane.png)
-##### Figure 44: PMB Power Plane
+##### Figure 45: PMB Power Plane
 
 ![PMB Ground Plane](pmbgndplane.png)
-##### Figure 45: PMB Ground Plane
+##### Figure 46: PMB Ground Plane
 
 #### 8.3.4 User Interface
 The PMB uses reed switches and latching relay to allow the battery to be turned on or off without unsealing the hull. To turn off the system, the microcontroller checks for a HIGH signal from the "OFF" reed switch, ensuring that the relay is only reset after tasks are safely concluded. This would be critical to prevent file corruption if onboard logging is implemented.
 
 ![Relay Circuit on The PMB](relaycircuit.png)
-##### Figure 46: Relay Circuit on The PMB
+##### Figure 47: Relay Circuit on The PMB
 
 Key telemetry information being displayed on the screen can also alert users immediately to any potential issues within the battery hull.
 
 ![Telemetry Display and Reed Switches for The Battery Hull](telemandreed.jpg)
-##### Figure 47: Telemetry Display and Reed Switches for The Battery Hull
+##### Figure 48: Telemetry Display and Reed Switches for The Battery Hull
 
 
 The final layout and assembled PCB are shown below.
 
 ![PMB Top View](pmbtop.png)
-##### Figure 48: Top View of PMB
+##### Figure 49: Top View of PMB
 
 ![PMB Bottom View](pmbbottom.png)
-##### Figure 49: Bottom View of PMB
+##### Figure 50: Bottom View of PMB
  
 ---
 
@@ -719,7 +720,7 @@ The new design is able to meet the functional requirements stated in [Section 4]
 | Telemetry           |     Yes      | Voltage, current, and internal pressure are displayed on the telemetry screen. Voltage was verified with a multimeter and the current was calibrated using a load tester. |
 | Charging            |     Yes      | Able to charge the battery.                                                                                                                                               |
 
-##### Table 22: Verification of Functional Requirements
+##### Table 23: Verification of Functional Requirements
 
 The sub-goals set out in [Section 3](#3-project-goal) have been met. 
 
@@ -728,7 +729,7 @@ The sub-goals set out in [Section 3](#3-project-goal) have been met.
 | Enhance User Operability and Work Flow | - In-hull firmware update via balance connector<br>- Remote status monitoring via Battery Telemetry Board | - Firmware update time reduced from 25 minutes to 3 minutes.<br>- Members can monitor charging progress and access historical data |
 | Improve Safety and Reliability         | - Real-time safety and status notification via Telegram<br>- Protection features with BQ40Z50             | - Immediate alerts when faults are detected.<br>- AUV electrical system is protected from potential electrical faults.             |
 | Improve AUV Performance                | - New Li-Ion batteries<br>- Accurate SoC estimation with BQ40Z50                                          | - In-water testing time can be extended.                                                                                           |
-##### Table 23: Summary of Sub Goals and Its Implementation and Improvements
+##### Table 24: Summary of Sub Goals and Its Implementation and Improvements
 
 Unfortunately, there were also mistakes when designing the PCBs that had to be rectified during testing.
 
@@ -737,13 +738,13 @@ Unfortunately, there were also mistakes when designing the PCBs that had to be r
 |   PMB   | No pull-up resistor on the I2C lines connecting the microcontroller, screen, and pressure sensor | Unable to establish communications on I2C lines                                 | Pull-up resistor soldered onto the board                                       |
 |   PMB   | No pull-down resistor for the signal from the microcontroller to reset the reed switch           | Relay would be reset when the MCU is powered on, leading to the power being cut | Pull-down resistor soldered onto the board                                     |
 |   BTB   | Resistors from the CC lines on the USB-C connector are pulled up instead of down                 | USB-C would not negotiate properly for power delivery                           | Existing resistor removed and new resistor soldered to pull CC lines to ground |
-##### Table 24: Summary of PCB Mistakes and Its Fixes
+##### Table 25: Summary of PCB Mistakes and Its Fixes
 
 ![PMB Fix](pmbfix.png)
-##### Figure 50: Soldering Pull-Down Resistor on PMB
+##### Figure 51: Soldering Pull-Down Resistor on PMB
 
 ![BTB Fix](btpfix.png)
-##### Figure 51: Soldering Pull-Down Resistor on BTB
+##### Figure 52: Soldering Pull-Down Resistor on BTB
   
 The integration of SoC tracking, protection features and remote status monitoring redefines the PMB from being a passive Power Monitoring Board to a Power Management Board. Furthermore, the addition of a BTB to the BCB provides an integrated system to monitor and alert operators of potential faults within the AUV's battery system. 
 
