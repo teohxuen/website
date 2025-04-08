@@ -384,10 +384,14 @@ This can be useful as it allows members to better plan and anticipate battery ch
 
 ## 7. Enhancing User Operability and Workflow
 
-One part of the project is to enhance user operability and workflow. User operability is improved by simplifying operation and maintenance of the battery hull, reducing AUV's downtime. Easier maintenance can also help prevent damage to the battery hulls. Improved workflow can help to identify potential issues and allow for early detection of faults. Both user operability and workflow can come together to increase the reliability of the vehicle.
+One part of the project is to enhance user operability and workflow. User operability is improved by simplifying operation and maintenance of the battery hull, reducing AUV's downtime. Easier maintenance can also help prevent damage to the battery hulls. 
+
+Improved workflow can help to identify potential issues and allow for early detection of faults. 
+
+Both user operability and workflow can come together to increase the reliability of the vehicle.
 
 ### 7.1 In-Hull Firmware Flashing
-Currently, the microcontroller on the PMB can only be programmed via the exposed Serial Wire Debug (SWD) pins on the PCB inside the battery hull. This process is time-consuming and increases the risk of sealing errors during reassembly. By enabling in-hull firmware flashing, software updates can be performed without physical disassembly, significantly reducing maintenance time and increasing operational efficiency.
+The microcontroller on the PMB currently requires firmware updates via exposed SWD pins inside the sealed battery hull, necessitating disassembly of the battery hulls. This process is time-consuming and increases the risk of assembly errors. Enabling in-hull firmware flashing eliminates the need for unsealing, reducing maintenance time and improving operational efficiency.
 
 #### 7.1.1 Prior Implementation: RobotX 2024
 
@@ -397,7 +401,7 @@ In-hull flashing was successfully implemented during RobotX 2024. A USB port was
 ##### Figure 23: USB Port for Flashing on ASV4.0
 
 #### 7.1.2 Design Concept 1 - Firmware Flashing via CAN Bus
-Initially, an option was to use the CAN lines to flash firmware onto the microcontroller.
+Initially, an option was to use the CAN bus to flash firmware onto the microcontroller.
 
 ![AUV4.1 Battery Hull Power Connector Pinout](battconnector.png)
 ##### Figure 24: AUV4.1 Battery Hull Power Connector Pinout
@@ -411,26 +415,26 @@ An alternate approach is to repurpose the AUV4.1 balance connector, which was or
 ![Old Balance Connector Pin Out](oldbal.png)
 ##### Figure 25: Old Balance Connector Pin Out
 
-The Balance Connector can be re-wired within the battery hull to expose the microcontroller programming pins (SWDIO, SWDCLK, RESET and Ground). Since communication with the BQ40Z50 chip is via SMBus, the SMBus lines (SMBD, SMBC and SMB GND) can also be exposed on the same connector. This allows the user to programme the microcontroller and the BQ40Z50 chip without unsealing the hull, reducing down time. Furthermore, it does not require significant development effort to implement this feature. 
+The balance connector can be re-wired within the battery hull to expose the microcontroller programming pins (SWDIO, SWDCLK, RESET and Ground). Since communication with the BQ40Z50 chip is via SMBus, the SMBus lines (SMBD, SMBC and SMB GND) can also be exposed on the same connector. This allows the user to programme the microcontroller and the BQ40Z50 chip without unsealing the hull, reducing down time. Furthermore, it does not require significant development effort to implement this feature. 
 
 ![New Balance Connector Pin Out](newbal.png)
 ##### Figure 26: New Balance Connector Pin Out
 
   
 ### 7.2 Remote Status Monitoring
-As discussed in in [Section 2.3.3](#233-challenges-with-tracking-battery-hulls-pressure-and-temperature),the team currently relies on manual logging to monitor the battery hull’s internal pressure and temperature. This lack of historical data makes it difficult to determine if there is a slow leak. Furthermore recording key telemetry information such as individual cell voltages, state of health can also be logged to track the degradation of the batteries.
+As discussed in in [Section 2.3.3](#233-challenges-with-tracking-battery-hulls-pressure-and-temperature), the team currently relies on manual logging to monitor the battery hull’s internal pressure and temperature. This lack of historical data makes it difficult to determine if a slow leak is present. Additionally, telemetry such as individual cell voltages and state of health is not consistently recorded, limiting the ability to track battery degradation over time.
 
-As such, the requirements for the remote status monitoring and its reasoning can be summarised below.
+To address these limitations, a remote status monitoring system was proposed. The requirements for the system and its rationale are summarised below.
 
-| **Requirements**              | **Rationale**                                                                                                                   |
-| :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
-| Automated Reporting           | To avoid human error.                                                                                                           |
-| Wireless Update Data          | To avoid unsealing the hull to retrieve the data.                                                                               |
-| Low Barrier of Entry Database | As members from different sub-teams have to maintain the Battery Hull, the storage database should be easily accessed and used. |
+| **Requirements**                     | **Rationale**                                                                                                                  |
+| :----------------------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
+| Automated Reporting                  | Minimises human error by eliminating manual data. entry                                                                        |
+| Wireless Data Upload                 | Avoids the need to unseal the hull to retrieve the data.                                                                       |
+| Database with A Low-Barrier of Entry | As members from different sub-teams have to maintain the battery hulls, the storage database should be easy to access and use. |
 ##### Table 13: “Requirements and Rationale for Remote Status Monitoring
 
 ### 7.2.1 Design Concept 1 - Microcontroller with Wireless Capabilities
-The initial design involved using a microcontroller with built-in WiFi capabilities (STM32Wx, Espressif MCUs), allowing it to connect to the internet whenever the battery hull is powered on. However, this approach is not ideal as the PMB is placed within a 3D printed metal hull, which would act as a Faraday cage. This would weaken the WiFi signal leading to unreliable connections.
+The initial design involved using a microcontroller with built-in WiFi capabilities (STM32Wx, Espressif MCUs), allowing it to connect to the internet whenever the battery hull is powered on. However, this approach is not ideal as the PMB is placed within a metal hull, which would act as a Faraday cage. This would weaken the WiFi signal leading to unreliable connections.
 
 Given that the battery is already connected to the internet when it is attached to the AUV (Figure 27), wireless capabilities are only necessary when the battery hull is charging in the BCB. 
 
@@ -439,7 +443,7 @@ Given that the battery is already connected to the internet when it is attached 
 
 ### 7.2.2 Design Concept 2 - Accompanying PCB Within the Battery Charging Box
 
-To address these limitations, a revised design places a PCB with wireless capabilities in the BCB. The battery hull connects to the LiPo charger in the BCB via the connector in Figure 24. As such, the CAN Low and CAN High data line are unused during charging. Using this connection, a microcontroller can retrieve data from the PMB when it is charging and upload it online. 
+To address these limitations, a revised design places a PCB with wireless capabilities in the BCB. The battery hull connects to the LiPo charger in the BCB via the connector in Figure 24. As such, the CAN Low and CAN High data lines are unused during charging. Using this connection, a microcontroller can retrieve data from the PMB when it is charging and upload it online. 
 
 Hence, a Battery Telemetry Board (BTB) was designed to reside within the BCB. It uses an Espressif32-DevKitC V4 as it was readily available in the lab. While this would mean an additional component is required to reside within the BCB, it is worthwhile as other features such as [Real-Time Safety and Status Notifications](#81-real-time-safety-and-status-notifications) can be implemented on the same Battery Telemetry Board.
 
@@ -457,7 +461,7 @@ The key components of the BTB and its purpose are summarised in the table below:
 ![Labelled Components on BTB](btpcomponents.png)
 ##### Figure 28: Labelled Components on BTB
 
-BTB Schematics are in Appendix A.
+The BTB schematics are provided in Appendix A.
 
 ### 7.2.3 Data Flow
 
