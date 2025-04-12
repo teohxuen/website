@@ -22,5 +22,12 @@
       <guid>http://localhost:1313/website/guides/setup/</guid>
       <description>This documents the steps required to set up the PMB for use.</description>
     </item>
+    <item>
+      <title>Using BQ40Z50 for AUV4.5</title>
+      <link>http://localhost:1313/website/guides/using/</link>
+      <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/website/guides/using/</guid>
+      <description>Tips and tricks on how to use the BQ40Z50 on the PMB.</description>
+    </item>
   </channel>
 </rss>

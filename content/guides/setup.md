@@ -30,3 +30,4 @@ Current Calibration
 Insert Golden Image File
 
 Insert Battery Chemistry Configuration
+
