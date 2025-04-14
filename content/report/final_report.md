@@ -429,7 +429,7 @@ To address these limitations, a remote status monitoring system was proposed. Th
 
 | **Requirements**                     | **Rationale**                                                                                                                  |
 | :----------------------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
-| Automated Reporting                  | Minimises human error by eliminating manual data. entry                                                                        |
+| Automated Reporting                  | Minimises human error by eliminating manual data entry.                                                                        |
 | Wireless Data Upload                 | Avoids the need to unseal the hull to retrieve the data.                                                                       |
 | Database with A Low-Barrier of Entry | As members from different sub-teams have to maintain the battery hulls, the storage database should be easy to access and use. |
 ##### Table 14: “Requirements and Rationale for Remote Status Monitoring
